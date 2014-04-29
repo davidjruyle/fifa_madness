@@ -10,10 +10,12 @@
 
 <div class="container-fluid text-center">
 	<h1>DASHBOARD</h1>
-
+	{{tagline}}
+	<div>
+		{{teamList1}}
+</div>
 	<div ng-controller="dashController">
 
-			<p>{{ teamData }}</p>
 	  	<accordion close-others="oneAtATime">
 	    <accordion-group is-open="isopen">
 	        <accordion-heading>
@@ -23,24 +25,50 @@
 
 	        <table class="table table-striped">
 	        	<tr>
-	        		<th>Time</th>
-	        		<th>Team 1</th>
+	        		<th>DATE</th>
+	        		<th>TEAM 1</th>
 	        		<th>WINNER</th>
-	        		<th>Team 2</th>
+	        		<th>TEAM 2</th>
 	       		</tr>
 
 	       		<tr>
-	        		<td>12:00 Friday</td>
-	        		<td>Brazil</td>
-	        		<td></td>
-	        		<td>Croatia</td>
+	        		<td>6/12/14 - 17:00 Local Time</td>
+	        		<td ng-model="team" ng-click="toggleWinner1()"><img src="http://img.fifa.com/images/flags/4/bra.png"><span class="teamName"> BRAZIL</span></td>
+	        		<td><img src="{{pickImg}}"><span class="teamName">{{picks}}</span></td>
+	        		<td ng-model="team" ng-click="toggleWinner1()"><img src="http://img.fifa.com/images/flags/4/cro.png"><span class="teamName"> CROATIA</span></td>
+	        		
 	       		</tr>
 
 	       		<tr>
-	        		<td>12:00 Friday</td>
-	        		<td>Brazil</td>
+	        		<td>6/13/14 - 13:00 Local Time</td>
+	        		<td><img src="http://img.fifa.com/images/flags/4/mex.png"><span class="teamName"> MEXICO</td>
 	        		<td></td>
-	        		<td>Croatia</td>
+	        		<td><img src="http://img.fifa.com/images/flags/4/cmr.png"><span class="teamName"> CAMEROON</td>
+	       		</tr>
+
+	       		<tr>
+	        		<td>6/17/14 - 16:00 Local Time</td>
+	        		<td><img src="http://img.fifa.com/images/flags/4/bra.png"><span class="teamName"> BRAZIL</span></td>
+	        		<td></td>
+	        		<td><img src="http://img.fifa.com/images/flags/4/mex.png"><span class="teamName"> MEXICO</td>
+	       		</tr>
+	       		<tr>
+	        		<td>6/18/14 - 18:00 Local Time</td>
+	        		<td><img src="http://img.fifa.com/images/flags/4/cmr.png"><span class="teamName"> CAMEROON</td>
+	        		<td></td>
+	        		<td><img src="http://img.fifa.com/images/flags/4/cro.png"><span class="teamName"> CROATIA</span></td>
+	       		</tr>
+	       		<tr>
+	        		<td>6/23/14 - 17:00 Local Time</td>
+	        		<td><img src="http://img.fifa.com/images/flags/4/cmr.png"><span class="teamName"> CAMEROON</td>
+	        		<td></td>
+	        		<td><img src="http://img.fifa.com/images/flags/4/bra.png"><span class="teamName"> BRAZIL</span></td>
+	       		</tr>
+	       		<tr>
+	        		<td>6/23/14 - 17:00 Local Time</td>
+	        		<td><img src="http://img.fifa.com/images/flags/4/cro.png"><span class="teamName"> CROATIA</span></td>
+	        		<td></td>
+	        		<td><img src="http://img.fifa.com/images/flags/4/mex.png"><span class="teamName"> MEXICO</td>
 	       		</tr>
 	        </table>
 	    </accordion-group>
@@ -51,7 +79,7 @@
 	<i class="pull-left glyphicon" ng-class="{'glyphicon-chevron-down': isopen, 'glyphicon-chevron-right': !isopen}"></i>
 	GROUP B
 	</accordion-heading>
-        <button class="btn btn-default btn-sm" ng-click="alertData()">Add Item</button>
+<!--         <button class="btn btn-default btn-sm" ng-click="alertData()">Add Item</button> -->
         <div ng-repeat="item in items">{{item}}</div>
         <div class="table-responsive">
      		<table class="table table-striped">
@@ -70,6 +98,5 @@
     </accordion-group>
 
 	</div>
-
 
 </div>
