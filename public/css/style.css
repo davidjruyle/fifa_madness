@@ -1,1 +1,7 @@
 body { padding-top:30px; }
+
+.navbar-right{
+	padding-right:55px;
+}
+.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
+

@@ -1,1 +1,5 @@
-angular.module('sampleApp', ['ngRoute', 'appRoutes', 'MainCtrl', 'NerdCtrl', 'NerdService', 'GeekCtrl', 'GeekService']);
+angular.module('fifa', ['ngRoute', 'appRoutes', 'ui.bootstrap', 'authCtrl', 'dashCtrl','dashFactory', 'authService','leaderboardCtrl','leaderboardService']);
+
+
+
+//'dashCtrl','dashService'
