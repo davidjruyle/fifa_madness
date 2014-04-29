@@ -1,15 +1,24 @@
-angular.module('dashCtrl', []).controller('dashController', function($scope, $rootScope, dashboard) {
+angular.module('dashCtrl', []).controller('dashController', function($scope, dashboard) {
 
 	$scope.tagline = 'This is the dashboard!';
+
+	// dashboard.getRound1().success(function(data){
+	// 	$scope.teamList1 = data;
+	// 	console.log(data);
+	// });
 	
-	function alertData(){
-		var scope = $rootScope;
-		scope.viewMyData = function(){
-			dashboard.getData().then(function(data){
-				console.log(data);
-			});
-		}
-	}
+	// dashboard.getRound1().success(function(data){
+	// 	$scope.teamList1 = data;
+	// 	console.log(data);
+	// });
+	var count=0;
+	$scope.toggleWinner1 = function(e){
+		count++;
+		$scope.picks = ["BRAZIL","CROATIA"];
+		$scope.pickImg = "http://img.fifa.com/images/flags/4/bra.png"
+		alert("clicked");
+	};
+
 
 	function AccordionDemoCtrl($scope) {
 	  	$scope.oneAtATime = true;

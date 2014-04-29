@@ -1,7 +1,21 @@
-body { padding-top:30px; }
+@import url(http://fonts.googleapis.com/css?family=Open+Sans);
+body { padding-top:30px; 
+	font-family:'Open Sans', 'sans-serif';
+}
 
 .navbar-right{
 	padding-right:55px;
 }
 .nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
 
+td{
+	padding-top:50px;
+	font-size: 1.5em;
+	text-align: left;
+}
+th{
+	text-align: left;
+}
+.teamName{
+	text-align: left;
+}
