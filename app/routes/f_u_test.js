@@ -1,97 +1,22 @@
-var mongo = require('mongodb');
 
-var Server = mongo.Server,
-    Db = mongo.Db,
-    BSON = mongo.BSONPure;
+var mongoose = require('mongoose')
+var Schema = mongoose.Schema;
 
-var server = new Server('localhost', 27017, {auto_reconnect: true});
-db = new Db('fifaUsers_db', server, {safe: true});
+console.log('Running mongoose version %s', mongoose.version);
 
-db.open(function(err, db) {
-    if(!err) {
-        console.log("Connected to 'fifaUsers_db' database");
-        db.collection('fifa_users', {safe:true}, function(err, collection) {
-            //if (err) {
-                console.log("The 'fifa_users' collection doesn't exist. Creating it with sample data...");
-                populateDB();
-            //}
-        });
-    }
-});
+mongoose.connect('mongodb://druyle:6d40c25c635dca66a82b963b0b5c024c@ds029797.mongolab.com:29797/fifa-madness', function (err) {
+  // if we failed to connect, abort
+  if (err) {
+    console.log(err);
+  };
+  console.log("We did it");
+  // we connected ok
+  populateDB();
+})
 
-exports.findById = function(req, res) {
-    var id = req.params.id;
-    console.log('Retrieving fifa_users: ' + id);
-    db.collection('fifa_userss', function(err, collection) {
-        collection.findOne({'_id':new BSON.ObjectID(id)}, function(err, item) {
-            res.send(item);
-        });
-    });
-};
-
-exports.findAll = function(req, res) {
-    db.collection('fifa_userss', function(err, collection) {
-        collection.find().toArray(function(err, items) {
-            res.send(items);
-        });
-    });
-};
-
-exports.addfifa_users = function(req, res) {
-    var fifa_users = req.body;
-    console.log('Adding fifa_users: ' + JSON.stringify(fifa_users));
-    db.collection('fifa_userss', function(err, collection) {
-        collection.insert(fifa_users, {safe:true}, function(err, result) {
-            if (err) {
-                res.send({'error':'An error has occurred'});
-            } else {
-                console.log('Success: ' + JSON.stringify(result[0]));
-                res.send(result[0]);
-            }
-        });
-    });
-}
-
-exports.updatefifa_users = function(req, res) {
-    var id = req.params.id;
-    var fifa_users = req.body;
-    delete fifa_users._id;
-    console.log('Updating fifa_users: ' + id);
-    console.log(JSON.stringify(fifa_users));
-    db.collection('fifa_userss', function(err, collection) {
-        collection.update({'_id':new BSON.ObjectID(id)}, fifa_users, {safe:true}, function(err, result) {
-            if (err) {
-                console.log('Error updating fifa_users: ' + err);
-                res.send({'error':'An error has occurred'});
-            } else {
-                console.log('' + result + ' document(s) updated');
-                res.send(fifa_users);
-            }
-        });
-    });
-}
-
-exports.deletefifa_users = function(req, res) {
-    var id = req.params.id;
-    console.log('Deleting fifa_users: ' + id);
-    db.collection('fifa_userss', function(err, collection) {
-        collection.remove({'_id':new BSON.ObjectID(id)}, {safe:true}, function(err, result) {
-            if (err) {
-                res.send({'error':'An error has occurred - ' + err});
-            } else {
-                console.log('' + result + ' document(s) deleted');
-                res.send(req.body);
-            }
-        });
-    });
-}
-
-/*--------------------------------------------------------------------------------------------------------------------*/
-// Populate database with sample data -- Only used once: the first time the application is started.
-// You'd typically not find this code in a real-life app, since the database would already exist.
 var populateDB = function() {
 
-    var fifa_userss = [
+    var fifa_users = [
     {
         user_id: 7,
         firstName: "Jeff",
@@ -1724,7 +1649,6 @@ var populateDB = function() {
     ];
 
     db.collection('fifa_users', function(err, collection) {
-        collection.insert(fifa_userss, {safe:true}, function(err, result) {});
+      collection.insert(fifa_users, {safe:true},{w:1}, function(err, result) {});
     });
-
-};
+  }
