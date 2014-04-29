@@ -247,45 +247,46 @@ mongoose.connect('mongodb://localhost/fifa_users', function (err) {
  */
 
 function createData () {
-  Console.create({
-      name: 'Nintendo 64'
-    , manufacturer: 'Nintendo'
-    , released: 'September 29, 1996'
-  }, function (err, nintendo64) {
-    if (err) return done(err);
+  User.create({
+    firstName: 'David'
+    ,lastName : 'Ruyle'
+    ,email: 'dave.ruyle@gmail.com',
+    userID:6})
+  // }, function (err, nintendo64) {
+  //   if (err) return done(err);
 
-    Game.create({
-        name: 'Legend of Zelda: Ocarina of Time'
-      , developer: 'Nintendo'
-      , released: new Date('November 21, 1998')
-      , consoles: [nintendo64]
-    }, function (err) {
-      if (err) return done(err);
-      example();
-    })
-  })
+  //   Game.create({
+  //       name: 'Legend of Zelda: Ocarina of Time'
+  //     , developer: 'Nintendo'
+  //     , released: new Date('November 21, 1998')
+  //     , consoles: [nintendo64]
+  //   }, function (err) {
+  //     if (err) return done(err);
+  //     example();
+  //   })
+  // })
 }
 
 /**
  * Population
  */
 
-function example () {
-  Game
-  .findOne({ name: /^Legend of Zelda/ })
-  .populate('consoles')
-  .exec(function (err, ocinara) {
-    if (err) return done(err);
+// function example () {
+//   Game
+//   .findOne({ name: /^Legend of Zelda/ })
+//   .populate('consoles')
+//   .exec(function (err, ocinara) {
+//     if (err) return done(err);
 
-    console.log(
-        '"%s" was released for the %s on %s'
-      , ocinara.name
-      , ocinara.consoles[0].name
-      , ocinara.released.toLocaleDateString());
+//     console.log(
+//         '"%s" was released for the %s on %s'
+//       , ocinara.name
+//       , ocinara.consoles[0].name
+//       , ocinara.released.toLocaleDateString());
 
-    done();
-  })
-}
+//     done();
+//   })
+// }
 
 function done (err) {
   if (err) console.error(err);
