@@ -1,0 +1,75 @@
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+	<div class="navbar-header">
+		<a class="navbar-brand" href="/">Fifa Madness</a>
+	</div>
+	<ul class="nav navbar-nav">
+		<li><a href="/dash">Dash</a></li>
+		<li><a href="/leaderboard">Leaderboard</a></li>
+	</ul>
+</nav>
+
+<div class="container-fluid text-center">
+	<h1>DASHBOARD</h1>
+
+	<div ng-controller="dashController">
+
+			<p>{{ teamData }}</p>
+	  	<accordion close-others="oneAtATime">
+	    <accordion-group is-open="isopen">
+	        <accordion-heading>
+	        	<i class="pull-left glyphicon" ng-class="{'glyphicon-chevron-down': isopen, 'glyphicon-chevron-right': !isopen}"></i>
+	        	GROUP A
+	        </accordion-heading>
+
+	        <table class="table table-striped">
+	        	<tr>
+	        		<th>Time</th>
+	        		<th>Team 1</th>
+	        		<th>WINNER</th>
+	        		<th>Team 2</th>
+	       		</tr>
+
+	       		<tr>
+	        		<td>12:00 Friday</td>
+	        		<td>Brazil</td>
+	        		<td></td>
+	        		<td>Croatia</td>
+	       		</tr>
+
+	       		<tr>
+	        		<td>12:00 Friday</td>
+	        		<td>Brazil</td>
+	        		<td></td>
+	        		<td>Croatia</td>
+	       		</tr>
+	        </table>
+	    </accordion-group>
+
+	<accordion-group>
+
+	<accordion-heading>
+	<i class="pull-left glyphicon" ng-class="{'glyphicon-chevron-down': isopen, 'glyphicon-chevron-right': !isopen}"></i>
+	GROUP B
+	</accordion-heading>
+        <button class="btn btn-default btn-sm" ng-click="alertData()">Add Item</button>
+        <div ng-repeat="item in items">{{item}}</div>
+        <div class="table-responsive">
+     		<table class="table table-striped">
+	     		<tr>
+		        		<th>Time</th>
+		        		<th>Team 1</th>
+		        		<th>WINNER</th>
+		        		<th>Team 2</th>
+		       	</tr>
+
+
+	     	</table>
+     	</div>
+
+
+    </accordion-group>
+
+	</div>
+
+
+</div>
