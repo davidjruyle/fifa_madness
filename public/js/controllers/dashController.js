@@ -11,12 +11,17 @@ angular.module('dashCtrl', []).controller('dashController', function($scope, das
 	// 	$scope.teamList1 = data;
 	// 	console.log(data);
 	// });
-	var count=0;
-	$scope.toggleWinner1 = function(e){
-		count++;
-		$scope.picks = ["BRAZIL","CROATIA"];
-		$scope.pickImg = "http://img.fifa.com/images/flags/4/bra.png"
-		alert("clicked");
+	
+	$scope.groupAWinner1 = function(obj){
+		console.log(obj);
+		if(obj.target.attributes.data.value == "Brazil"){
+			$scope.picks = "BRAZIL";
+			$scope.pickImg = "http://img.fifa.com/images/flags/4/bra.png"
+		}
+		else{
+			$scope.picks = "CROATIA";
+			$scope.pickImg = "http://img.fifa.com/images/flags/4/cro.png"
+		}
 	};
 
 
