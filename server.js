@@ -8,7 +8,7 @@ var mongoose= require('mongoose');
 // config files
 var db = require('./config/db');
 
-var port = process.env.PORT || 4000; // set our port
+var port = process.env.PORT || 4000; // changed to port 80 to push to Bitnami --- this should be set as an environmental variable
 // mongoose.connect(db.url); // connect to our mongoDB database (commented out after you enter in your own credentials)
 
 app.configure(function() {

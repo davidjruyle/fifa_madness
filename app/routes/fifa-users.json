@@ -1,25 +1,4 @@
-
-var mongoose = require('mongoose')
-var mongoDB = require('mongodb')
-
-var Schema = mongoose.Schema;
-
-console.log('Running mongoose version %s', mongoose.version);
-
-mongoose.connect('mongodb://dave:explore@ds031747.mongolab.com:31747/fifa-madness', function (err) {
-  // if we failed to connect, abort
-  if (err) {
-    console.log(err);
-  };
-  console.log("We did it");
-  // we connected ok
-  populateDB();
-  console.log("Did the records populate?")
-})
-
-var populateDB = function() {
-
-    var fifa_users = [
+[
     {
         user_id: 7,
         firstName: "Jeff",
@@ -1649,9 +1628,4 @@ var populateDB = function() {
     }
   ]
     },
-    ];
-
-    db.collection('fifa_users', function(err, collection) {
-      collection.insert(fifa_users, {safe:true},{w:1}, function(err, result) {});
-    });
-  }
+    ]

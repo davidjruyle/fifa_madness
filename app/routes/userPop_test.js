@@ -1,25 +1,16 @@
+var mongo = require('mongodb');
+var MongoClient = require('mongodb').MongoClient;
 
-var mongoose = require('mongoose')
-var mongoDB = require('mongodb')
+BSON = mongo.BSONPure;
 
-var Schema = mongoose.Schema;
+MongoClient.connect('mongodb://dave:explore@ds031747.mongolab.com:31747/fifa-madness', function(err, db) {
+    if(err) throw err;
+console.log("connected");
 
-console.log('Running mongoose version %s', mongoose.version);
-
-mongoose.connect('mongodb://dave:explore@ds031747.mongolab.com:31747/fifa-madness', function (err) {
-  // if we failed to connect, abort
-  if (err) {
-    console.log(err);
-  };
-  console.log("We did it");
-  // we connected ok
-  populateDB();
-  console.log("Did the records populate?")
-})
 
 var populateDB = function() {
 
-    var fifa_users = [
+ var fifa_users = [
     {
         user_id: 7,
         firstName: "Jeff",
@@ -1651,7 +1642,89 @@ var populateDB = function() {
     },
     ];
 
+
     db.collection('fifa_users', function(err, collection) {
-      collection.insert(fifa_users, {safe:true},{w:1}, function(err, result) {});
+        collection.insert(fifa_users, {safe:true}, function(err, result) {});
     });
-  }
+
+
+populateDB();
+
+
+
+
+// exports.findById = function(req, res) {
+//     var id = req.params.id;
+//     console.log('Retrieving User: ' + id);
+//     db.collection('fifa_users', function(err, collection) {
+//         collection.findOne({'_id':new BSON.ObjectID(id)}, function(err, item) {
+//             res.send(item);
+//         });
+//     });
+// };
+
+// exports.findAll = function(req, res) {
+//     db.collection('fifa_users', function(err, collection) {
+//         collection.find().toArray(function(err, items) {
+//             res.send(items);
+//         });
+//     });
+// };
+
+// exports.addUser = function(req, res) {
+//     var User = req.body;
+//     console.log('Adding User: ' + JSON.stringify(User));
+//     db.collection('fifa_users', function(err, collection) {
+//         collection.insert(User, {safe:true}, function(err, result) {
+//             if (err) {
+//                 res.send({'error':'An error has occurred'});
+//             } else {
+//                 console.log('Success: ' + JSON.stringify(result[0]));
+//                 res.send(result[0]);
+//             }
+//         });
+//     });
+// }
+
+// exports.updateUser = function(req, res) {
+//     var id = req.params.id;
+//     var User = req.body;
+//     delete User._id;
+//     console.log('Updating User: ' + id);
+//     console.log(JSON.stringify(User));
+//     db.collection('fifa_users', function(err, collection) {
+//         collection.update({'_id':new BSON.ObjectID(id)}, User, {safe:true}, function(err, result) {
+//             if (err) {
+//                 console.log('Error updating User: ' + err);
+//                 res.send({'error':'An error has occurred'});
+//             } else {
+//                 console.log('' + result + ' document(s) updated');
+//                 res.send(User);
+//             }
+//         });
+//     });
+// }
+
+// exports.deleteUser = function(req, res) {
+//     var id = req.params.id;
+//     console.log('Deleting User: ' + id);
+//     db.collection('fifa_users', function(err, collection) {
+//         collection.remove({'_id':new BSON.ObjectID(id)}, {safe:true}, function(err, result) {
+//             if (err) {
+//                 res.send({'error':'An error has occurred - ' + err});
+//             } else {
+//                 console.log('' + result + ' document(s) deleted');
+//                 res.send(req.body);
+//             }
+//         });
+//     });
+// }
+
+/*--------------------------------------------------------------------------------------------------------------------*/
+// Populate database with sample data -- Only used once: the first time the application is started.
+// You'd typically not find this code in a real-life app, since the database would already exist.
+
+
+
+
+
