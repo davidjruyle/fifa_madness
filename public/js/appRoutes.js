@@ -4,7 +4,7 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
 
 		// home page
 		.when('/', {
-			templateUrl: 'views/auth.html',
+			templateUrl: 'views/login.html',
 			controller: 'authController'
 		})
 

@@ -1,5 +1,52 @@
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="navbar-header">
+        <a class="navbar-brand" href="/">Fifa Madness</a>
+    </div>
+    <ul class="nav navbar-nav">
+        <li><a href="/dash">Dash</a></li>
+        <li><a href="/leaderboard">Leaderboard</a></li>
+    </ul>
+</nav>
+
+<div class="container-fluid text-center">
+    <h1>Login</h1>
+    {{tagline}}
+    <div>
+        
+</div>
+
+<div>
+
+    <div class="row">
+        <div class="col-md-offset-1 col-md-5">
+            <a href="/auth/facebook">
+                <img src="/public/auth/assets/img/icons/facebook.png"/>
+            </a>
+            <a href="/auth/github">
+                <img src="/public/auth/assets/img/icons/github.png"/>
+            </a>
+
+            <a href="/auth/linkedin">
+                <img src="/public/auth/assets/img/icons/linkedin.png"/>
+            </a>
+
+            <a href="/auth/twitter">
+                <img src="/public/auth/assets/img/icons/twitter.png"/>
+            </a><a href="/auth/google">
+            <img src="/public/auth/assets/img/icons/google.png"/>
+        </a>
+        </div>
+    </div>
+    <div class="col-md-6">
+
+
+        <div ui-view></div>
+    </div>
+
+</div>
+
 <div data-ng-controller="LoginCtrl">
-    <div class="alert alert-danger animated fadeIn" ng-show="loginerror">{{loginerror}}</div>
+    <!-- <div class="alert alert-danger animated fadeIn" ng-show="loginerror">{{loginerror}}</div> -->
     <h1>Sign in</h1>
     <form  ng-submit="login()" class="signin form-horizontal">
         <div class="form-group">
