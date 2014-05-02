@@ -21,61 +21,67 @@
 	        <accordion-heading>
 	        	<i class="pull-left glyphicon" ng-class="{'glyphicon-chevron-down': isopen, 'glyphicon-chevron-right': !isopen}"></i>
 	        	<center>GROUP A</center>
-	        	<img src="http://img.fifa.com/images/flags/4/bra.png" class="tinyTeamFlag"><img src="http://img.fifa.com/images/flags/4/mex.png" class="tinyTeamFlag"><img src="http://img.fifa.com/images/flags/4/cmr.png" class="tinyTeamFlag"><img src="http://img.fifa.com/images/flags/4/cro.png" class="tinyTeamFlag">
+	        	<div class="col-md-6 col-sm-12 pull-right"><img src="http://img.fifa.com/images/flags/4/bra.png" class="tinyTeamFlag"><img src="http://img.fifa.com/images/flags/4/mex.png" class="tinyTeamFlag"><img src="http://img.fifa.com/images/flags/4/cmr.png" class="tinyTeamFlag"><img src="http://img.fifa.com/images/flags/4/cro.png" class="tinyTeamFlag"></div>
 	        </accordion-heading>
 
-	        <table class="table table-striped table-bordered table-hover table-condensed">
+	        <table class="table table-striped table-hover table-bordered table-condensed">
 	        	<tr class="active">
 	        		<th>DATE</th>
 	        		<th>TEAM 1</th>
-	        		<th>PICKED WINNER</th>
 	        		<th>TEAM 2</th>
+	        		<th>PICKED WINNER</th>
 	       		</tr>
 
 	       		<tr>
-	        		<td>{{allData.groupA_game1.play_at}}</td>
-	        		<td ng-click="groupA_game1_winner($event)"><img src="http://img.fifa.com/images/flags/4/bra.png" data="{{allData.groupA_game1.team1_title}}"><span class="teamName" data="{{allData.groupA_game1.team1_title}}">{{allData.groupA_game1.team1_title | uppercase}}</span></td>
-	        		<td class="groupA_winner1"><img src="{{groupA_game1_winner_pick_img}}"><span class="teamName">{{groupA_game1_winner_pick | uppercase}}</span></td>
-	        		<td ng-click="groupA_game1_winner($event)" data="{{allData.groupA_game1.team2_title}}"><img src="http://img.fifa.com/images/flags/4/cro.png" data="{{allData.groupA_game1.team2_title}}"><span class="teamName" data="{{allData.groupA_game1.team2_title}}"> {{allData.groupA_game1.team2_title | uppercase}}</span></td>
-	        		
+	        		<td class="col-md-2">{{allData.groupA_game1.play_at}}</td>
+	        		<td class="col-md-3 canPick" ng-click="groupA_game1_winner($event)" data="{{allData.groupA_game1.team1_title}}"><img src="http://img.fifa.com/images/flags/4/bra.png" data="{{allData.groupA_game1.team1_title}}"><span class="teamName" data="{{allData.groupA_game1.team1_title}}">{{allData.groupA_game1.team1_title | uppercase}}</span></td>
+	        		<td class="col-md-3 canPick" ng-click="groupA_game1_winner($event)" data="{{allData.groupA_game1.team2_title}}"><img src="http://img.fifa.com/images/flags/4/cro.png" data="{{allData.groupA_game1.team2_title}}"><span class="teamName" data="{{allData.groupA_game1.team2_title}}">{{allData.groupA_game1.team2_title | uppercase}}</span></td>
+
+	        		<td class="groupA_winner1 col-md-3"><img src="{{groupA_game1_winner_pick_img}}"><span class="teamName">{{groupA_game1_winner_pick | uppercase}}</span></td>
 	       		</tr>
 
 	       		<tr>
-	        		<td>{{allData.groupA_game2.play_at}}</td>
-	        		<td ng-click="groupA_game2_winner($event)"><img src="http://img.fifa.com/images/flags/4/mex.png" data="{{allData.groupA_game2.team1_title}}"><span class="teamName" data="{{allData.groupA_game2.team1_title}}">{{allData.groupA_game2.team1_title | uppercase}}</span></td>
-	        		<td class="groupA_winner2"><img src="{{groupA_game2_winner_pick_img}}"><span class="teamName">{{groupA_game2_winner_pick | uppercase}}</span></td>
-	        		<td ng-click="groupA_game2_winner($event)" data="{{allData.groupA_game2.team2_title}}"><img src="http://img.fifa.com/images/flags/4/cmr.png" data="{{allData.groupA_game2.team2_title}}"><span class="teamName" data="{{allData.groupA_game2.team2_title}}"> {{allData.groupA_game2.team2_title | uppercase}}</span></td>
+	        		<td class="col-md-3">{{allData.groupA_game2.play_at}}</td>
+	        		<td class="col-md-3 canPick" ng-click="groupA_game2_winner($event)" data="{{allData.groupA_game2.team1_title}}"><img src="http://img.fifa.com/images/flags/4/mex.png" data="{{allData.groupA_game2.team1_title}}"><span class="teamName" data="{{allData.groupA_game2.team1_title}}">{{allData.groupA_game2.team1_title | uppercase}}</span></td>
+	        		<td class="col-md-3 canPick" ng-click="groupA_game2_winner($event)" data="{{allData.groupA_game2.team2_title}}"><img src="http://img.fifa.com/images/flags/4/cmr.png" data="{{allData.groupA_game2.team2_title}}"><span class="teamName" data="{{allData.groupA_game2.team2_title}}">{{allData.groupA_game2.team2_title | uppercase}}</span></td>
+
+	        		<td class="groupA_winner2 col-md-3"><img src="{{groupA_game2_winner_pick_img}}"><span class="teamName">{{groupA_game2_winner_pick | uppercase}}</span></td>
 	       		</tr>
 
 	       		<tr>
-	        		<td>{{allData.groupA_game3.play_at}}</td>
-	        		<td ng-click="groupA_game3_winner($event)"><img src="http://img.fifa.com/images/flags/4/bra.png" data="{{allData.groupA_game3.team1_title}}"><span class="teamName" data="{{allData.groupA_game3.team1_title}}">{{allData.groupA_game3.team1_title | uppercase}}</span></td>
-	        		<td class="groupA_winner3"><img src="{{groupA_game3_winner_pick_img}}"><span class="teamName">{{groupA_game3_winner_pick | uppercase}}</span></td>
-	        		<td ng-click="groupA_game3_winner($event)" data="{{allData.groupA_game3.team2_title}}"><img src="http://img.fifa.com/images/flags/4/mex.png" data="{{allData.groupA_game3.team2_title}}"><span class="teamName" data="{{allData.groupA_game3.team2_title}}"> {{allData.groupA_game3.team2_title | uppercase}}</span></td>
+	        		<td class="col-md-3">{{allData.groupA_game3.play_at}}</td>
+	        		<td class="col-md-3 canPick" ng-click="groupA_game3_winner($event)" data="{{allData.groupA_game3.team1_title}}"><img src="http://img.fifa.com/images/flags/4/bra.png" data="{{allData.groupA_game3.team1_title}}"><span class="teamName" data="{{allData.groupA_game3.team1_title}}">{{allData.groupA_game3.team1_title | uppercase}}</span></td>
+	        		<td class="col-md-3 canPick" ng-click="groupA_game3_winner($event)" data="{{allData.groupA_game3.team2_title}}"><img src="http://img.fifa.com/images/flags/4/mex.png" data="{{allData.groupA_game3.team2_title}}"><span class="teamName" data="{{allData.groupA_game3.team2_title}}">{{allData.groupA_game3.team2_title | uppercase}}</span></td>
+
+	        		<td class="groupA_winner3 col-md-3"><img src="{{groupA_game3_winner_pick_img}}"><span class="teamName">{{groupA_game3_winner_pick | uppercase}}</span></td>
+
 	       		</tr>
 	       		<tr>
-	        		<td>{{allData.groupA_game4.play_at}}</td>
-	        		<td ng-click="groupA_game4_winner($event)"><img src="http://img.fifa.com/images/flags/4/cmr.png" data="{{allData.groupA_game4.team1_title}}"><span class="teamName" data="{{allData.groupA_game4.team1_title}}">{{allData.groupA_game4.team1_title | uppercase}}</span></td>
-	        		<td class="groupA_winner4"><img src="{{groupA_game4_winner_pick_img}}"><span class="teamName">{{groupA_game4_winner_pick | uppercase}}</span></td>
-	        		<td ng-click="groupA_game4_winner($event)" data="{{allData.groupA_game4.team2_title}}"><img src="http://img.fifa.com/images/flags/4/cro.png" data="{{allData.groupA_game4.team2_title}}"><span class="teamName" data="{{allData.groupA_game4.team2_title}}"> {{allData.groupA_game4.team2_title | uppercase}}</span></td>
+	        		<td class="col-md-3">{{allData.groupA_game4.play_at}}</td>
+	        		<td class="col-md-3 canPick" ng-click="groupA_game4_winner($event)" data="{{allData.groupA_game4.team1_title}}"><img src="http://img.fifa.com/images/flags/4/cmr.png" data="{{allData.groupA_game4.team1_title}}"><span class="teamName" data="{{allData.groupA_game4.team1_title}}">{{allData.groupA_game4.team1_title | uppercase}}</span></td>
+	        		<td class="col-md-3 canPick" ng-click="groupA_game4_winner($event)" data="{{allData.groupA_game4.team2_title}}"><img src="http://img.fifa.com/images/flags/4/cro.png" data="{{allData.groupA_game4.team2_title}}"><span class="teamName" data="{{allData.groupA_game4.team2_title}}">{{allData.groupA_game4.team2_title | uppercase}}</span></td>
+
+	        		<td class="groupA_winner4 col-md-3"><img src="{{groupA_game4_winner_pick_img}}"><span class="teamName">{{groupA_game4_winner_pick | uppercase}}</span></td>
 	       		</tr>
 	       		<tr>
-	        		<td>{{allData.groupA_game5.play_at}}</td>
-	        		<td ng-click="groupA_game5_winner($event)"><img src="http://img.fifa.com/images/flags/4/cmr.png" data="{{allData.groupA_game5.team1_title}}"><span class="teamName" data="{{allData.groupA_game5.team1_title}}">{{allData.groupA_game5.team1_title | uppercase}}</span></td>
-	        		<td class="groupA_winner5"><img src="{{groupA_game5_winner_pick_img}}"><span class="teamName">{{groupA_game5_winner_pick | uppercase}}</span></td>
-	        		<td ng-click="groupA_game5_winner($event)" data="{{allData.groupA_game5.team2_title}}"><img src="http://img.fifa.com/images/flags/4/bra.png" data="{{allData.groupA_game5.team2_title}}"><span class="teamName" data="{{allData.groupA_game5.team2_title}}"> {{allData.groupA_game5.team2_title | uppercase}}</span></td>
+	        		<td class="col-md-3">{{allData.groupA_game5.play_at}}</td>
+	        		<td class="col-md-3 canPick" ng-click="groupA_game5_winner($event)" data="{{allData.groupA_game5.team1_title}}"><img src="http://img.fifa.com/images/flags/4/cmr.png" data="{{allData.groupA_game5.team1_title}}"><span class="teamName" data="{{allData.groupA_game5.team1_title}}">{{allData.groupA_game5.team1_title | uppercase}}</span></td>
+	        		<td class="col-md-3 canPick" ng-click="groupA_game5_winner($event)" data="{{allData.groupA_game5.team2_title}}"><img src="http://img.fifa.com/images/flags/4/bra.png" data="{{allData.groupA_game5.team2_title}}"><span class="teamName" data="{{allData.groupA_game5.team2_title}}">{{allData.groupA_game5.team2_title | uppercase}}</span></td>
+
+	        		<td class="groupA_winner5 col-md-3"><img src="{{groupA_game5_winner_pick_img}}"><span class="teamName">{{groupA_game5_winner_pick | uppercase}}</span></td>
 	       		</tr>
 	       		<tr>
-	        		<td>{{allData.groupA_game6.play_at}}</td>
-	        		<td ng-click="groupA_game6_winner($event)"><img src="http://img.fifa.com/images/flags/4/cro.png" data="{{allData.groupA_game6.team1_title}}"><span class="teamName" data="{{allData.groupA_game6.team1_title}}">{{allData.groupA_game6.team1_title | uppercase}}</span></td>
-	        		<td class="groupA_winner6"><img src="{{groupA_game6_winner_pick_img}}"><span class="teamName">{{groupA_game6_winner_pick | uppercase}}</span></td>
-	        		<td ng-click="groupA_game6_winner($event)" data="{{allData.groupA_game6.team2_title}}"><img src="http://img.fifa.com/images/flags/4/mex.png" data="{{allData.groupA_game6.team2_title}}"><span class="teamName" data="{{allData.groupA_game6.team2_title}}"> {{allData.groupA_game6.team2_title | uppercase}}</span></td>
+	        		<td class="col-md-3">{{allData.groupA_game6.play_at}}</td>
+	        		<td class="col-md-3 canPick" ng-click="groupA_game6_winner($event)" data="{{allData.groupA_game6.team1_title}}"><img src="http://img.fifa.com/images/flags/4/cro.png" data="{{allData.groupA_game6.team1_title}}"><span class="teamName" data="{{allData.groupA_game6.team1_title}}">{{allData.groupA_game6.team1_title | uppercase}}</span></td>
+	        		<td class="col-md-3 canPick" ng-click="groupA_game6_winner($event)" data="{{allData.groupA_game6.team2_title}}"><img src="http://img.fifa.com/images/flags/4/mex.png" data="{{allData.groupA_game6.team2_title}}"><span class="teamName" data="{{allData.groupA_game6.team2_title}}">{{allData.groupA_game6.team2_title | uppercase}}</span></td>
+
+	        		<td class="groupA_winner6 col-md-3"><img src="{{groupA_game6_winner_pick_img}}"><span class="teamName">{{groupA_game6_winner_pick | uppercase}}</span></td>
 	       		</tr>
 	       		<tr>
-	       			<td>- - - - - - - - - - - - - - - - - - - - - - - - - -</td>
-	       			<td>- - - - - - - - - - - - - - - </td>
-	       			<td>- - - - - - - - - - - - - - - </td>
-	       			<td>- - - - - - - - - - - - - - - </td>
+	       			<td></td>
+	       			<td></td>
+	       			<td></td>
+	       			<td> </td>
 	       		</tr>
 	       		
 	       		<tr class="active">

@@ -23,7 +23,7 @@ th{
 .tinyTeamFlag{
 	height:30px;
 	width:60px;
-	margin-right: 10px;
+	right:-65px;
 	float:right;
 	margin-top:-25px;
 }
@@ -36,4 +36,8 @@ img{
 .winnerPick{
 	background-color: #c8c8c8 !important;
 	color: #4e5d6c !important;
+}
+
+td.canPick:hover{
+	background-color: #2b3e50 !important;
 }

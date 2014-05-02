@@ -22,18 +22,18 @@ angular.module('dashFactory', []).factory('dashboard', ['$http', function($http)
        var url = 'http://footballdb.herokuapp.com/api/v1/event/world.2014/round/2?callback=JSON_CALLBACK';
        return $http.jsonp(url);
     },
-    getRound3: function() {
-       var url = 'http://footballdb.herokuapp.com/api/v1/event/world.2014/round/3?callback=JSON_CALLBACK';
-       return $http.jsonp(url);
-    },
-    getRound4: function() {
-       var url = 'http://footballdb.herokuapp.com/api/v1/event/world.2014/round/4?callback=JSON_CALLBACK';
-       return $http.jsonp(url);
-    },
-    getRound5: function() {
-       var url = 'http://footballdb.herokuapp.com/api/v1/event/world.2014/round/5?callback=JSON_CALLBACK';
-       return $http.jsonp(url);
-    },
+    // getRound3: function() {
+    //    var url = 'http://footballdb.herokuapp.com/api/v1/event/world.2014/round/3?callback=JSON_CALLBACK';
+    //    return $http.jsonp(url);
+    // },
+    // getRound4: function() {
+    //    var url = 'http://footballdb.herokuapp.com/api/v1/event/world.2014/round/4?callback=JSON_CALLBACK';
+    //    return $http.jsonp(url);
+    // },
+    // getRound5: function() {
+    //    var url = 'http://footballdb.herokuapp.com/api/v1/event/world.2014/round/5?callback=JSON_CALLBACK';
+    //    return $http.jsonp(url);
+    // },
     getRound6: function() {
        var url = 'http://footballdb.herokuapp.com/api/v1/event/world.2014/round/6?callback=JSON_CALLBACK';
        return $http.jsonp(url);
@@ -42,30 +42,30 @@ angular.module('dashFactory', []).factory('dashboard', ['$http', function($http)
        var url = 'http://footballdb.herokuapp.com/api/v1/event/world.2014/round/7?callback=JSON_CALLBACK';
        return $http.jsonp(url);
     },
-    getRound8: function() {
-       var url = 'http://footballdb.herokuapp.com/api/v1/event/world.2014/round/8?callback=JSON_CALLBACK';
-       return $http.jsonp(url);
-    },
-    getRound9: function() {
-       var url = 'http://footballdb.herokuapp.com/api/v1/event/world.2014/round/9?callback=JSON_CALLBACK';
-       return $http.jsonp(url);
-    },
-    getRound10: function() {
-       var url = 'http://footballdb.herokuapp.com/api/v1/event/world.2014/round/10?callback=JSON_CALLBACK';
-       return $http.jsonp(url);
-    },
-    getRound11: function() {
-       var url = 'http://footballdb.herokuapp.com/api/v1/event/world.2014/round/11?callback=JSON_CALLBACK';
-       return $http.jsonp(url);
-    },
+    // getRound8: function() {
+    //    var url = 'http://footballdb.herokuapp.com/api/v1/event/world.2014/round/8?callback=JSON_CALLBACK';
+    //    return $http.jsonp(url);
+    // },
+    // getRound9: function() {
+    //    var url = 'http://footballdb.herokuapp.com/api/v1/event/world.2014/round/9?callback=JSON_CALLBACK';
+    //    return $http.jsonp(url);
+    // },
+    // getRound10: function() {
+    //    var url = 'http://footballdb.herokuapp.com/api/v1/event/world.2014/round/10?callback=JSON_CALLBACK';
+    //    return $http.jsonp(url);
+    // },
+    // getRound11: function() {
+    //    var url = 'http://footballdb.herokuapp.com/api/v1/event/world.2014/round/11?callback=JSON_CALLBACK';
+    //    return $http.jsonp(url);
+    // },
     getRound12: function() {
        var url = 'http://footballdb.herokuapp.com/api/v1/event/world.2014/round/12?callback=JSON_CALLBACK';
        return $http.jsonp(url);
-    },
-    getRound13: function() {
-       var url = 'http://footballdb.herokuapp.com/api/v1/event/world.2014/round/13?callback=JSON_CALLBACK';
-       return $http.jsonp(url);
-    },
+    }
+    // getRound13: function() {
+    //    var url = 'http://footballdb.herokuapp.com/api/v1/event/world.2014/round/13?callback=JSON_CALLBACK';
+    //    return $http.jsonp(url);
+    // },
     // getRound14: function() {
     //    var url = 'http://footballdb.herokuapp.com/api/v1/event/world.2014/round/14?callback=JSON_CALLBACK';
     //    return $http.jsonp(url);
