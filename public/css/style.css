@@ -1,6 +1,7 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans);
 body { padding-top:30px; 
 	font-family:'Open Sans', 'sans-serif';
+	letter-spacing: 2px;
 }
 
 .navbar-right{
@@ -18,4 +19,21 @@ th{
 }
 .teamName{
 	text-align: left;
+}
+.tinyTeamFlag{
+	height:30px;
+	width:60px;
+	margin-right: 10px;
+	float:right;
+	margin-top:-25px;
+}
+img{
+	padding-right:5px;
+}
+.winner{
+
+}
+.winnerPick{
+	background-color: #c8c8c8 !important;
+	color: #4e5d6c !important;
 }

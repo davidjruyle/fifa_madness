@@ -20,56 +20,76 @@
 	    <accordion-group is-open="isopen">
 	        <accordion-heading>
 	        	<i class="pull-left glyphicon" ng-class="{'glyphicon-chevron-down': isopen, 'glyphicon-chevron-right': !isopen}"></i>
-	        	GROUP A
+	        	<center>GROUP A</center>
+	        	<img src="http://img.fifa.com/images/flags/4/bra.png" class="tinyTeamFlag"><img src="http://img.fifa.com/images/flags/4/mex.png" class="tinyTeamFlag"><img src="http://img.fifa.com/images/flags/4/cmr.png" class="tinyTeamFlag"><img src="http://img.fifa.com/images/flags/4/cro.png" class="tinyTeamFlag">
 	        </accordion-heading>
 
-	        <table class="table table-striped">
-	        	<tr>
+	        <table class="table table-striped table-bordered table-hover table-condensed">
+	        	<tr class="active">
 	        		<th>DATE</th>
 	        		<th>TEAM 1</th>
-	        		<th>WINNER</th>
+	        		<th>PICKED WINNER</th>
 	        		<th>TEAM 2</th>
 	       		</tr>
 
 	       		<tr>
-	        		<td>6/12/14 - 17:00 Local Time</td>
-	        		<td ng-click="groupAWinner1($event)"><img src="http://img.fifa.com/images/flags/4/bra.png" data="Brazil"><span class="teamName" data="Brazil"> BRAZIL</span></td>
-	        		<td><img src="{{pickImg}}"><span class="teamName">{{picks}}</span></td>
-	        		<td ng-click="groupAWinner1($event)" data="Croatia"><img src="http://img.fifa.com/images/flags/4/cro.png" data="Croatia"><span class="teamName" data="Croatia"> CROATIA</span></td>
+	        		<td>{{allData.groupA_game1.play_at}}</td>
+	        		<td ng-click="groupA_game1_winner($event)"><img src="http://img.fifa.com/images/flags/4/bra.png" data="{{allData.groupA_game1.team1_title}}"><span class="teamName" data="{{allData.groupA_game1.team1_title}}">{{allData.groupA_game1.team1_title | uppercase}}</span></td>
+	        		<td class="groupA_winner1"><img src="{{groupA_game1_winner_pick_img}}"><span class="teamName">{{groupA_game1_winner_pick | uppercase}}</span></td>
+	        		<td ng-click="groupA_game1_winner($event)" data="{{allData.groupA_game1.team2_title}}"><img src="http://img.fifa.com/images/flags/4/cro.png" data="{{allData.groupA_game1.team2_title}}"><span class="teamName" data="{{allData.groupA_game1.team2_title}}"> {{allData.groupA_game1.team2_title | uppercase}}</span></td>
 	        		
 	       		</tr>
 
 	       		<tr>
-	        		<td>6/13/14 - 13:00 Local Time</td>
-	        		<td><img src="http://img.fifa.com/images/flags/4/mex.png"><span class="teamName"> MEXICO</td>
-	        		<td></td>
-	        		<td><img src="http://img.fifa.com/images/flags/4/cmr.png"><span class="teamName"> CAMEROON</td>
+	        		<td>{{allData.groupA_game2.play_at}}</td>
+	        		<td ng-click="groupA_game2_winner($event)"><img src="http://img.fifa.com/images/flags/4/mex.png" data="{{allData.groupA_game2.team1_title}}"><span class="teamName" data="{{allData.groupA_game2.team1_title}}">{{allData.groupA_game2.team1_title | uppercase}}</span></td>
+	        		<td class="groupA_winner2"><img src="{{groupA_game2_winner_pick_img}}"><span class="teamName">{{groupA_game2_winner_pick | uppercase}}</span></td>
+	        		<td ng-click="groupA_game2_winner($event)" data="{{allData.groupA_game2.team2_title}}"><img src="http://img.fifa.com/images/flags/4/cmr.png" data="{{allData.groupA_game2.team2_title}}"><span class="teamName" data="{{allData.groupA_game2.team2_title}}"> {{allData.groupA_game2.team2_title | uppercase}}</span></td>
 	       		</tr>
 
 	       		<tr>
-	        		<td>6/17/14 - 16:00 Local Time</td>
-	        		<td><img src="http://img.fifa.com/images/flags/4/bra.png"><span class="teamName"> BRAZIL</span></td>
-	        		<td></td>
-	        		<td><img src="http://img.fifa.com/images/flags/4/mex.png"><span class="teamName"> MEXICO</td>
+	        		<td>{{allData.groupA_game3.play_at}}</td>
+	        		<td ng-click="groupA_game3_winner($event)"><img src="http://img.fifa.com/images/flags/4/bra.png" data="{{allData.groupA_game3.team1_title}}"><span class="teamName" data="{{allData.groupA_game3.team1_title}}">{{allData.groupA_game3.team1_title | uppercase}}</span></td>
+	        		<td class="groupA_winner3"><img src="{{groupA_game3_winner_pick_img}}"><span class="teamName">{{groupA_game3_winner_pick | uppercase}}</span></td>
+	        		<td ng-click="groupA_game3_winner($event)" data="{{allData.groupA_game3.team2_title}}"><img src="http://img.fifa.com/images/flags/4/mex.png" data="{{allData.groupA_game3.team2_title}}"><span class="teamName" data="{{allData.groupA_game3.team2_title}}"> {{allData.groupA_game3.team2_title | uppercase}}</span></td>
 	       		</tr>
 	       		<tr>
-	        		<td>6/18/14 - 18:00 Local Time</td>
-	        		<td><img src="http://img.fifa.com/images/flags/4/cmr.png"><span class="teamName"> CAMEROON</td>
-	        		<td></td>
-	        		<td><img src="http://img.fifa.com/images/flags/4/cro.png"><span class="teamName"> CROATIA</span></td>
+	        		<td>{{allData.groupA_game4.play_at}}</td>
+	        		<td ng-click="groupA_game4_winner($event)"><img src="http://img.fifa.com/images/flags/4/cmr.png" data="{{allData.groupA_game4.team1_title}}"><span class="teamName" data="{{allData.groupA_game4.team1_title}}">{{allData.groupA_game4.team1_title | uppercase}}</span></td>
+	        		<td class="groupA_winner4"><img src="{{groupA_game4_winner_pick_img}}"><span class="teamName">{{groupA_game4_winner_pick | uppercase}}</span></td>
+	        		<td ng-click="groupA_game4_winner($event)" data="{{allData.groupA_game4.team2_title}}"><img src="http://img.fifa.com/images/flags/4/cro.png" data="{{allData.groupA_game4.team2_title}}"><span class="teamName" data="{{allData.groupA_game4.team2_title}}"> {{allData.groupA_game4.team2_title | uppercase}}</span></td>
 	       		</tr>
 	       		<tr>
-	        		<td>6/23/14 - 17:00 Local Time</td>
-	        		<td><img src="http://img.fifa.com/images/flags/4/cmr.png"><span class="teamName"> CAMEROON</td>
-	        		<td></td>
-	        		<td><img src="http://img.fifa.com/images/flags/4/bra.png"><span class="teamName"> BRAZIL</span></td>
+	        		<td>{{allData.groupA_game5.play_at}}</td>
+	        		<td ng-click="groupA_game5_winner($event)"><img src="http://img.fifa.com/images/flags/4/cmr.png" data="{{allData.groupA_game5.team1_title}}"><span class="teamName" data="{{allData.groupA_game5.team1_title}}">{{allData.groupA_game5.team1_title | uppercase}}</span></td>
+	        		<td class="groupA_winner5"><img src="{{groupA_game5_winner_pick_img}}"><span class="teamName">{{groupA_game5_winner_pick | uppercase}}</span></td>
+	        		<td ng-click="groupA_game5_winner($event)" data="{{allData.groupA_game5.team2_title}}"><img src="http://img.fifa.com/images/flags/4/bra.png" data="{{allData.groupA_game5.team2_title}}"><span class="teamName" data="{{allData.groupA_game5.team2_title}}"> {{allData.groupA_game5.team2_title | uppercase}}</span></td>
 	       		</tr>
 	       		<tr>
-	        		<td>6/23/14 - 17:00 Local Time</td>
-	        		<td><img src="http://img.fifa.com/images/flags/4/cro.png"><span class="teamName"> CROATIA</span></td>
-	        		<td></td>
-	        		<td><img src="http://img.fifa.com/images/flags/4/mex.png"><span class="teamName"> MEXICO</td>
+	        		<td>{{allData.groupA_game6.play_at}}</td>
+	        		<td ng-click="groupA_game6_winner($event)"><img src="http://img.fifa.com/images/flags/4/cro.png" data="{{allData.groupA_game6.team1_title}}"><span class="teamName" data="{{allData.groupA_game6.team1_title}}">{{allData.groupA_game6.team1_title | uppercase}}</span></td>
+	        		<td class="groupA_winner6"><img src="{{groupA_game6_winner_pick_img}}"><span class="teamName">{{groupA_game6_winner_pick | uppercase}}</span></td>
+	        		<td ng-click="groupA_game6_winner($event)" data="{{allData.groupA_game6.team2_title}}"><img src="http://img.fifa.com/images/flags/4/mex.png" data="{{allData.groupA_game6.team2_title}}"><span class="teamName" data="{{allData.groupA_game6.team2_title}}"> {{allData.groupA_game6.team2_title | uppercase}}</span></td>
 	       		</tr>
+	       		<tr>
+	       			<td>- - - - - - - - - - - - - - - - - - - - - - - - - -</td>
+	       			<td>- - - - - - - - - - - - - - - </td>
+	       			<td>- - - - - - - - - - - - - - - </td>
+	       			<td>- - - - - - - - - - - - - - - </td>
+	       		</tr>
+	       		
+	       		<tr class="active">
+		       		<th>GROUP A 1ST PLACE</th>
+		        	<th></th>
+		        	<th>GROUP A 2ND PLACE</th>
+		        	<th><th>
+	        	</tr>
+	        	<tr>
+	        		<td><img src="{{groupA_1st_place_img}}"><span class="teamName">{{groupA_1st_place | uppercase}}</span></td>
+	        		<td></td>
+	        		<td><img src="{{groupA_2nd_place_img}}"><span class="teamName">{{groupA_2nd_place | uppercase}}</span></td>
+	        		<td></td>
+	        	</tr>
 	        </table>
 	    </accordion-group>
 
