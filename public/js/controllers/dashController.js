@@ -9,7 +9,6 @@ angular.module('dashCtrl', []).controller('dashController', function($scope, das
 		dashboard.getRounds().then(function(data){
 			allData = data;
 			console.log(allData);
-		// console.log(allData);
 	});
 	};
 
@@ -22,18 +21,18 @@ angular.module('dashCtrl', []).controller('dashController', function($scope, das
 		allData["groupA_game2"] = data.games[0];
 		// console.log(data);
 	});
-	dashboard.getRound3().success(function(data){
-		// allData["groupA_game2"] = data.games[0];
-		// console.log(data);
-	});
-	dashboard.getRound4().success(function(data){
-		// allData["groupA_game2"] = data.games[0];
-		// console.log(data);
-	});
-	dashboard.getRound5().success(function(data){
-		// allData["groupA_game2"] = data.games[0];
-		// console.log(data);
-	});
+	// dashboard.getRound3().success(function(data){
+	// 	// allData["groupA_game2"] = data.games[0];
+	// 	// console.log(data);
+	// });
+	// dashboard.getRound4().success(function(data){
+	// 	// allData["groupA_game2"] = data.games[0];
+	// 	// console.log(data);
+	// });
+	// dashboard.getRound5().success(function(data){
+	// 	// allData["groupA_game2"] = data.games[0];
+	// 	// console.log(data);
+	// });
 	dashboard.getRound6().success(function(data){
 		allData["groupA_game3"] = data.games[2];
 		// console.log(data);
@@ -42,32 +41,32 @@ angular.module('dashCtrl', []).controller('dashController', function($scope, das
 		allData["groupA_game4"] = data.games[0];
 		// console.log(data);
 	});
-	dashboard.getRound8().success(function(data){
-		// allData["groupA_game3"] = data.games[2];
-		// console.log(data);
-	});
-	dashboard.getRound9().success(function(data){
-		// allData["groupA_game3"] = data.games[2];
-		// console.log(data);
-	});
-	dashboard.getRound10().success(function(data){
-		// allData["groupA_game3"] = data.games[2];
-		// console.log(data);
-	});
-	dashboard.getRound11().success(function(data){
-		// allData["groupA_game3"] = data.games[2];
-		// console.log(data);
-	});
+	// dashboard.getRound8().success(function(data){
+	// 	// allData["groupA_game3"] = data.games[2];
+	// 	// console.log(data);
+	// });
+	// dashboard.getRound9().success(function(data){
+	// 	// allData["groupA_game3"] = data.games[2];
+	// 	// console.log(data);
+	// });
+	// dashboard.getRound10().success(function(data){
+	// 	// allData["groupA_game3"] = data.games[2];
+	// 	// console.log(data);
+	// });
+	// dashboard.getRound11().success(function(data){
+	// 	// allData["groupA_game3"] = data.games[2];
+	// 	// console.log(data);
+	// });
 	dashboard.getRound12().success(function(data){
 		allData["groupA_game5"] = data.games[0];
 		allData["groupA_game6"] = data.games[1];
 		// console.log(allData);
 		// console.log(data);
 	});
-	dashboard.getRound13().success(function(data){
-		// allData["groupA_game3"] = data.games[2];
-		// console.log(data);
-	});
+	// dashboard.getRound13().success(function(data){
+	// 	// allData["groupA_game3"] = data.games[2];
+	// 	// console.log(data);
+	// });
 
 // END OF GET ALL DATA ---------------------------------
 
