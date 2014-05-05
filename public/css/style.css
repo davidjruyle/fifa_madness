@@ -10,9 +10,9 @@ body { padding-top:30px;
 .nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
 
 td{
-	padding-top:50px;
 	font-size: 1.5em;
 	text-align: left;
+	padding: 5px;
 }
 th{
 	text-align: left;
@@ -39,4 +39,33 @@ img{
 
 td.canPick:hover{
 	background-color: #2b3e50 !important;
+}
+.enterScore{
+	margin-left:5px;
+	width:110px;
+	margin-top:5px;
+	height:100%;
+}
+.tieText{
+	margin:25px;
+	text-align: center;
+}
+.tieTd{
+	width:100px;
+	text-align: center;
+	vertical-align: middle;
+	padding-top: 145px;
+}
+table{
+	table-layout: fixed;
+}
+input.ng-invalid { 
+    border: 2px red solid;
+}
+input.ng-valid{
+	background:white;
+}
+.error{
+	font-size: .5em;
+	text-align: center;
 }
