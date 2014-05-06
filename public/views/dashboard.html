@@ -17,13 +17,18 @@
 </div>
 	<div ng-controller="dashController">
 
-	  	<accordion close-others="oneAtATime">
+		<!--groupA .................... -->
+	  	<accordion style="border-radius: 5px;" close-others="oneAtATime">
 	    <accordion-group is-open="isopen">
+	    
 	        <accordion-heading>
+	        <div class="groupHeading">
 	        	<i class="pull-left glyphicon" ng-class="{'glyphicon-chevron-down': isopen, 'glyphicon-chevron-right': !isopen}"></i>
-	        	<center>GROUP A</center>
-	        	<div class="col-md-6 col-sm-12 pull-right"><img src="http://img.fifa.com/images/flags/4/bra.png" class="tinyTeamFlag"><img src="http://img.fifa.com/images/flags/4/mex.png" class="tinyTeamFlag"><img src="http://img.fifa.com/images/flags/4/cmr.png" class="tinyTeamFlag"><img src="http://img.fifa.com/images/flags/4/cro.png" class="tinyTeamFlag"></div>
+	        	<h2 class="groupLetter">GROUP A</h2>
+	        	<div class="col-md-6 col-sm-12 pull-right"><img src="images/flags/brazil.png" class="tinyTeamFlag"><img src="images/flags/mexico.png" class="tinyTeamFlag"><img src="images/flags/cameroon.png" class="tinyTeamFlag"><img src="images/flags/croatia.png" class="tinyTeamFlag"></div>
+	        </div>
 	        </accordion-heading>
+	    
 
 	        <table class="table table-condensed table-hover">
 	        	<tr class="active">
@@ -37,56 +42,62 @@
 	       		</tr>
 
 	       		<tr>
-	        		<td>{{allData.groupA_game1.play_at}}</td>
-	        		<td class="canPick" ng-click="groupA_game1_winner($event)" data="{{allData.groupA_game1.team1_title}}"><img src="http://img.fifa.com/images/flags/4/bra.png" data="{{allData.groupA_game1.team1_title}}"><span class="teamName" data="{{allData.groupA_game1.team1_title}}">{{allData.groupA_game1.team1_title | uppercase}}</span></td>
-	        		<td class="canPick" ng-click="groupA_game1_winner($event)" data="{{allData.groupA_game1.team2_title}}"><img src="http://img.fifa.com/images/flags/4/cro.png" data="{{allData.groupA_game1.team2_title}}"><span class="teamName" data="{{allData.groupA_game1.team2_title}}">{{allData.groupA_game1.team2_title | uppercase}}</span></td>
+	        		<td>{{allData.groupA_game1.play_at}}<br />TIME</td>
+	        		<td class="canPick" ng-click="groupA_game1_winner($event)" data="{{allData.groupA_game1.team1_title}}"><img src="images/flags/brazil.png" data="{{allData.groupA_game1.team1_title}}"><span class="teamName" data="{{allData.groupA_game1.team1_title}}">{{allData.groupA_game1.team1_title | uppercase}}</span></td>
+	        		<td class="canPick" ng-click="groupA_game1_winner($event)" data="{{allData.groupA_game1.team2_title}}"><img src="images/flags/croatia.png" data="{{allData.groupA_game1.team2_title}}"><span class="teamName" data="{{allData.groupA_game1.team2_title}}">{{allData.groupA_game1.team2_title | uppercase}}</span></td>
 
 	        		<!-- TIE -->
-	        		<td class="canPick tieTd" ng-click="groupA_game1_winner($event)" data="TIE"><input type="checkbox"/></td>
+	        		<td class="canPick tieTd" ng-click="groupA_game1_winner($event)" data="TIE"><input type="checkbox" ng-click="groupA_game1_winner($event); groupA_game1_checkScore()" ng-model="allData.groupA_game1_tie"/></td>
 
 	        		<td class="groupA_winner1"><img ng-hide="tieGame" src="{{groupA_game1_winner_pick_img}}"><span class="teamName">{{groupA_game1_winner_pick | uppercase}}</span></td>
-
+	        		<!--ENTER SCORE -->
 	        		<td ng-show="pickedWinner">
-	        			<form name="groupA_game1_enterScore"><input name="input" maxlength="3" type="text" ng-model="allData.groupA_game1_score" class="form-control enterScore" id="groupA_game1_score" placeholder="{{groupA_game1_winner_pick_key}}-{{groupA_game1_loser_pick_key}}" width="50px" ng-blur="checkScore()" ng-pattern="scorePattern" /></form>
+	        			<form name="groupA_game1_enterScore"><input name="input" maxlength="3" type="text" ng-model="allData.groupA_game1_score" class="form-control form-horizontal enterScore" id="groupA_game1_score" placeholder="{{groupA_game1_winner_pick_key}}-{{groupA_game1_loser_pick_key}}" width="50px" ng-blur="groupA_game1_checkScore()" ng-pattern="scorePattern" required /><span class="notTiedError" ng-show="groupA_game1_scoreNotTied">{{scoreNotTiedErrorMsg}}</span><span class="notTiedError" ng-show="groupA_game1_enterWinError">{{enterWinErrorMsg}}</span></form>
 	        		</td>
 	       		</tr>
 
 	       		<tr>
-	        		<td class="col-md-3">{{allData.groupA_game2.play_at}}</td>
-	        		<td class="col-md-3 canPick" ng-click="groupA_game2_winner($event)" data="{{allData.groupA_game2.team1_title}}"><img src="http://img.fifa.com/images/flags/4/mex.png" data="{{allData.groupA_game2.team1_title}}"><span class="teamName" data="{{allData.groupA_game2.team1_title}}">{{allData.groupA_game2.team1_title | uppercase}}</span></td>
-	        		<td class="col-md-3 canPick" ng-click="groupA_game2_winner($event)" data="{{allData.groupA_game2.team2_title}}"><img src="http://img.fifa.com/images/flags/4/cmr.png" data="{{allData.groupA_game2.team2_title}}"><span class="teamName" data="{{allData.groupA_game2.team2_title}}">{{allData.groupA_game2.team2_title | uppercase}}</span></td>
+	        		<td>{{allData.groupA_game2.play_at}}</td>
+	        		<td class="canPick" ng-click="groupA_game2_winner($event)" data="{{allData.groupA_game2.team1_title}}"><img src="images/flags/mexico.png" data="{{allData.groupA_game2.team1_title}}"><span class="teamName" data="{{allData.groupA_game2.team1_title}}">{{allData.groupA_game2.team1_title | uppercase}}</span></td>
+	        		<td class="canPick" ng-click="groupA_game2_winner($event)" data="{{allData.groupA_game2.team2_title}}"><img src="images/flags/cameroon.png" data="{{allData.groupA_game2.team2_title}}"><span class="teamName" data="{{allData.groupA_game2.team2_title}}">{{allData.groupA_game2.team2_title | uppercase}}</span></td>
 
-	        		<td class="groupA_winner2 col-md-3"><img src="{{groupA_game2_winner_pick_img}}"><span class="teamName">{{groupA_game2_winner_pick | uppercase}}</span></td>
-	        		<td ng-show="groupA_game2_score"><input type="text" class="form-control" id="enterScore" placeholder="3-2"/></td>
+	        		<!-- TIE -->
+	        		<td class="canPick tieTd" ng-click="groupA_game2_winner($event)" data="TIE"><input type="checkbox" ng-click="groupA_game2_winner($event); groupA_game2_checkScore()" ng-model="allData.groupA_game2_tie"/></td>
+
+	        		<td class="groupA_winner2"><img ng-hide="tieGame" src="{{groupA_game2_winner_pick_img}}"><span class="teamName">{{groupA_game2_winner_pick | uppercase}}</span></td>
+
+	        		<td ng-show="pickedWinner2">
+	        			<form name="groupA_game2_enterScore"><input name="input" maxlength="3" type="text" ng-model="allData.groupA_game2_score" class="form-control form-horizontal enterScore" id="groupA_game2_score" placeholder="{{groupA_game2_winner_pick_key}}-{{groupA_game2_loser_pick_key}}" width="50px" ng-blur="groupA_game2_checkScore()" ng-pattern="scorePattern" required /><span class="notTiedError" ng-show="groupA_game2_scoreNotTied">{{scoreNotTiedErrorMsg}}</span><span class="notTiedError" ng-show="groupA_game2_enterWinError">{{enterWinErrorMsg}}</span></form>
+	        		</td>
 
 	       		</tr>
 
 	       		<tr>
 	        		<td class="col-md-3">{{allData.groupA_game3.play_at}}</td>
-	        		<td class="col-md-3 canPick" ng-click="groupA_game3_winner($event)" data="{{allData.groupA_game3.team1_title}}"><img src="http://img.fifa.com/images/flags/4/bra.png" data="{{allData.groupA_game3.team1_title}}"><span class="teamName" data="{{allData.groupA_game3.team1_title}}">{{allData.groupA_game3.team1_title | uppercase}}</span></td>
-	        		<td class="col-md-3 canPick" ng-click="groupA_game3_winner($event)" data="{{allData.groupA_game3.team2_title}}"><img src="http://img.fifa.com/images/flags/4/mex.png" data="{{allData.groupA_game3.team2_title}}"><span class="teamName" data="{{allData.groupA_game3.team2_title}}">{{allData.groupA_game3.team2_title | uppercase}}</span></td>
+	        		<td class="col-md-3 canPick" ng-click="groupA_game3_winner($event)" data="{{allData.groupA_game3.team1_title}}"><img src="images/flags/brazil.png" data="{{allData.groupA_game3.team1_title}}"><span class="teamName" data="{{allData.groupA_game3.team1_title}}">{{allData.groupA_game3.team1_title | uppercase}}</span></td>
+	        		<td class="col-md-3 canPick" ng-click="groupA_game3_winner($event)" data="{{allData.groupA_game3.team2_title}}"><img src="images/flags/mexico.png" data="{{allData.groupA_game3.team2_title}}"><span class="teamName" data="{{allData.groupA_game3.team2_title}}">{{allData.groupA_game3.team2_title | uppercase}}</span></td>
 
 	        		<td class="groupA_winner3 col-md-3"><img src="{{groupA_game3_winner_pick_img}}"><span class="teamName">{{groupA_game3_winner_pick | uppercase}}</span></td>
 
 	       		</tr>
 	       		<tr>
 	        		<td class="col-md-3">{{allData.groupA_game4.play_at}}</td>
-	        		<td class="col-md-3 canPick" ng-click="groupA_game4_winner($event)" data="{{allData.groupA_game4.team1_title}}"><img src="http://img.fifa.com/images/flags/4/cmr.png" data="{{allData.groupA_game4.team1_title}}"><span class="teamName" data="{{allData.groupA_game4.team1_title}}">{{allData.groupA_game4.team1_title | uppercase}}</span></td>
-	        		<td class="col-md-3 canPick" ng-click="groupA_game4_winner($event)" data="{{allData.groupA_game4.team2_title}}"><img src="http://img.fifa.com/images/flags/4/cro.png" data="{{allData.groupA_game4.team2_title}}"><span class="teamName" data="{{allData.groupA_game4.team2_title}}">{{allData.groupA_game4.team2_title | uppercase}}</span></td>
+	        		<td class="col-md-3 canPick" ng-click="groupA_game4_winner($event)" data="{{allData.groupA_game4.team1_title}}"><img src="images/flags/cameroon.png" data="{{allData.groupA_game4.team1_title}}"><span class="teamName" data="{{allData.groupA_game4.team1_title}}">{{allData.groupA_game4.team1_title | uppercase}}</span></td>
+	        		<td class="col-md-3 canPick" ng-click="groupA_game4_winner($event)" data="{{allData.groupA_game4.team2_title}}"><img src="images/flags/croatia.png" data="{{allData.groupA_game4.team2_title}}"><span class="teamName" data="{{allData.groupA_game4.team2_title}}">{{allData.groupA_game4.team2_title | uppercase}}</span></td>
 
 	        		<td class="groupA_winner4 col-md-3"><img src="{{groupA_game4_winner_pick_img}}"><span class="teamName">{{groupA_game4_winner_pick | uppercase}}</span></td>
 	       		</tr>
 	       		<tr>
 	        		<td class="col-md-3">{{allData.groupA_game5.play_at}}</td>
-	        		<td class="col-md-3 canPick" ng-click="groupA_game5_winner($event)" data="{{allData.groupA_game5.team1_title}}"><img src="http://img.fifa.com/images/flags/4/cmr.png" data="{{allData.groupA_game5.team1_title}}"><span class="teamName" data="{{allData.groupA_game5.team1_title}}">{{allData.groupA_game5.team1_title | uppercase}}</span></td>
-	        		<td class="col-md-3 canPick" ng-click="groupA_game5_winner($event)" data="{{allData.groupA_game5.team2_title}}"><img src="http://img.fifa.com/images/flags/4/bra.png" data="{{allData.groupA_game5.team2_title}}"><span class="teamName" data="{{allData.groupA_game5.team2_title}}">{{allData.groupA_game5.team2_title | uppercase}}</span></td>
+	        		<td class="col-md-3 canPick" ng-click="groupA_game5_winner($event)" data="{{allData.groupA_game5.team1_title}}"><img src="images/flags/cameroon.png" data="{{allData.groupA_game5.team1_title}}"><span class="teamName" data="{{allData.groupA_game5.team1_title}}">{{allData.groupA_game5.team1_title | uppercase}}</span></td>
+	        		<td class="col-md-3 canPick" ng-click="groupA_game5_winner($event)" data="{{allData.groupA_game5.team2_title}}"><img src="images/flags/brazil.png" data="{{allData.groupA_game5.team2_title}}"><span class="teamName" data="{{allData.groupA_game5.team2_title}}">{{allData.groupA_game5.team2_title | uppercase}}</span></td>
 
 	        		<td class="groupA_winner5 col-md-3"><img src="{{groupA_game5_winner_pick_img}}"><span class="teamName">{{groupA_game5_winner_pick | uppercase}}</span></td>
 	       		</tr>
 	       		<tr>
 	        		<td class="col-md-3">{{allData.groupA_game6.play_at}}</td>
-	        		<td class="col-md-3 canPick" ng-click="groupA_game6_winner($event)" data="{{allData.groupA_game6.team1_title}}"><img src="http://img.fifa.com/images/flags/4/cro.png" data="{{allData.groupA_game6.team1_title}}"><span class="teamName" data="{{allData.groupA_game6.team1_title}}">{{allData.groupA_game6.team1_title | uppercase}}</span></td>
-	        		<td class="col-md-3 canPick" ng-click="groupA_game6_winner($event)" data="{{allData.groupA_game6.team2_title}}"><img src="http://img.fifa.com/images/flags/4/mex.png" data="{{allData.groupA_game6.team2_title}}"><span class="teamName" data="{{allData.groupA_game6.team2_title}}">{{allData.groupA_game6.team2_title | uppercase}}</span></td>
+	        		<td class="col-md-3 canPick" ng-click="groupA_game6_winner($event)" data="{{allData.groupA_game6.team1_title}}"><img src="images/flags/croatia.png" data="{{allData.groupA_game6.team1_title}}"><span class="teamName" data="{{allData.groupA_game6.team1_title}}">{{allData.groupA_game6.team1_title | uppercase}}</span></td>
+	        		<td class="col-md-3 canPick" ng-click="groupA_game6_winner($event)" data="{{allData.groupA_game6.team2_title}}"><img src="images/flags/mexico.png" data="{{allData.groupA_game6.team2_title}}"><span class="teamName" data="{{allData.groupA_game6.team2_title}}">{{allData.groupA_game6.team2_title | uppercase}}</span></td>
 
 	        		<td class="groupA_winner6 col-md-3"><img src="{{groupA_game6_winner_pick_img}}"><span class="teamName">{{groupA_game6_winner_pick | uppercase}}</span></td>
 	       		</tr>
@@ -116,7 +127,7 @@
 
 	<accordion-group>
 
-	<accordion-heading>
+	<accordion-heading ng-class="groupHeader">
 	<i class="pull-left glyphicon" ng-class="{'glyphicon-chevron-down': isopen, 'glyphicon-chevron-right': !isopen}"></i>
 	GROUP B
 	</accordion-heading>

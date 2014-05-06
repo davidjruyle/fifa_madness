@@ -7,27 +7,32 @@ body { padding-top:30px;
 .navbar-right{
 	padding-right:55px;
 }
-.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
+.nav, .pagination, .carousel, .panel-title a { cursor: pointer;}
 
 td{
 	font-size: 1.5em;
 	text-align: left;
 	padding: 5px;
 }
+
 th{
 	text-align: left;
 }
 .teamName{
 	text-align: left;
 }
+.groupLetter{
+}
 .tinyTeamFlag{
-	height:30px;
+	height:60px;
 	width:60px;
 	float:right;
-	margin-top:-25px;
+	margin-top:-58px;
 }
+
 img{
 	padding-right:5px;
+	margin-right: -15px;
 }
 .winner{
 
@@ -43,7 +48,7 @@ td.canPick:hover{
 .enterScore{
 	margin-left:5px;
 	width:110px;
-	margin-top:5px;
+	margin-top:30px;
 	height:100%;
 }
 .tieText{
@@ -51,10 +56,15 @@ td.canPick:hover{
 	text-align: center;
 }
 .tieTd{
-	width:100px;
+	width:75px;
 	text-align: center;
 	vertical-align: middle;
 	padding-top: 145px;
+}
+input[type="radio"], input[type="checkbox"] {
+    line-height: normal;
+    margin: 0;
+    margin-top:40px;
 }
 table{
 	table-layout: fixed;
@@ -66,6 +76,13 @@ input.ng-valid{
 	background:white;
 }
 .error{
-	font-size: .5em;
 	text-align: center;
+}
+
+.accordion{
+	border-radius: 5px;
+}
+.notTiedError{
+	font-size: .75em;
+	text-align:center;
 }
