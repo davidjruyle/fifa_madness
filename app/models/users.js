@@ -1,5 +1,3 @@
-
-
 var mongoose = require('mongoose')
 var Schema = mongoose.Schema;
 
@@ -219,7 +217,7 @@ var userSchema = new Schema({
     linkedin: {}
 });
 
-var User= mongoose.model('User', userSchema);
+var user = mongoose.model('User', userSchema);
 
 
 
