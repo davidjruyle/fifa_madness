@@ -56,10 +56,10 @@ td.canPick:hover{
 	text-align: center;
 }
 .tieTd{
-	width:75px;
+	width:100px;
 	text-align: center;
 	vertical-align: middle;
-	padding-top: 145px;
+	padding-top: 35px;
 }
 input[type="radio"], input[type="checkbox"] {
     line-height: normal;
@@ -85,4 +85,10 @@ input.ng-valid{
 .notTiedError{
 	font-size: .75em;
 	text-align:center;
+}
+.dateTime{
+	font-size: 0.8em;
+}
+.arena{
+	font-size: 0.7em;
 }
