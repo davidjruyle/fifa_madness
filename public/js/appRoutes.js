@@ -16,6 +16,9 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
 		.when('/leaderboard', {
 			templateUrl: 'views/leaderboard.html',
 			controller: 'leaderboardController'	
+		})
+		.when('/signup', {
+			templateUrl: 'views/signup.html'
 		});
 
 	$locationProvider.html5Mode(true);
