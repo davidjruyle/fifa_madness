@@ -92,3 +92,10 @@ input.ng-valid{
 .arena{
 	font-size: 0.7em;
 }
+.popover  .popover-inner {background-color: #df691a; border-left-color: #df691a; color:#ebebeb; font-size:0.8em;}
+.popover-arrow{
+	border-left-color: #df691a;
+	background-color:#df691a;
+	color:#df691a;
+}
+@popoverArrowColor: #df691a;
