@@ -8,14 +8,14 @@ MongoClient.connect("mongodb://fifa-admin:javacrash1@oceanic.mongohq.com:10068/f
         console.log(itemArr);
       });
     });
-    fifa_users.find(function(err, items){
-      items.each(function(err, item){
-        if(item){
-          console.log("Singular Document: ");
-          console.log(item);
-        }
-      });
-    });
+    // fifa_users.find(function(err, items){
+    //   items.each(function(err, item){
+    //     if(item){
+    //       console.log("Singular Document: ");
+    //       console.log(item);
+    //     }
+    //   });
+    // });
     fifa_users.findOne({user_id:12}, function(err, item){
       console.log("Found One: ");
       console.log(item);

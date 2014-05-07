@@ -1,6 +1,4 @@
-{% extends 'auth.html' %}
 
-{% block auth %}
     <form class="signin form-horizontal" action="/users/session" method="post">
         <div class="form-group">
             <label class="col-md-4 control-label" for="email">Email</label>
@@ -17,8 +15,8 @@
         <div class="form-group">
             <div class="col-md-offset-4 col-md-8">
                 <button class="btn btn-primary" type="submit">Sign in</button>&nbsp;
-                or&nbsp;<a class="show-signup" href="/signup">Sign up</a>
+                or&nbsp;<a ui-sref="signup" class="show-signup" href="signup.html">Sign up</a>
             </div>
         </div>
     </form>
-{% endblock %}
+
