@@ -17,79 +17,132 @@
 </div>
 	<div ng-controller="dashController">
 
-	  	<accordion close-others="oneAtATime">
+		<!--groupA .................... -->
+	  	<accordion style="border-radius: 5px;" close-others="oneAtATime">
 	    <accordion-group is-open="isopen">
+	    
 	        <accordion-heading>
+	        <div class="groupHeading">
 	        	<i class="pull-left glyphicon" ng-class="{'glyphicon-chevron-down': isopen, 'glyphicon-chevron-right': !isopen}"></i>
-	        	<center>GROUP A</center>
-	        	<div class="col-md-6 col-sm-12 pull-right"><img src="http://img.fifa.com/images/flags/4/bra.png" class="tinyTeamFlag"><img src="http://img.fifa.com/images/flags/4/mex.png" class="tinyTeamFlag"><img src="http://img.fifa.com/images/flags/4/cmr.png" class="tinyTeamFlag"><img src="http://img.fifa.com/images/flags/4/cro.png" class="tinyTeamFlag"></div>
+	        	<h2 class="groupLetter">GROUP A</h2>
+	        	<div class="col-md-6 col-sm-12 pull-right"><img src="images/flags/brazil.png" class="tinyTeamFlag"><img src="images/flags/mexico.png" class="tinyTeamFlag"><img src="images/flags/cameroon.png" class="tinyTeamFlag"><img src="images/flags/croatia.png" class="tinyTeamFlag"></div>
+	        </div>
 	        </accordion-heading>
+	    
 
 	        <table class="table table-condensed table-hover">
 	        	<tr class="active">
-	        		<th class="col-md-2">DATE</th>
+	        		<th class="col-md-2">INFO</th>
 	        		<th class="col-md-3">TEAM 1</th>
 	        		<th class="col-md-3">TEAM 2</th>
 	        		<th class="col-md-1 tieTd">TIE</th>
 	        		<th class="col-md-3">PICKED WINNER</th>
-	        		<th class="col-md-2" ng-show="pickedWinner">SCORE (X-X)</th>
+	        		<th class="col-md-2" ng-show="allGames[0].displayInputScore || allGames[1].displayInputScore || allGames[16].displayInputScore">SCORE (X-X)</th>
 
 	       		</tr>
 
-	       		<tr>
-	        		<td>{{allData.groupA_game1.play_at}}</td>
-	        		<td class="canPick" ng-click="groupA_game1_winner($event)" data="{{allData.groupA_game1.team1_title}}"><img src="http://img.fifa.com/images/flags/4/bra.png" data="{{allData.groupA_game1.team1_title}}"><span class="teamName" data="{{allData.groupA_game1.team1_title}}">{{allData.groupA_game1.team1_title | uppercase}}</span></td>
-	        		<td class="canPick" ng-click="groupA_game1_winner($event)" data="{{allData.groupA_game1.team2_title}}"><img src="http://img.fifa.com/images/flags/4/cro.png" data="{{allData.groupA_game1.team2_title}}"><span class="teamName" data="{{allData.groupA_game1.team2_title}}">{{allData.groupA_game1.team2_title | uppercase}}</span></td>
+	       		<tr> <!-- game0 -->
+	        		<td><div class="dateTime">06/12/2014<br />17:00 Local Time<br /><span class="arena">Arena de Sao Paulo</span></div></td>
+	        		<td class="canPick" ng-click="calculate_game_winner($event,0,allGames[0].team1,allGames[0].team2)" data="{{allGames[0].team1}}"><img src="images/flags/Brazil.png" data="{{allGames[0].team1}}"><span class="teamName" data="{{allGames[0].team1}}">{{allGames[0].team1 | uppercase}}</span></td>
+	        		<td class="canPick" ng-click="calculate_game_winner($event,0,allGames[0].team1,allGames[0].team2)" data="{{allGames[0].team2}}"><img src="images/flags/Croatia.png" data="{{allGames[0].team2}}"><span class="teamName" data="{{allGames[0].team2}}">{{allGames[0].team2 | uppercase}}</span></td>
 
 	        		<!-- TIE -->
-	        		<td class="canPick tieTd" ng-click="groupA_game1_winner($event)" data="TIE"><input type="checkbox"/></td>
+	        		<td class="canPick tieTd" data="TIE" ng-click="calculate_game_winner($event,0,allGames[0].team1,allGames[0].team2); validateScore(0)"><div class="tieTd" data="TIE" ng-click="calculate_game_winner($event,0,allGames[0].team1,allGames[0].team2)">TIE</div></td>
 
-	        		<td class="groupA_winner1"><img ng-hide="tieGame" src="{{groupA_game1_winner_pick_img}}"><span class="teamName">{{groupA_game1_winner_pick | uppercase}}</span></td>
-
-	        		<td ng-show="pickedWinner">
-	        			<form name="groupA_game1_enterScore"><input name="input" maxlength="3" type="text" ng-model="allData.groupA_game1_score" class="form-control enterScore" id="groupA_game1_score" placeholder="{{groupA_game1_winner_pick_key}}-{{groupA_game1_loser_pick_key}}" width="50px" ng-blur="checkScore()" ng-pattern="scorePattern" /></form>
+	        		<td class="0_winner"><img ng-hide="tieGame" src="{{allGames[0].winnerPickImg}}"><span class="teamName">{{allGames[0].winnerPick | uppercase}}</span></td>
+	        		<!--ENTER SCORE -->
+	        		<td> 
+	        			<div ng-show="allGames[0].displayInputScore">
+	        				<form name="enterBracket"><input name="input" id="allGames0" maxlength="3" type="text" ng-model="allGames[0].score" class="form-control form-horizontal enterScore" placeholder="{{allGames[0].winnerPickKey}}-{{allGames[0].loserPickKey}}" ng-blur="validateScore(0)" ng-pattern="scorePattern" popover="Enter your picked winner's score first: 4-2. Make sure ties are equal." popover-placement="right" popover-trigger="mouseenter" required /><span class="notTiedError" ng-show="allGames[0].scoreNotTied">{{scoreNotTiedErrorMsg}}</span><span class="notTiedError" ng-show="allGames[0].enterWinError">{{enterWinErrorMsg}}</span></form>
+	        			</div>
 	        		</td>
 	       		</tr>
 
-	       		<tr>
-	        		<td class="col-md-3">{{allData.groupA_game2.play_at}}</td>
-	        		<td class="col-md-3 canPick" ng-click="groupA_game2_winner($event)" data="{{allData.groupA_game2.team1_title}}"><img src="http://img.fifa.com/images/flags/4/mex.png" data="{{allData.groupA_game2.team1_title}}"><span class="teamName" data="{{allData.groupA_game2.team1_title}}">{{allData.groupA_game2.team1_title | uppercase}}</span></td>
-	        		<td class="col-md-3 canPick" ng-click="groupA_game2_winner($event)" data="{{allData.groupA_game2.team2_title}}"><img src="http://img.fifa.com/images/flags/4/cmr.png" data="{{allData.groupA_game2.team2_title}}"><span class="teamName" data="{{allData.groupA_game2.team2_title}}">{{allData.groupA_game2.team2_title | uppercase}}</span></td>
+	       		<tr> <!-- game1 -->
+	        		<td><div class="dateTime">06/13/2014<br />13:00 Local Time<br /><span class="arena">Estadio das Dunas</span></div></td>
+	        		<td class="canPick" ng-click="calculate_game_winner($event,1,allGames[1].team1,allGames[1].team2)" data="{{allGames[1].team1}}"><img src="images/flags/Mexico.png" data="{{allGames[1].team1}}"><span class="teamName" data="{{allGames[1].team1}}">{{allGames[1].team1 | uppercase}}</span></td>
+	        		<td class="canPick" ng-click="calculate_game_winner($event,1,allGames[1].team1,allGames[1].team2)" data="{{allGames[1].team2}}"><img src="images/flags/Cameroon.png" data="{{allGames[1].team2}}"><span class="teamName" data="{{allGames[1].team2}}">{{allGames[1].team2 | uppercase}}</span></td>
 
-	        		<td class="groupA_winner2 col-md-3"><img src="{{groupA_game2_winner_pick_img}}"><span class="teamName">{{groupA_game2_winner_pick | uppercase}}</span></td>
-	        		<td ng-show="groupA_game2_score"><input type="text" class="form-control" id="enterScore" placeholder="3-2"/></td>
+	        		<!-- TIE -->
+	        		<td class="canPick tieTd" data="TIE" ng-click="calculate_game_winner($event,1,allGames[1].team1,allGames[1].team2); validateScore(1)"><div class="tieTd" data="TIE" ng-click="calculate_game_winner($event,1,allGames[1].team1,allGames[1].team2)">TIE</div></td>
 
+	        		<td class="1_winner"><img ng-hide="tieGame" src="{{allGames[1].winnerPickImg}}"><span class="teamName">{{allGames[1].winnerPick | uppercase}}</span></td>
+	        		<!--ENTER SCORE -->
+	        		<td>
+	        			<div ng-show="allGames[1].displayInputScore">
+	        				<form name="enterBracket"><input name="input" id="allGames1" maxlength="3" type="text" ng-model="allGames[1].score" class="form-control form-horizontal enterScore" placeholder="{{allGames[1].winnerPickKey}}-{{allGames[1].loserPickKey}}" width="50px" ng-blur="validateScore(1)" ng-pattern="scorePattern" required /><span class="notTiedError" ng-show="allGames[1].scoreNotTied">{{scoreNotTiedErrorMsg}}</span><span class="notTiedError" ng-show="allGames[1].enterWinError">{{enterWinErrorMsg}}</span></form>
+	        			</div>
+	        		</td>
 	       		</tr>
 
-	       		<tr>
-	        		<td class="col-md-3">{{allData.groupA_game3.play_at}}</td>
-	        		<td class="col-md-3 canPick" ng-click="groupA_game3_winner($event)" data="{{allData.groupA_game3.team1_title}}"><img src="http://img.fifa.com/images/flags/4/bra.png" data="{{allData.groupA_game3.team1_title}}"><span class="teamName" data="{{allData.groupA_game3.team1_title}}">{{allData.groupA_game3.team1_title | uppercase}}</span></td>
-	        		<td class="col-md-3 canPick" ng-click="groupA_game3_winner($event)" data="{{allData.groupA_game3.team2_title}}"><img src="http://img.fifa.com/images/flags/4/mex.png" data="{{allData.groupA_game3.team2_title}}"><span class="teamName" data="{{allData.groupA_game3.team2_title}}">{{allData.groupA_game3.team2_title | uppercase}}</span></td>
+	       		<tr><!-- game16 -->
+	        		<td><div class="dateTime">06/17/2014<br />16:00 Local Time<br /><span class="arena">Estadio Castelao</span></div></td>
+	        		<td class="canPick" ng-click="calculate_game_winner($event,16,allGames[16].team1,allGames[16].team2)" data="{{allGames[16].team1}}"><img src="images/flags/Brazil.png" data="{{allGames[16].team1}}"><span class="teamName" data="{{allGames[16].team1}}">{{allGames[16].team1 | uppercase}}</span></td>
+	        		<td class="canPick" ng-click="calculate_game_winner($event,16,allGames[16].team1,allGames[16].team2)" data="{{allGames[16].team2}}"><img src="images/flags/Mexico.png" data="{{allGames[16].team2}}"><span class="teamName" data="{{allGames[16].team2}}">{{allGames[16].team2 | uppercase}}</span></td>
 
-	        		<td class="groupA_winner3 col-md-3"><img src="{{groupA_game3_winner_pick_img}}"><span class="teamName">{{groupA_game3_winner_pick | uppercase}}</span></td>
+	        		<!-- TIE -->
+	        		<td class="canPick tieTd" data="TIE" ng-click="calculate_game_winner($event,16,allGames[16].team1,allGames[16].team2); validateScore(16)"><div class="tieTd" data="TIE" ng-click="calculate_game_winner($event,16,allGames[16].team1,allGames[16].team2)">TIE</div></td>
 
+	        		<td class="16_winner"><img ng-hide="tieGame" src="{{allGames[16].winnerPickImg}}"><span class="teamName">{{allGames[16].winnerPick | uppercase}}</span></td>
+	        		<!--ENTER SCORE -->
+	        		<td>
+	        			<div ng-show="allGames[16].displayInputScore">
+	        				<form name="enterBracket"><input name="input" id="allGames16" maxlength="3" type="text" ng-model="allGames[16].score" class="form-control form-horizontal enterScore" placeholder="{{allGames[16].winnerPickKey}}-{{allGames[16].loserPickKey}}" width="50px" ng-blur="validateScore(16)" ng-pattern="scorePattern" required /><span class="notTiedError" ng-show="allGames[16].scoreNotTied">{{scoreNotTiedErrorMsg}}</span><span class="notTiedError" ng-show="allGames[16].enterWinError">{{enterWinErrorMsg}}</span></form>
+	        			</div>
+	        		</td>
 	       		</tr>
-	       		<tr>
-	        		<td class="col-md-3">{{allData.groupA_game4.play_at}}</td>
-	        		<td class="col-md-3 canPick" ng-click="groupA_game4_winner($event)" data="{{allData.groupA_game4.team1_title}}"><img src="http://img.fifa.com/images/flags/4/cmr.png" data="{{allData.groupA_game4.team1_title}}"><span class="teamName" data="{{allData.groupA_game4.team1_title}}">{{allData.groupA_game4.team1_title | uppercase}}</span></td>
-	        		<td class="col-md-3 canPick" ng-click="groupA_game4_winner($event)" data="{{allData.groupA_game4.team2_title}}"><img src="http://img.fifa.com/images/flags/4/cro.png" data="{{allData.groupA_game4.team2_title}}"><span class="teamName" data="{{allData.groupA_game4.team2_title}}">{{allData.groupA_game4.team2_title | uppercase}}</span></td>
 
-	        		<td class="groupA_winner4 col-md-3"><img src="{{groupA_game4_winner_pick_img}}"><span class="teamName">{{groupA_game4_winner_pick | uppercase}}</span></td>
-	       		</tr>
-	       		<tr>
-	        		<td class="col-md-3">{{allData.groupA_game5.play_at}}</td>
-	        		<td class="col-md-3 canPick" ng-click="groupA_game5_winner($event)" data="{{allData.groupA_game5.team1_title}}"><img src="http://img.fifa.com/images/flags/4/cmr.png" data="{{allData.groupA_game5.team1_title}}"><span class="teamName" data="{{allData.groupA_game5.team1_title}}">{{allData.groupA_game5.team1_title | uppercase}}</span></td>
-	        		<td class="col-md-3 canPick" ng-click="groupA_game5_winner($event)" data="{{allData.groupA_game5.team2_title}}"><img src="http://img.fifa.com/images/flags/4/bra.png" data="{{allData.groupA_game5.team2_title}}"><span class="teamName" data="{{allData.groupA_game5.team2_title}}">{{allData.groupA_game5.team2_title | uppercase}}</span></td>
+	       		<tr><!-- game17 -->
+	        		<td><div class="dateTime">06/18/2014<br />18:00 Local Time<br /><span class="arena">Arena Amazonia</span></div></td>
+	        		<td class="canPick" ng-click="calculate_game_winner($event,17,allGames[17].team1,allGames[17].team2)" data="{{allGames[17].team1}}"><img src="images/flags/Cameroon.png" data="{{allGames[17].team1}}"><span class="teamName" data="{{allGames[17].team1}}">{{allGames[17].team1 | uppercase}}</span></td>
+	        		<td class="canPick" ng-click="calculate_game_winner($event,17,allGames[17].team1,allGames[17].team2)" data="{{allGames[17].team2}}"><img src="images/flags/Croatia.png" data="{{allGames[17].team2}}"><span class="teamName" data="{{allGames[17].team2}}">{{allGames[17].team2 | uppercase}}</span></td>
 
-	        		<td class="groupA_winner5 col-md-3"><img src="{{groupA_game5_winner_pick_img}}"><span class="teamName">{{groupA_game5_winner_pick | uppercase}}</span></td>
-	       		</tr>
-	       		<tr>
-	        		<td class="col-md-3">{{allData.groupA_game6.play_at}}</td>
-	        		<td class="col-md-3 canPick" ng-click="groupA_game6_winner($event)" data="{{allData.groupA_game6.team1_title}}"><img src="http://img.fifa.com/images/flags/4/cro.png" data="{{allData.groupA_game6.team1_title}}"><span class="teamName" data="{{allData.groupA_game6.team1_title}}">{{allData.groupA_game6.team1_title | uppercase}}</span></td>
-	        		<td class="col-md-3 canPick" ng-click="groupA_game6_winner($event)" data="{{allData.groupA_game6.team2_title}}"><img src="http://img.fifa.com/images/flags/4/mex.png" data="{{allData.groupA_game6.team2_title}}"><span class="teamName" data="{{allData.groupA_game6.team2_title}}">{{allData.groupA_game6.team2_title | uppercase}}</span></td>
+	        		<!-- TIE -->
+	        		<td class="canPick tieTd" data="TIE" ng-click="calculate_game_winner($event,17,allGames[17].team1,allGames[17].team2); validateScore(17)"><div class="tieTd" data="TIE" ng-click="calculate_game_winner($event,17,allGames[17].team1,allGames[17].team2)">TIE</div></td>
 
-	        		<td class="groupA_winner6 col-md-3"><img src="{{groupA_game6_winner_pick_img}}"><span class="teamName">{{groupA_game6_winner_pick | uppercase}}</span></td>
+	        		<td class="17_winner"><img ng-hide="tieGame" src="{{allGames[17].winnerPickImg}}"><span class="teamName">{{allGames[17].winnerPick | uppercase}}</span></td>
+	        		<!--ENTER SCORE -->
+	        		<td>
+	        			<div ng-show="allGames[17].displayInputScore">
+	        				<form name="enterBracket"><input name="input" id="allGames17" maxlength="3" type="text" ng-model="allGames[17].score" class="form-control form-horizontal enterScore" placeholder="{{allGames[17].winnerPickKey}}-{{allGames[17].loserPickKey}}" width="50px" ng-blur="validateScore(17)" ng-pattern="scorePattern" required /><span class="notTiedError" ng-show="allGames[17].scoreNotTied">{{scoreNotTiedErrorMsg}}</span><span class="notTiedError" ng-show="allGames[17].enterWinError">{{enterWinErrorMsg}}</span></form>
+	        			</div>
+	        		</td>
 	       		</tr>
+
+	       		<tr><!-- game32 -->
+	        		<td><div class="dateTime">06/23/2014<br />17:00 Local Time<br /><span class="arena">Estadio Nacional</span></div></td>
+	        		<td class="canPick" ng-click="calculate_game_winner($event,32,allGames[32].team1,allGames[32].team2)" data="{{allGames[32].team1}}"><img src="images/flags/Cameroon.png" data="{{allGames[32].team1}}"><span class="teamName" data="{{allGames[32].team1}}">{{allGames[32].team1 | uppercase}}</span></td>
+	        		<td class="canPick" ng-click="calculate_game_winner($event,32,allGames[32].team1,allGames[32].team2)" data="{{allGames[32].team2}}"><img src="images/flags/Brazil.png" data="{{allGames[32].team2}}"><span class="teamName" data="{{allGames[32].team2}}">{{allGames[32].team2 | uppercase}}</span></td>
+
+	        		<!-- TIE -->
+	        		<td class="canPick tieTd" data="TIE" ng-click="calculate_game_winner($event,32,allGames[32].team1,allGames[32].team2); validateScore(32)"><div class="tieTd" data="TIE" ng-click="calculate_game_winner($event,32,allGames[32].team1,allGames[32].team2)">TIE</div></td>
+
+	        		<td class="32_winner"><img ng-hide="tieGame" src="{{allGames[32].winnerPickImg}}"><span class="teamName">{{allGames[32].winnerPick | uppercase}}</span></td>
+	        		<!--ENTER SCORE -->
+	        		<td>
+	        			<div ng-show="allGames[32].displayInputScore">
+	        				<form name="enterBracket"><input name="input" id="allGames32" maxlength="3" type="text" ng-model="allGames[32].score" class="form-control form-horizontal enterScore" placeholder="{{allGames[32].winnerPickKey}}-{{allGames[32].loserPickKey}}" width="50px" ng-blur="validateScore(32)" ng-pattern="scorePattern" required /><span class="notTiedError" ng-show="allGames[32].scoreNotTied">{{scoreNotTiedErrorMsg}}</span><span class="notTiedError" ng-show="allGames[32].enterWinError">{{enterWinErrorMsg}}</span></form>
+	        			</div>
+	        		</td>
+	       		</tr>
+
+	       		<tr><!-- game33 -->
+	        		<td><div class="dateTime">06/23/2014<br />17:00 Local Time<br /><span class="arena">Arena Pernambuco</span></div></td>
+	        		<td class="canPick" ng-click="calculate_game_winner($event,33,allGames[33].team1,allGames[33].team2)" data="{{allGames[33].team1}}"><img src="images/flags/Croatia.png" data="{{allGames[33].team1}}"><span class="teamName" data="{{allGames[33].team1}}">{{allGames[33].team1 | uppercase}}</span></td>
+	        		<td class="canPick" ng-click="calculate_game_winner($event,33,allGames[33].team1,allGames[33].team2)" data="{{allGames[33].team2}}"><img src="images/flags/Mexico.png" data="{{allGames[33].team2}}"><span class="teamName" data="{{allGames[33].team2}}">{{allGames[33].team2 | uppercase}}</span></td>
+
+	        		<!-- TIE -->
+	        		<td class="canPick tieTd" data="TIE" ng-click="calculate_game_winner($event,33,allGames[33].team1,allGames[33].team2); validateScore(33)"><div class="tieTd" data="TIE" ng-click="calculate_game_winner($event,33,allGames[33].team1,allGames[33].team2)">TIE</div></td>
+
+	        		<td class="33_winner"><img ng-hide="tieGame" src="{{allGames[33].winnerPickImg}}"><span class="teamName">{{allGames[33].winnerPick | uppercase}}</span></td>
+	        		<!--ENTER SCORE -->
+	        		<td>
+	        			<div ng-show="allGames[33].displayInputScore">
+	        				<form name="enterBracket"><input name="input" id="allGames33" maxlength="3" type="text" ng-model="allGames[33].score" class="form-control form-horizontal enterScore" placeholder="{{allGames[33].winnerPickKey}}-{{allGames[33].loserPickKey}}" width="50px" ng-blur="validateScore(33)" ng-pattern="scorePattern" required /><span class="notTiedError" ng-show="allGames[33].scoreNotTied">{{scoreNotTiedErrorMsg}}</span><span class="notTiedError" ng-show="allGames[33].enterWinError">{{enterWinErrorMsg}}</span></form>
+	        			</div>
+	        		</td>
+	       		</tr>
+
 	       		<tr>
 	       			<td></td>
 	       			<td></td>
@@ -103,7 +156,7 @@
 		        	<th></th>
 		        	<th>GROUP A 2ND PLACE</th>
 		        	<th><th>
-		        	<th class="" ng-show="pickedWinner"></th>
+		        	<th class="" ng-show="allGames[0].displayInputScore"></th>
 	        	</tr>
 	        	<tr>
 	        		<td><img src="{{groupA_1st_place_img}}"><span class="teamName">{{groupA_1st_place | uppercase}}</span></td>
@@ -116,7 +169,7 @@
 
 	<accordion-group>
 
-	<accordion-heading>
+	<accordion-heading ng-class="groupHeader">
 	<i class="pull-left glyphicon" ng-class="{'glyphicon-chevron-down': isopen, 'glyphicon-chevron-right': !isopen}"></i>
 	GROUP B
 	</accordion-heading>
