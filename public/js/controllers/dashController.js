@@ -3,6 +3,9 @@ angular.module('dashCtrl', []).controller('dashController', function($scope, das
 	$scope.enterWinErrorMsg = "Invalid Score";
 	var allData = {};
 	$scope.allData = allData;
+	// var groupWinners = [];
+	// $scope.groupWinners = groupWinners;
+
 	$scope.allGames = [
 		{id: 0, team1: "Brazil", team1_key: "BRA", team2: "Croatia", team2_key: "CRO", score: "", tie: false, winnerPick: "", winnerPickImg: "", winnerPickKey: "", loserPickKey: "", enterWinError: false, scoreNotTied: false, gamePicked: false, displayInputScore: false},
 		{id: 1, team1: "Mexico", team1_key: "MEX", team2: "Cameroon", team2_key: "CMR", score: "", tie: false, winnerPick: "", winnerPickImg: "", winnerPickKey: "", loserPickKey: "", enterWinError: false, scoreNotTied: false, gamePicked: false, displayInputScore: false},
@@ -52,9 +55,6 @@ angular.module('dashCtrl', []).controller('dashController', function($scope, das
 		{id: 45, team1: "Portugal", team1_key: "POR", team2: "Ghana", team2_key: "GHA", score: "", tie: false, winnerPick: "", winnerPickImg: "", winnerPickKey: "", loserPickKey: "", enterWinError: false, scoreNotTied: false, gamePicked: false, displayInputScore: false},
 		{id: 46, team1: "South Korea", team1_key: "KOR", team2: "Belgium", team2_key: "BEL", score: "", tie: false, winnerPick: "", winnerPickImg: "", winnerPickKey: "", loserPickKey: "", enterWinError: false, scoreNotTied: false, gamePicked: false, displayInputScore: false},
 		{id: 47, team1: "Algeria", team1_key: "ALG", eam2: "Russia", team2_key: "RUS", score: "", tie: false, winnerPick: "", winnerPickImg: "", winnerPickKey: "", loserPickKey: "", enterWinError: false, scoreNotTied: false, gamePicked: false, displayInputScore: false},
-
-		//object to hold all teams pts and goals
-		{id: 48,}
 	];
 	//INITIALIZE ALL VARIABLES
 	//Constructor for bracket object
@@ -67,192 +67,506 @@ angular.module('dashCtrl', []).controller('dashController', function($scope, das
 
 	calculateGroupWinners = function(id1,id2,id3,id4,id5,id6,team1_pts,team1_goals,team2_pts,team2_goals, team3_pts,team3_goals, team4_pts, team4_goals,groupBracket){
 			// console.log(id1 + "," + id2 + "," + id3 + "," + id4 + "," + id5 + "," + id6 + "," + team1_pts + "," + team1_goals + "," + team2_pts + "," + team2_goals + "," + team3_pts + "," + team3_goals + "," + team4_pts + "," + team4_goals + ","+ groupBracket);
+			var game1 = $scope.allGames[id1].team1 + "," + $scope.allGames[id1].team2;
+			var game2 = $scope.allGames[id2].team1 + "," + $scope.allGames[id2].team2;
+			var game3 = $scope.allGames[id3].team1 + "," + $scope.allGames[id3].team2;
+			var game4 = $scope.allGames[id4].team1 + "," + $scope.allGames[id4].team2;
+			var game5 = $scope.allGames[id5].team1 + "," + $scope.allGames[id5].team2;
+			var game6 = $scope.allGames[id6].team1 + "," + $scope.allGames[id6].team2;
+
 			//game 1    team1 vs team2
 			if ($scope.allGames[id1].winnerPick == $scope.allGames[id1].team1 ){
 			$scope[groupBracket][team1_pts] += 3;
-			var winner_goals = $scope.allGames[id1].score.charAt(0);
-			$scope[groupBracket][team1_goals] += parseInt(winner_goals);
-			var loser_goals = $scope.allGames[id1].score.charAt(2);
-			$scope[groupBracket][team2_goals] += parseInt(loser_goals);
-
-			console.log("Brazil has " + $scope.groupA_bracket.Brazil_pts + "pts and this many goals: " + $scope.groupA_bracket.Brazil_goals + " Crotia has " + $scope.groupA_bracket.Croatia_pts + "pts and " + $scope.groupA_bracket.Croatia_goals + " goals");
+			var winner_goals1 = $scope.allGames[id1].score.charAt(0);
+			$scope[groupBracket][team1_goals] += parseInt(winner_goals1);
+			var loser_goals1 = $scope.allGames[id1].score.charAt(2);
+			$scope[groupBracket][team2_goals] += parseInt(loser_goals1);
 			}	
 			else if($scope.allGames[id1].winnerPick == $scope.allGames[id1].team2){
 			$scope[groupBracket][team2_pts] += 3;
-			var winner_goals = $scope.allGames[id1].score.charAt(0);
-			$scope[groupBracket][team2_goals] += parseInt(winner_goals);
-			var loser_goals = $scope.allGames[id1].score.charAt(2);
-			$scope[groupBracket][team1_goals] += parseInt(loser_goals);
-			
-			console.log("Brazil has " + $scope.groupA_bracket.Brazil_pts + "pts and this many goals: " + $scope.groupA_bracket.Brazil_goals + " Crotia has " + $scope.groupA_bracket.Croatia_pts + "pts and " + $scope.groupA_bracket.Croatia_goals + " goals");
-			}
-			else{
+			var winner_goals1 = $scope.allGames[id1].score.charAt(0);
+			$scope[groupBracket][team2_goals] += parseInt(winner_goals1);
+			var loser_goals1 = $scope.allGames[id1].score.charAt(2);
+			$scope[groupBracket][team1_goals] += parseInt(loser_goals1);
+			}else{
 			$scope[groupBracket][team1_pts] += 1;
 			$scope[groupBracket][team2_pts] += 1;
-			var goals = $scope.allGames[id1].score.charAt(0);
-			$scope[groupBracket][team1_goals] += parseInt(goals);
-			$scope[groupBracket][team2_goals] += parseInt(goals);
-			
-			console.log("Brazil has " + $scope.groupA_bracket.Brazil_pts + "pts and this many goals: " + $scope.groupA_bracket.Brazil_goals + " Crotia has " + $scope.groupA_bracket.Croatia_pts + "pts and " + $scope.groupA_bracket.Croatia_goals + " goals");
+			var goals1 = $scope.allGames[id1].score.charAt(0);
+			$scope[groupBracket][team1_goals] += parseInt(goals1);
+			$scope[groupBracket][team2_goals] += parseInt(goals1);
 			}
 
 			//game 2  team3 vs team4
 			if ($scope.allGames[id2].winnerPick == $scope.allGames[id2].team1 ){
 			$scope[groupBracket][team3_pts] += 3;
-			var winner_goals = $scope.allGames[id2].score.charAt(0);
-			$scope[groupBracket][team3_goals] += parseInt(winner_goals);
-			var loser_goals = $scope.allGames[id2].score.charAt(2);
-			$scope[groupBracket][team4_goals] += parseInt(loser_goals);
-
-			console.log("Mexico has " + $scope.groupA_bracket.Mexico_pts + "pts and this many goals: " + $scope.groupA_bracket.Mexico_goals + " Cameroon has " + $scope.groupA_bracket.Cameroon_pts + "pts and " + $scope.groupA_bracket.Cameroon_goals + " goals");
+			var winner_goals2 = $scope.allGames[id2].score.charAt(0);
+			$scope[groupBracket][team3_goals] += parseInt(winner_goals2);
+			var loser_goals2 = $scope.allGames[id2].score.charAt(2);
+			$scope[groupBracket][team4_goals] += parseInt(loser_goals2);
 			}	
 			else if($scope.allGames[id2].winnerPick == $scope.allGames[id2].team2){
 			$scope[groupBracket][team4_pts] += 3;
-			var winner_goals = $scope.allGames[id2].score.charAt(0);
-			$scope[groupBracket][team4_goals] += parseInt(winner_goals);
-			var loser_goals = $scope.allGames[id2].score.charAt(2);
-			$scope[groupBracket][team3_goals] += parseInt(loser_goals);
-			console.log("Mexico has " + $scope.groupA_bracket.Mexico_pts + "pts and this many goals: " + $scope.groupA_bracket.Mexico_goals + " Cameroon has " + $scope.groupA_bracket.Cameroon_pts + "pts and " + $scope.groupA_bracket.Cameroon_goals + " goals");
-			}
-			else{
+			var winner_goals2 = $scope.allGames[id2].score.charAt(0);
+			$scope[groupBracket][team4_goals] += parseInt(winner_goals2);
+			var loser_goals2 = $scope.allGames[id2].score.charAt(2);
+			$scope[groupBracket][team3_goals] += parseInt(loser_goals2);
+			}else{
 			$scope[groupBracket][team3_pts] += 1;
 			$scope[groupBracket][team4_pts] += 1;
-			var goals = $scope.allGames[id2].score.charAt(0);
-			$scope[groupBracket][team3_goals] += parseInt(goals);
-			$scope[groupBracket][team4_goals] += parseInt(goals);
-			
-			console.log("Mexico has " + $scope.groupA_bracket.Mexico_pts + "pts and this many goals: " + $scope.groupA_bracket.Mexico_goals + " Cameroon has " + $scope.groupA_bracket.Cameroon_pts + "pts and " + $scope.groupA_bracket.Cameroon_goals + " goals");
+			var goals2 = $scope.allGames[id2].score.charAt(0);
+			$scope[groupBracket][team3_goals] += parseInt(goals2);
+			$scope[groupBracket][team4_goals] += parseInt(goals2);
 			}
 
 			//game3     team1 vs team3
 			if ($scope.allGames[id3].winnerPick == $scope.allGames[id3].team1 ){
 			$scope[groupBracket][team1_pts] += 3;
-			var winner_goals = $scope.allGames[id3].score.charAt(0);
-			$scope[groupBracket][team1_goals] += parseInt(winner_goals);
-			var loser_goals = $scope.allGames[id3].score.charAt(2);
-			$scope[groupBracket][team3_goals] += parseInt(loser_goals);
-
-			console.log("Mexico has " + $scope.groupA_bracket.Mexico_pts + "pts and this many goals: " + $scope.groupA_bracket.Mexico_goals + " Brazil has " + $scope.groupA_bracket.Brazil_pts + "pts and " + $scope.groupA_bracket.Brazil_goals + " goals");
+			var winner_goals3 = $scope.allGames[id3].score.charAt(0);
+			$scope[groupBracket][team1_goals] += parseInt(winner_goals3);
+			var loser_goals3 = $scope.allGames[id3].score.charAt(2);
+			$scope[groupBracket][team3_goals] += parseInt(loser_goals3);
 			}	
 			else if($scope.allGames[id3].winnerPick == $scope.allGames[id3].team2){
 			$scope[groupBracket][team3_pts] += 3;
-			var winner_goals = $scope.allGames[id3].score.charAt(0);
-			$scope[groupBracket][team3_goals] += parseInt(winner_goals);
-			var loser_goals = $scope.allGames[id3].score.charAt(2);
-			$scope[groupBracket][team1_goals] += parseInt(loser_goals);
-			
-			console.log("Mexico has " + $scope.groupA_bracket.Mexico_pts + "pts and this many goals: " + $scope.groupA_bracket.Mexico_goals + " Brazil has " + $scope.groupA_bracket.Brazil_pts + "pts and " + $scope.groupA_bracket.Brazil_goals + " goals");			
-			}
-			else{
+			var winner_goals3 = $scope.allGames[id3].score.charAt(0);
+			$scope[groupBracket][team3_goals] += parseInt(winner_goals3);
+			var loser_goals3 = $scope.allGames[id3].score.charAt(2);
+			$scope[groupBracket][team1_goals] += parseInt(loser_goals3);		
+			}else{
 			$scope[groupBracket][team1_pts] += 1;
 			$scope[groupBracket][team3_pts] += 1;
-			var goals = $scope.allGames[id3].score.charAt(0);
-			$scope[groupBracket][team1_goals] += parseInt(goals);
-			$scope[groupBracket][team3_goals] += parseInt(goals);
-			
-			console.log("Mexico has " + $scope.groupA_bracket.Mexico_pts + "pts and this many goals: " + $scope.groupA_bracket.Mexico_goals + " Brazil has " + $scope.groupA_bracket.Brazil_pts + "pts and " + $scope.groupA_bracket.Brazil_goals + " goals");			
+			var goals3 = $scope.allGames[id3].score.charAt(0);
+			$scope[groupBracket][team1_goals] += parseInt(goals3);
+			$scope[groupBracket][team3_goals] += parseInt(goals3);		
 			}
 
 			//game4  team4 vs team2
 			if ($scope.allGames[id4].winnerPick == $scope.allGames[id4].team1 ){
 			$scope[groupBracket][team4_pts] += 3;
-			var winner_goals = $scope.allGames[id4].score.charAt(0);
-			$scope[groupBracket][team4_goals] += parseInt(winner_goals);
-			var loser_goals = $scope.allGames[id4].score.charAt(2);
-			$scope[groupBracket][team2_goals] += parseInt(loser_goals);
-
-			console.log("Cameroon has " + $scope.groupA_bracket.Cameroon_pts + "pts and this many goals: " + $scope.groupA_bracket.Cameroon_goals + " Croatia has " + $scope.groupA_bracket.Croatia_pts + "pts and " + $scope.groupA_bracket.Croatia_goals + " goals");
+			var winner_goals4 = $scope.allGames[id4].score.charAt(0);
+			$scope[groupBracket][team4_goals] += parseInt(winner_goals4);
+			var loser_goals4 = $scope.allGames[id4].score.charAt(2);
+			$scope[groupBracket][team2_goals] += parseInt(loser_goals4);
 			}	
 			else if($scope.allGames[id4].winnerPick == $scope.allGames[id4].team2){
 			$scope[groupBracket][team2_pts] += 3;
-			var winner_goals = $scope.allGames[id4].score.charAt(0);
-			$scope[groupBracket][team2_goals] += parseInt(winner_goals);
-			var loser_goals = $scope.allGames[id4].score.charAt(2);
-			$scope[groupBracket][team4_goals] += parseInt(loser_goals);
-			
-			console.log("Cameroon has " + $scope.groupA_bracket.Cameroon_pts + "pts and this many goals: " + $scope.groupA_bracket.Cameroon_goals + " Croatia has " + $scope.groupA_bracket.Croatia_pts + "pts and " + $scope.groupA_bracket.Croatia_goals + " goals");			
-			}
-			else{
+			var winner_goals4 = $scope.allGames[id4].score.charAt(0);
+			$scope[groupBracket][team2_goals] += parseInt(winner_goals4);
+			var loser_goals4 = $scope.allGames[id4].score.charAt(2);
+			$scope[groupBracket][team4_goals] += parseInt(loser_goals4);			
+			}else{
 			$scope[groupBracket][team2_pts] += 1;
 			$scope[groupBracket][team4_pts] += 1;
-			var goals = $scope.allGames[id4].score.charAt(0);
-			$scope[groupBracket][team2_goals] += parseInt(goals);
-			$scope[groupBracket][team4_goals] += parseInt(goals);
-			
-			console.log("Cameroon has " + $scope.groupA_bracket.Cameroon_pts + "pts and this many goals: " + $scope.groupA_bracket.Cameroon_goals + " Croatia has " + $scope.groupA_bracket.Croatia_pts + "pts and " + $scope.groupA_bracket.Croatia_goals + " goals");			
+			var goals4 = $scope.allGames[id4].score.charAt(0);
+			$scope[groupBracket][team2_goals] += parseInt(goals4);
+			$scope[groupBracket][team4_goals] += parseInt(goals4);			
 			}
 
 			//game5 team4 vs team1
 			if ($scope.allGames[id5].winnerPick == $scope.allGames[id5].team1 ){
 			$scope[groupBracket][team4_pts] += 3;
-			var winner_goals = $scope.allGames[id5].score.charAt(0);
-			$scope[groupBracket][team4_goals] += parseInt(winner_goals);
-			var loser_goals = $scope.allGames[id5].score.charAt(2);
-			$scope[groupBracket][team1_goals] += parseInt(loser_goals);
-
-			console.log("Cameroon has " + $scope.groupA_bracket.Cameroon_pts + "pts and this many goals: " + $scope.groupA_bracket.Cameroon_goals + " Brazil has " + $scope.groupA_bracket.Brazil_pts + "pts and " + $scope.groupA_bracket.Brazil_goals + " goals");
+			var winner_goals5 = $scope.allGames[id5].score.charAt(0);
+			$scope[groupBracket][team4_goals] += parseInt(winner_goals5);
+			var loser_goals5 = $scope.allGames[id5].score.charAt(2);
+			$scope[groupBracket][team1_goals] += parseInt(loser_goals5);
 			}	
 			else if($scope.allGames[id5].winnerPick == $scope.allGames[id5].team2){
 			$scope[groupBracket][team1_pts] += 3;
-			var winner_goals = $scope.allGames[id5].score.charAt(0);
-			$scope[groupBracket][team1_goals] += parseInt(winner_goals);
-			var loser_goals = $scope.allGames[id5].score.charAt(2);
-			$scope[groupBracket][team4_goals] += parseInt(loser_goals);
-			
-			console.log("Cameroon has " + $scope.groupA_bracket.Cameroon_pts + "pts and this many goals: " + $scope.groupA_bracket.Cameroon_goals + " Brazil has " + $scope.groupA_bracket.Brazil_pts + "pts and " + $scope.groupA_bracket.Brazil_goals + " goals");			
-			}
-			else{
+			var winner_goals5 = $scope.allGames[id5].score.charAt(0);
+			$scope[groupBracket][team1_goals] += parseInt(winner_goals5);
+			var loser_goals5 = $scope.allGames[id5].score.charAt(2);
+			$scope[groupBracket][team4_goals] += parseInt(loser_goals5);			
+			}else{
 			$scope[groupBracket][team1_pts] += 1;
 			$scope[groupBracket][team4_pts] += 1;
-			var goals = $scope.allGames[id5].score.charAt(0);
-			$scope[groupBracket][team1_goals] += parseInt(goals);
-			$scope[groupBracket][team4_goals] += parseInt(goals);
-			
-			console.log("Cameroon has " + $scope.groupA_bracket.Cameroon_pts + "pts and this many goals: " + $scope.groupA_bracket.Cameroon_goals + " Croatia has " + $scope.groupA_bracket.Croatia_pts + "pts and " + $scope.groupA_bracket.Croatia_goals + " goals");			
+			var goals5 = $scope.allGames[id5].score.charAt(0);
+			$scope[groupBracket][team1_goals] += parseInt(goals5);
+			$scope[groupBracket][team4_goals] += parseInt(goals5);		
 			}
 
 			//game6 team2 vs team3
-			if ($scope.allGames[id6].winnerPick == $scope.allGames[id5].team1 ){
+			if ($scope.allGames[id6].winnerPick == $scope.allGames[id6].team1 ){
 			$scope[groupBracket][team2_pts] += 3;
-			var winner_goals = $scope.allGames[id6].score.charAt(0);
-			$scope[groupBracket][team2_goals] += parseInt(winner_goals);
-			var loser_goals = $scope.allGames[id6].score.charAt(2);
-			$scope[groupBracket][team3_goals] += parseInt(loser_goals);
-
-			console.log("Croatia has " + $scope.groupA_bracket.Croatia_pts + "pts and this many goals: " + $scope.groupA_bracket.Croatia_goals + " Mexico has " + $scope.groupA_bracket.Mexico_pts + "pts and " + $scope.groupA_bracket.Mexico_goals + " goals");
+			var winner_goals6 = $scope.allGames[id6].score.charAt(0);
+			$scope[groupBracket][team2_goals] += parseInt(winner_goals6);
+			var loser_goals6 = $scope.allGames[id6].score.charAt(2);
+			$scope[groupBracket][team3_goals] += parseInt(loser_goals6);
 			}	
 			else if($scope.allGames[id6].winnerPick == $scope.allGames[id6].team2){
 			$scope[groupBracket][team3_pts] += 3;
-			var winner_goals = $scope.allGames[id6].score.charAt(0);
-			$scope[groupBracket][team3_goals] += parseInt(winner_goals);
-			var loser_goals = $scope.allGames[id6].score.charAt(2);
-			$scope[groupBracket][team2_goals] += parseInt(loser_goals);
-			
-			console.log("Croatia has " + $scope.groupA_bracket.Croatia_pts + "pts and this many goals: " + $scope.groupA_bracket.Croatia_goals + " Mexico has " + $scope.groupA_bracket.Mexico_pts + "pts and " + $scope.groupA_bracket.Mexico_goals + " goals");			
-			}
-			else{
+			var winner_goals6 = $scope.allGames[id6].score.charAt(0);
+			$scope[groupBracket][team3_goals] += parseInt(winner_goals6);
+			var loser_goals6 = $scope.allGames[id6].score.charAt(2);
+			$scope[groupBracket][team2_goals] += parseInt(loser_goals6);
+			}else{
 			$scope[groupBracket][team2_pts] += 1;
 			$scope[groupBracket][team3_pts] += 1;
-			var goals = $scope.allGames[id6].score.charAt(0);
-			$scope[groupBracket][team2_goals] += parseInt(goals);
-			$scope[groupBracket][team3_goals] += parseInt(goals);
-			
-			console.log("Croatia has " + $scope.groupA_bracket.Croatia_pts + "pts and this many goals: " + $scope.groupA_bracket.Croatia_goals + " Mexico has " + $scope.groupA_bracket.Mexico_pts + "pts and " + $scope.groupA_bracket.Mexico_goals + " goals");			
+			var goals6 = $scope.allGames[id6].score.charAt(0);
+			$scope[groupBracket][team2_goals] += parseInt(goals6);
+			$scope[groupBracket][team3_goals] += parseInt(goals6);
 			}
 
-			//Calculate 1st and 2nd Place of Group
-			var ptsArr = [
-			$scope[groupBracket][team1_pts], $scope[groupBracket][team2_pts], $scope[groupBracket][team3_pts], $scope[groupBracket][team4_pts]
-			];
-			ptsArr.sort(function(a, b){return a-b});
-			console.log(ptsArr);
+//END LOGIC OF COLLECTING POINTS AND GOALS FOR GROUP STAGES -----------------------------
+
+			//CALCULATE 1ST AND 2ND PLACE FOR EACH GROUP
+			$scope[groupBracket].group1st = null;
+			$scope[groupBracket].group1stImg = null;
+			$scope[groupBracket].group2nd = null;
+			$scope[groupBracket].group2ndImg = null;
+
+			$scope.groupOutcome = [
+											[$scope.allGames[id1].team1, $scope[groupBracket][team1_pts], $scope[groupBracket][team1_goals]],
+											[$scope.allGames[id1].team2, $scope[groupBracket][team2_pts], $scope[groupBracket][team2_goals]],
+											[$scope.allGames[id2].team1, $scope[groupBracket][team3_pts], $scope[groupBracket][team3_goals]],
+											[$scope.allGames[id2].team2, $scope[groupBracket][team4_pts], $scope[groupBracket][team4_goals]]
+										];
+			//sort teams according to PTS
+			$scope.groupOutcome.sort(function(a,b){return a[1] < b[1]});
+			console.log($scope.groupOutcome);
 			
-			console.log("Brazil " + $scope.groupA_bracket.Brazil_pts + "pts, " + $scope.groupA_bracket.Brazil_goals  + "goals. " + 
-						"Croatia " + $scope.groupA_bracket.Croatia_pts + "pts, " + $scope.groupA_bracket.Croatia_goals + "goals. " +
-						"Mexico " + $scope.groupA_bracket.Mexico_pts + "pts, " + $scope.groupA_bracket.Mexico_goals + "goals. " +
-						"Cameroon " + $scope.groupA_bracket.Cameroon_pts + "pts, " + $scope.groupA_bracket.Cameroon_goals + "goals. ");
+			$scope.groupOutcomeGoals = $scope.groupOutcome.slice(0);
+			$scope.groupOutcomeGoals.sort(function(a,b){return a[2] < b[2]});
+
+			console.log($scope.groupOutcomeGoals);
+
+
+
+//----------------LOGIC FOR DETERMINING GROUP WINNERS ----------------------------------------------------------------------
+			//if first team wins on points
+		if ($scope.groupOutcome[0][1] > $scope.groupOutcome[1][1]){
+				$scope[groupBracket].group1st = $scope.groupOutcome[0][0];
+				$scope[groupBracket].group1stImg = "images/flags/" + $scope.groupOutcome[0][0] + ".png";
+				console.log("Group Winner is" + $scope[groupBracket].group1st);
+				if ($scope.groupOutcome[1][1] > $scope.groupOutcome[2][1]){
+					$scope[groupBracket].group2nd = $scope.groupOutcome[1][0];
+					$scope[groupBracket].group2ndImg = "images/flags/" + $scope.groupOutcome[1][0] + ".png";
+					console.log("Group 2nd is" + $scope[groupBracket].group2nd);
+				}
+				else{
+
+					if ($scope.groupOutcome[1][2] > $scope.groupOutcome[2][2]){
+						$scope[groupBracket].group2nd = $scope.groupOutcome[1][0];
+						$scope[groupBracket].group2ndImg = "images/flags/" + $scope.groupOutcome[1][0] + ".png";
+						console.log("Group 2nd is" + $scope[groupBracket].group2nd);
+					}
+					else if($scope.groupOutcome[2][2] > $scope.groupOutcome[3][2]){
+						$scope[groupBracket].group2nd = $scope.groupOutcome[2][0];
+						$scope[groupBracket].group2ndImg = "images/flags/" + $scope.groupOutcome[2][0] + ".png";
+						console.log("Group 2nd is" + $scope[groupBracket].group2nd);
+					}
+					else if($scope.groupOutcome[3][2] > $scope.groupOutcome[1][2]){
+						$scope[groupBracket].group2nd = $scope.groupOutcome[3][0];
+						$scope[groupBracket].group2ndImg = "images/flags/" + $scope.groupOutcome[3][0] + ".png";
+						console.log("Group 2nd is" + $scope[groupBracket].group2nd);
+					}
+					//if points are equal, and goal differential is equal, find what game teams played against each other and determine that winner
+					else if($scope.groupOutcome[1][2] == $scope.groupOutcome[2][2]){
+					var whatGame = $scope.groupOutcome[1][0] + "," + $scope.groupOutcome[2][0];
+					var whatGameReverse = $scope.groupOutcome[2][0] + "," + $scope.groupOutcome[1][0];
+					
+					// 	for (var k=1; k<7; k++){
+					// 		console.log('game' + k);
+					// 		if (whatGame == [game + k] || whatGameReverse == [game + k]){
+								
+					// 			if($scope.allGames['id' + k].winnerPick == $scope.allGames['id' + k].team1){
+					// 			$scope[groupBracket].group1st = $scope.allGames['id' + k].team1;
+					// 			$scope[groupBracket].group1stImg = "images/flags/" + $scope.allGames['id' + k].team1 + ".png";
+					// 			$scope[groupBracket].group2nd = $scope.allGames['id' + k].team2;
+					// 			$scope[groupBracket].group2ndImg = "images/flags/" + $scope.allGames['id' + k].team2 + ".png";
+					// 			console.log("1st: " + $scope[groupBracket].group1st + ". Second: " + $scope[groupBracket].group2nd);
+					// 			}
+					// 			else if($scope.allGames['id' + k].winnerPick == $scope.allGames['id' + k].team2){
+								
+					// 			$scope[groupBracket].group1st = $scope.allGames['id' + k].team2;
+					// 			$scope[groupBracket].group1stImg = "images/flags/" + $scope.allGames['id' + k].team2 + ".png";
+					// 			$scope[groupBracket].group2nd = $scope.allGames['id' + k].team1;
+					// 			$scope[groupBracket].group2ndImg = "images/flags/" + $scope.allGames['id' + k].team1 + ".png";
+					// 			console.log("1st: " + $scope[groupBracket].group1st + ". Second: " + $scope[groupBracket].group2nd);
+					// 			}
+					// 			else{
+					// 			console.log("cannot calculate");
+								
+					// 			}
+							
+					// 	}
+					// }
+					// }
+					//check each game to see if strings are the same as game#, which is a string
+					if (whatGame == game1 || whatGameReverse == game1){
+						if($scope.allGames[id1].winnerPick == $scope.allGames[id1].team1){
+							$scope[groupBracket].group2nd = $scope.allGames[id1].team1;
+							$scope[groupBracket].group2ndImg = "images/flags/" + $scope.allGames[id1].team1 + ".png";
+						}
+						else if($scope.allGames[id1].winnerPick == $scope.allGames[id1].team2){
+							$scope[groupBracket].group2nd = $scope.allGames[id1].team2;
+							$scope[groupBracket].group2ndImg = "images/flags/" + $scope.allGames[id1].team2 + ".png";
+						}
+						else{
+							console.log("cannot calculate");
+						}
+					}
+					else if (whatGame == game2 || whatGameReverse == game2){
+						if($scope.allGames[id2].winnerPick == $scope.allGames[id2].team1){
+							$scope[groupBracket].group2nd = $scope.allGames[id2].team1;
+							$scope[groupBracket].group2ndImg = "images/flags/" + $scope.allGames[id2].team1 + ".png";
+						}
+						else if($scope.allGames[id2].winnerPick == $scope.allGames[id2].team2){
+							$scope[groupBracket].group2nd = $scope.allGames[id2].team2;
+							$scope[groupBracket].group2ndImg = "images/flags/" + $scope.allGames[id2].team2 + ".png";
+							console.log("Group 2nd is" + $scope[groupBracket].group2nd);
+						}
+						else{
+							console.log("cannot calculate");
+						}
+					}
+					else if (whatGame == game3 || whatGameReverse == game3){
+						if($scope.allGames[id3].winnerPick == $scope.allGames[id3].team1){
+							$scope[groupBracket].group2nd = $scope.allGames[id3].team1;
+							$scope[groupBracket].group2ndImg = "images/flags/" + $scope.allGames[id3].team1 + ".png";
+							console.log("Group 2nd is" + $scope[groupBracket].group2nd);
+						}
+						else if($scope.allGames[id3].winnerPick == $scope.allGames[id3].team2){
+							$scope[groupBracket].group2nd = $scope.allGames[id3].team2;
+							$scope[groupBracket].group2ndImg = "images/flags/" + $scope.allGames[id3].team2 + ".png";
+							console.log("Group 2nd is" + $scope[groupBracket].group2nd);
+						}
+						else{
+							console.log("cannot calculate");
+						}
+					}
+					else if (whatGame == game4 || whatGameReverse == game4){
+						if($scope.allGames[id4].winnerPick == $scope.allGames[id4].team1){
+							$scope[groupBracket].group2nd = $scope.allGames[id4].team1;
+							$scope[groupBracket].group2ndImg = "images/flags/" + $scope.allGames[id4].team1 + ".png";
+							console.log("Group 2nd is" + $scope[groupBracket].group2nd);
+						}
+						else if($scope.allGames[id4].winnerPick == $scope.allGames[id4].team2){
+							$scope[groupBracket].group2nd = $scope.allGames[id4].team2;
+							$scope[groupBracket].group2ndImg = "images/flags/" + $scope.allGames[id4].team2 + ".png";
+							console.log("Group 2nd is" + $scope[groupBracket].group2nd);
+						}
+						else{
+							console.log("cannot calculate");
+						}
+					}
+					else if (whatGame == game5 || whatGameReverse == game5){
+						if($scope.allGames[id5].winnerPick == $scope.allGames[id5].team1){
+							$scope[groupBracket].group2nd = $scope.allGames[id5].team1;
+							$scope[groupBracket].group2ndImg = "images/flags/" + $scope.allGames[id5].team1 + ".png";
+							console.log("Group 2nd is" + $scope[groupBracket].group2nd);
+						}
+						else if($scope.allGames[id5].winnerPick == $scope.allGames[id5].team2){
+							$scope[groupBracket].group2nd = $scope.allGames[id5].team2;
+							$scope[groupBracket].group2ndImg = "images/flags/" + $scope.allGames[id5].team2 + ".png";
+							console.log("Group 2nd is" + $scope[groupBracket].group2nd);
+						}
+						else{
+							console.log("cannot calculate");
+						}
+					}
+					else if (whatGame == game6 || whatGameReverse == game6){
+						if($scope.allGames[id6].winnerPick == $scope.allGames[id6].team1){
+							$scope[groupBracket].group2nd = $scope.allGames[id6].team1;
+							$scope[groupBracket].group2ndImg = "images/flags/" + $scope.allGames[id6].team1 + ".png";
+							console.log("Group 2nd is" + $scope[groupBracket].group2nd);
+						}
+						else if($scope.allGames[id6].winnerPick == $scope.allGames[id6].team2){
+							$scope[groupBracket].group2nd = $scope.allGames[id6].team2;
+							$scope[groupBracket].group2ndImg = "images/flags/" + $scope.allGames[id6].team2 + ".png";
+							console.log("Group 2nd is" + $scope[groupBracket].group2nd);
+						}
+						else{
+							console.log("cannot calculate");
+						}
+					}
+				}
+				else{
+						$scope[groupBracket].group2nd = $scope.groupOutcome[2][0];
+						$scope[groupBracket].group2ndImg = "images/flags/" + $scope.groupOutcome[2][0] + ".png";
+						console.log("Group 2nd is" + $scope[groupBracket].group2nd);
+					}
+				}
+			}
+			//first team and second team are tied for points, determine based on goals
+		else {
+				if ($scope.groupOutcome[0][2] > $scope.groupOutcome[1][2]){
+					$scope[groupBracket].group1st = $scope.groupOutcome[0][0];
+					$scope[groupBracket].group1stImg = "images/flags/" + $scope.groupOutcome[0][0] + ".png";
+					console.log("Group Winner is" + $scope[groupBracket].group1st);
+				
+					if ($scope.groupOutcome[1][1] > $scope.groupOutcome[2][1]){
+					$scope[groupBracket].group2nd = $scope.groupOutcome[1][0];
+					$scope[groupBracket].group2ndImg = "images/flags/" + $scope.groupOutcome[1][0] + ".png";
+					console.log("Group 2nd is" + $scope[groupBracket].group2nd);
+					}
+					else{
+					if ($scope.groupOutcome[1][2] > $scope.groupOutcome[2][2]){
+						$scope[groupBracket].group2nd = $scope.groupOutcome[1][0];
+						$scope[groupBracket].group2ndImg = "images/flags/" + $scope.groupOutcome[1][0] + ".png";
+						console.log("Group 2nd is" + $scope[groupBracket].group2nd);
+					}
+					else{
+						$scope[groupBracket].group2nd = $scope.groupOutcome[2][0];
+						$scope[groupBracket].group2ndImg = "images/flags/" + $scope.groupOutcome[2][0] + ".png";
+						console.log("Group 2nd is" + $scope[groupBracket].group2nd);
+						}
+					}
+				}
+
+				//if points are equal, and goal differential is equal, find what game teams played against each other and determine that winner
+				else if($scope.groupOutcome[0][2] == $scope.groupOutcome[1][2]){
+					var whatGame = $scope.groupOutcome[0][0] + "," + $scope.groupOutcome[1][0];
+					var whatGameReverse = $scope.groupOutcome[1][0] + "," + $scope.groupOutcome[0][0];
+					
+				// 	for (var k=1; k<7; k++){
+				// 		console.log('game' + k);
+				// 		if (whatGame == [game + k] || whatGameReverse == [game + k]){
+							
+				// 			if($scope.allGames['id' + k].winnerPick == $scope.allGames['id' + k].team1){
+				// 			$scope[groupBracket].group1st = $scope.allGames['id' + k].team1;
+				// 			$scope[groupBracket].group1stImg = "images/flags/" + $scope.allGames['id' + k].team1 + ".png";
+				// 			$scope[groupBracket].group2nd = $scope.allGames['id' + k].team2;
+				// 			$scope[groupBracket].group2ndImg = "images/flags/" + $scope.allGames['id' + k].team2 + ".png";
+				// 			console.log("1st: " + $scope[groupBracket].group1st + ". Second: " + $scope[groupBracket].group2nd);
+				// 			}
+				// 			else if($scope.allGames['id' + k].winnerPick == $scope.allGames['id' + k].team2){
+							
+				// 			$scope[groupBracket].group1st = $scope.allGames['id' + k].team2;
+				// 			$scope[groupBracket].group1stImg = "images/flags/" + $scope.allGames['id' + k].team2 + ".png";
+				// 			$scope[groupBracket].group2nd = $scope.allGames['id' + k].team1;
+				// 			$scope[groupBracket].group2ndImg = "images/flags/" + $scope.allGames['id' + k].team1 + ".png";
+				// 			console.log("1st: " + $scope[groupBracket].group1st + ". Second: " + $scope[groupBracket].group2nd);
+				// 			}
+				// 			else{
+				// 			console.log("cannot calculate");
+							
+				// 			}
+						
+				// 	}
+				// }
+				// }
+					//check each game to see if strings are the same as game#, which is a string
+					if (whatGame == game1 || whatGameReverse == game1){
+						if($scope.allGames[id1].winnerPick == $scope.allGames[id1].team1){
+							$scope[groupBracket].group1st = $scope.allGames[id1].team1;
+							$scope[groupBracket].group1stImg = "images/flags/" + $scope.allGames[id1].team1 + ".png";
+							$scope[groupBracket].group2nd = $scope.allGames[id1].team2;
+							$scope[groupBracket].group2ndImg = "images/flags/" + $scope.allGames[id1].team2 + ".png";
+						}
+						else if($scope.allGames[id1].winnerPick == $scope.allGames[id1].team2){
+							$scope[groupBracket].group1st = $scope.allGames[id1].team2;
+							$scope[groupBracket].group1stImg = "images/flags/" + $scope.allGames[id1].team2 + ".png";
+							$scope[groupBracket].group2nd = $scope.allGames[id1].team1;
+							$scope[groupBracket].group2ndImg = "images/flags/" + $scope.allGames[id1].team1 + ".png";
+						}
+						else{
+							console.log("cannot calculate");
+						}
+					}
+					else if (whatGame == game2 || whatGameReverse == game2){
+						if($scope.allGames[id2].winnerPick == $scope.allGames[id2].team1){
+							$scope[groupBracket].group1st = $scope.allGames[id2].team1;
+							$scope[groupBracket].group1stImg = "images/flags/" + $scope.allGames[id2].team1 + ".png";
+							$scope[groupBracket].group2nd = $scope.allGames[id2].team2;
+							$scope[groupBracket].group2ndImg = "images/flags/" + $scope.allGames[id2].team2 + ".png";
+						}
+						else if($scope.allGames[id2].winnerPick == $scope.allGames[id2].team2){
+							$scope[groupBracket].group1st = $scope.allGames[id2].team2;
+							$scope[groupBracket].group1stImg = "images/flags/" + $scope.allGames[id2].team2 + ".png";
+							$scope[groupBracket].group2nd = $scope.allGames[id2].team1;
+							$scope[groupBracket].group2ndImg = "images/flags/" + $scope.allGames[id2].team1 + ".png";
+						}
+						else{
+							console.log("cannot calculate");
+						}
+					}
+					else if (whatGame == game3 || whatGameReverse == game3){
+						if($scope.allGames[id3].winnerPick == $scope.allGames[id3].team1){
+							$scope[groupBracket].group1st = $scope.allGames[id3].team1;
+							$scope[groupBracket].group1stImg = "images/flags/" + $scope.allGames[id3].team1 + ".png";
+							$scope[groupBracket].group2nd = $scope.allGames[id3].team2;
+							$scope[groupBracket].group2ndImg = "images/flags/" + $scope.allGames[id3].team2 + ".png";
+						}
+						else if($scope.allGames[id3].winnerPick == $scope.allGames[id3].team2){
+							$scope[groupBracket].group1st = $scope.allGames[id3].team2;
+							$scope[groupBracket].group1stImg = "images/flags/" + $scope.allGames[id3].team2 + ".png";
+							$scope[groupBracket].group2nd = $scope.allGames[id3].team1;
+							$scope[groupBracket].group2ndImg = "images/flags/" + $scope.allGames[id3].team1 + ".png";
+						}
+						else{
+							console.log("cannot calculate");
+						}
+					}
+					else if (whatGame == game4 || whatGameReverse == game4){
+						if($scope.allGames[id4].winnerPick == $scope.allGames[id4].team1){
+							$scope[groupBracket].group1st = $scope.allGames[id4].team1;
+							$scope[groupBracket].group1stImg = "images/flags/" + $scope.allGames[id4].team1 + ".png";
+							$scope[groupBracket].group2nd = $scope.allGames[id4].team2;
+							$scope[groupBracket].group2ndImg = "images/flags/" + $scope.allGames[id4].team2 + ".png";
+						}
+						else if($scope.allGames[id4].winnerPick == $scope.allGames[id4].team2){
+							$scope[groupBracket].group1st = $scope.allGames[id4].team2;
+							$scope[groupBracket].group1stImg = "images/flags/" + $scope.allGames[id4].team2 + ".png";
+							$scope[groupBracket].group2nd = $scope.allGames[id4].team1;
+							$scope[groupBracket].group2ndImg = "images/flags/" + $scope.allGames[id4].team1 + ".png";
+						}
+						else{
+							console.log("cannot calculate");
+						}
+					}
+					else if (whatGame == game5 || whatGameReverse == game5){
+						if($scope.allGames[id5].winnerPick == $scope.allGames[id5].team1){
+							$scope[groupBracket].group1st = $scope.allGames[id5].team1;
+							$scope[groupBracket].group1stImg = "images/flags/" + $scope.allGames[id5].team1 + ".png";
+							$scope[groupBracket].group2nd = $scope.allGames[id5].team2;
+							$scope[groupBracket].group2ndImg = "images/flags/" + $scope.allGames[id5].team2 + ".png";
+							console.log("1st: " + $scope[groupBracket].group1st + ". Second: " + $scope[groupBracket].group2nd);
+						}
+						else if($scope.allGames[id5].winnerPick == $scope.allGames[id5].team2){
+							$scope[groupBracket].group1st = $scope.allGames[id5].team2;
+							$scope[groupBracket].group1stImg = "images/flags/" + $scope.allGames[id5].team2 + ".png";
+							$scope[groupBracket].group2nd = $scope.allGames[id5].team1;
+							$scope[groupBracket].group2ndImg = "images/flags/" + $scope.allGames[id5].team1 + ".png";
+							console.log("1st: " + $scope[groupBracket].group1st + ". Second: " + $scope[groupBracket].group2nd);
+						}
+						else{
+							console.log("cannot calculate");
+						}
+					}
+					else if (whatGame == game6 || whatGameReverse == game6){
+						if($scope.allGames[id6].winnerPick == $scope.allGames[id6].team1){
+							$scope[groupBracket].group1st = $scope.allGames[id6].team1;
+							$scope[groupBracket].group1stImg = "images/flags/" + $scope.allGames[id6].team1 + ".png";
+							$scope[groupBracket].group2nd = $scope.allGames[id6].team2;
+							$scope[groupBracket].group2ndImg = "images/flags/" + $scope.allGames[id6].team2 + ".png";
+						}
+						else if($scope.allGames[id6].winnerPick == $scope.allGames[id6].team2){
+							$scope[groupBracket].group1st = $scope.allGames[id6].team2;
+							$scope[groupBracket].group1stImg = "images/flags/" + $scope.allGames[id6].team2 + ".png";
+							$scope[groupBracket].group2nd = $scope.allGames[id6].team1;
+							$scope[groupBracket].group2ndImg = "images/flags/" + $scope.allGames[id6].team1 + ".png";
+						}
+						else{
+							console.log("cannot calculate");
+						}
+					}
+				}
+				else{
+					$scope[groupBracket].group1st = $scope.groupOutcome[1][0];
+					$scope[groupBracket].group1stImg = "images/flags/" + $scope.groupOutcome[1][0] + ".png";
+					console.log("Group Winner is" + $scope[groupBracket].group1st);
+				}
+
+		}
+			
+console.log($scope.groupA_bracket.group1st + "is the first place and " + $scope.groupA_bracket.group2nd + "is the second place");
+// ---------END LOGIC FOR GROUP WINNERS ----------------------------------------------------------------------
+
+
 	};
 
+
+//INIATES CALCULATEGROUPWINNER()
 	isAllGroupPicked = function(){
 		//groupA
 		if ($scope.allGames[0].gamePicked = true && $scope.allGames[1].gamePicked == true && $scope.allGames[16].gamePicked == true && $scope.allGames[17].gamePicked == true && 
