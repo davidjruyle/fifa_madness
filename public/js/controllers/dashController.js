@@ -223,7 +223,7 @@ angular.module('dashCtrl', []).controller('dashController', function($scope, das
 			//sort teams according to PTS
 			$scope.groupOutcome.sort(function(a,b){return a[1] < b[1]});
 			console.log($scope.groupOutcome);
-			
+
 			$scope.groupOutcomeGoals = $scope.groupOutcome.slice(0);
 			$scope.groupOutcomeGoals.sort(function(a,b){return a[2] < b[2]});
 
@@ -554,7 +554,9 @@ angular.module('dashCtrl', []).controller('dashController', function($scope, das
 				else{
 					$scope[groupBracket].group1st = $scope.groupOutcome[1][0];
 					$scope[groupBracket].group1stImg = "images/flags/" + $scope.groupOutcome[1][0] + ".png";
-					console.log("Group Winner is" + $scope[groupBracket].group1st);
+					$scope[groupBracket].group2nd = $scope.groupOutcome[0][0];
+					$scope[groupBracket].group2ndImg = "images/flags/" + $scope.groupOutcome[0][0] + ".png";
+					console.log("Group Winner is" + $scope[groupBracket].group1st +". And 2nd: " + $scope[groupBracket].group2nd);
 				}
 
 		}
@@ -568,6 +570,7 @@ console.log($scope.groupA_bracket.group1st + "is the first place and " + $scope.
 
 //INIATES CALCULATEGROUPWINNER()
 	isAllGroupPicked = function(){
+		
 		//groupA
 		if ($scope.allGames[0].gamePicked = true && $scope.allGames[1].gamePicked == true && $scope.allGames[16].gamePicked == true && $scope.allGames[17].gamePicked == true && 
 			$scope.allGames[32].gamePicked == true && $scope.allGames[33].gamePicked == true){
@@ -608,7 +611,7 @@ console.log($scope.groupA_bracket.group1st + "is the first place and " + $scope.
 //CHECK SCORE ON BLUR OF USER INPUT AND VALIDATE IT FOR LOGIC
 $scope.scorePattern = /^\d-\d$/;
 // HANDLE SCORE INPUT VALIDATION
-$scope.validateScore = function(id){
+$scope.validateScore = function(id,bracket){
 	var validScore = /^\d-\d$/.test($scope.allGames[id].score);
 	//if tied, make sure user enters equal score
 	if ($scope.allGames[id].tie == true && validScore == true){
@@ -619,6 +622,7 @@ $scope.validateScore = function(id){
 			$scope.allGames[id].gamePicked = false;
 			//enterWinError is for when a winner is picked but user enters Tie Score
 			$scope.allGames[id].enterWinError = false;
+			[bracket].pickedAllGroup = false;
 
 		}else if($scope.allGames[id].score.charAt(0) == $scope.allGames[id].score.charAt(2) && $scope.allGames[id].score != ""){
 			$scope.allGames[id].tie = true;
@@ -637,6 +641,7 @@ $scope.validateScore = function(id){
 					$scope.allGames[id].enterWinError = true;
 					$('#allGames'+ id).addClass("ng-invalid");
 					$scope.allGames[id].gamePicked = false;
+					[bracket].pickedAllGroup = false;
 
 				}else{
 					$scope.allGames[id].enterWinError = false;
@@ -648,8 +653,13 @@ $scope.validateScore = function(id){
 				$('#allGames'+ id).addClass("ng-invalid");
 				$scope.allGames[id].score = "";
 				$scope.allGames[id].gamePicked = false;
+				[bracket].pickedAllGroup = false;
 			}
 
+		}
+		else{
+			$scope.allGames[id].gamePicked = false;
+			[bracket].pickedAllGroup = false;
 		}
 	
 }
