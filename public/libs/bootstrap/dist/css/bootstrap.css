@@ -5297,7 +5297,7 @@ button.close {
   max-width: 276px;
   padding: 1px;
   text-align: left;
-  background-color: #4e5d6c;
+  background-color: #df691a;
   background-clip: padding-box;
   border: 1px solid transparent;
   border-radius: 0;
@@ -5323,8 +5323,8 @@ button.close {
   font-size: 15px;
   font-weight: normal;
   line-height: 18px;
-  background-color: #485563;
-  border-bottom: 1px solid #3d4954;
+  background-color: #df691a;
+  border-bottom: 1px solid #df691a;
   border-radius: 5px 5px 0 0;
 }
 .popover-content {
@@ -5358,7 +5358,7 @@ button.close {
   bottom: 1px;
   margin-left: -10px;
   border-bottom-width: 0;
-  border-top-color: #4e5d6c;
+  border-top-color: #df691a;
 }
 .popover.right > .arrow {
   top: 50%;
@@ -5372,7 +5372,7 @@ button.close {
   left: 1px;
   bottom: -10px;
   border-left-width: 0;
-  border-right-color: #4e5d6c;
+  border-right-color: #df691a;
 }
 .popover.bottom > .arrow {
   left: 50%;
@@ -5386,7 +5386,7 @@ button.close {
   top: 1px;
   margin-left: -10px;
   border-top-width: 0;
-  border-bottom-color: #4e5d6c;
+  border-bottom-color: #df691a;
 }
 .popover.left > .arrow {
   top: 50%;
@@ -5399,7 +5399,7 @@ button.close {
   content: " ";
   right: 1px;
   border-right-width: 0;
-  border-left-color: #4e5d6c;
+  border-left-color: #df691a;
   bottom: -10px;
 }
 .carousel {
