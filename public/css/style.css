@@ -22,6 +22,14 @@ th{
 	text-align: left;
 	font-size:0.85em;
 	margin-left: 5px;
+<<<<<<< HEAD
+}
+.teamNameBracket{
+	text-align: center;
+	font-size:0.70em;
+	margin-left: 5px;
+=======
+>>>>>>> 61f8210a15ad8501e8af7176110d6137c9b59a63
 }
 .groupLetter{
 }
@@ -29,7 +37,7 @@ th{
 	height:60px;
 	width:60px;
 	float:right;
-	margin-top:-58px;
+	margin-top:-55px;
 }
 
 img{
@@ -50,7 +58,7 @@ td.canPick:hover{
 .enterScore{
 	margin-left:5px;
 	width:110px;
-	margin-top:30px;
+	margin-top:20px;
 	height:100%;
 }
 .tieText{
@@ -62,13 +70,17 @@ td.canPick:hover{
 	width:100px;
 	text-align: center;
 	vertical-align: middle;
+<<<<<<< HEAD
+	padding-top: 25px;
+=======
 	padding-top: 35px;
+>>>>>>> 61f8210a15ad8501e8af7176110d6137c9b59a63
 	font-size: 1.1em;
 }
 input[type="radio"], input[type="checkbox"] {
     line-height: normal;
     margin: 0;
-    margin-top:40px;
+    margin-top:30px;
 }
 table{
 	table-layout: fixed;
@@ -103,5 +115,43 @@ input.ng-valid{
 	color:#df691a;
 }
 .lastRow{
+<<<<<<< HEAD
+	bottom:-50px;
+}
+.submitBracket{
+	position:absolute;
+	top:700px;
+	left:500px;
+}
+
+.bracketFlag{
+	width:50px;
+	height:50px;
+}
+
+table {
+/*  border-collapse: collapse;*/
+  border: none;
+}
+td {
+  width: 150em;
+  height:5em;
+  margin: 0;
+
+}
+tr{
+}
+td p {
+  border: solid 2px #4e5d6c;
+  margin-bottom: 20px;
+  padding: 1px 1px 1px 1px;
+}
+.canPickTourney:hover{
+	background-color: #4e5d6c !important;
+}
+
+
+=======
 	bottom:10px;
 }
+>>>>>>> 61f8210a15ad8501e8af7176110d6137c9b59a63

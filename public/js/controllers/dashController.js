@@ -58,11 +58,29 @@ angular.module('dashCtrl', []).controller('dashController', function($scope, das
 	];
 	//INITIALIZE ALL VARIABLES
 	//Constructor for bracket object
-	function Bracket(){
+	function Bracket(group1st,group2nd){
 		this.pickedAllGroup = false;
+		this.group1stImg = null;
+		this.group1st = group1st;
+		this.group2ndImg = null;
+		this.group2nd = group2nd;
 	}
-	var groupA_bracket = new Bracket();
+	var groupA_bracket = new Bracket("A1","A2");
 	$scope.groupA_bracket = groupA_bracket;
+	var groupB_bracket = new Bracket("B1","B2");
+	$scope.groupB_bracket = groupB_bracket;
+	var groupC_bracket = new Bracket("C1","C2");
+	$scope.groupC_bracket = groupC_bracket;
+	var groupD_bracket = new Bracket("D1","D2");
+	$scope.groupD_bracket = groupD_bracket;
+	var groupE_bracket = new Bracket("E1","E2");
+	$scope.groupE_bracket = groupE_bracket;
+	var groupF_bracket = new Bracket("F1","F2");
+	$scope.groupF_bracket = groupF_bracket;
+	var groupG_bracket = new Bracket("G1","G2");
+	$scope.groupG_bracket = groupG_bracket;
+	var groupH_bracket = new Bracket("H1","H2");
+
 	var groupB_bracket = new Bracket();
 	$scope.groupB_bracket = groupB_bracket;
 	var groupC_bracket = new Bracket();
@@ -842,16 +860,23 @@ $scope.validateScore = function(id,bracket){
 	};
 
 
-	function AccordionDemoCtrl($scope) {
-	  	$scope.oneAtATime = true;
+	// function AccordionDemoCtrl($scope) {
+	//   	$scope.oneAtATime = true;
 
-	 	 $scope.items = ['Item 1', 'Item 2', 'Item 3'];
+	//  	 $scope.items = ['Item 1', 'Item 2', 'Item 3'];
 
-	  	$scope.addItem = function() {
-	    	var newItemNo = $scope.items.length + 1;
-	    	$scope.items.push('Item ' + newItemNo);
-	  	};
+	//   	$scope.addItem = function() {
+	//     	var newItemNo = $scope.items.length + 1;
+	//     	$scope.items.push('Item ' + newItemNo);
+	//   	};
 
-	}	
+	// }	
+
+	//HANDLE ALL TOURNAMENT ROUND OF 16 BELOW -------------------------------------------
+
+
+	
+
+
 
 });
