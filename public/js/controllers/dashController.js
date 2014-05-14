@@ -67,6 +67,7 @@ angular.module('dashCtrl', []).controller('dashController', function($scope, das
 	}
 	var groupA_bracket = new Bracket("A1","A2");
 	$scope.groupA_bracket = groupA_bracket;
+<<<<<<< HEAD
 	var groupB_bracket = new Bracket("B1","B2");
 	$scope.groupB_bracket = groupB_bracket;
 	var groupC_bracket = new Bracket("C1","C2");
@@ -80,6 +81,21 @@ angular.module('dashCtrl', []).controller('dashController', function($scope, das
 	var groupG_bracket = new Bracket("G1","G2");
 	$scope.groupG_bracket = groupG_bracket;
 	var groupH_bracket = new Bracket("H1","H2");
+=======
+	var groupB_bracket = new Bracket();
+	$scope.groupB_bracket = groupB_bracket;
+	var groupC_bracket = new Bracket();
+	$scope.groupC_bracket = groupC_bracket;
+	var groupD_bracket = new Bracket();
+	$scope.groupD_bracket = groupD_bracket;
+	var groupE_bracket = new Bracket();
+	$scope.groupE_bracket = groupE_bracket;
+	var groupF_bracket = new Bracket();
+	$scope.groupF_bracket = groupF_bracket;
+	var groupG_bracket = new Bracket();
+	$scope.groupG_bracket = groupG_bracket;
+	var groupH_bracket = new Bracket();
+>>>>>>> 61f8210a15ad8501e8af7176110d6137c9b59a63
 	$scope.groupH_bracket = groupH_bracket;
 
 

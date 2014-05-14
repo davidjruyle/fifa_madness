@@ -22,11 +22,14 @@ th{
 	text-align: left;
 	font-size:0.85em;
 	margin-left: 5px;
+<<<<<<< HEAD
 }
 .teamNameBracket{
 	text-align: center;
 	font-size:0.70em;
 	margin-left: 5px;
+=======
+>>>>>>> 61f8210a15ad8501e8af7176110d6137c9b59a63
 }
 .groupLetter{
 }
@@ -67,7 +70,11 @@ td.canPick:hover{
 	width:100px;
 	text-align: center;
 	vertical-align: middle;
+<<<<<<< HEAD
 	padding-top: 25px;
+=======
+	padding-top: 35px;
+>>>>>>> 61f8210a15ad8501e8af7176110d6137c9b59a63
 	font-size: 1.1em;
 }
 input[type="radio"], input[type="checkbox"] {
@@ -108,6 +115,7 @@ input.ng-valid{
 	color:#df691a;
 }
 .lastRow{
+<<<<<<< HEAD
 	bottom:-50px;
 }
 .submitBracket{
@@ -143,3 +151,7 @@ td p {
 }
 
 
+=======
+	bottom:10px;
+}
+>>>>>>> 61f8210a15ad8501e8af7176110d6137c9b59a63
