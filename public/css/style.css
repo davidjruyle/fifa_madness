@@ -10,7 +10,7 @@ body { padding-top:30px;
 .nav, .pagination, .carousel, .panel-title a { cursor: pointer;}
 
 td{
-	font-size: 1.5em;
+	font-size: 1.4em;
 	text-align: left;
 	padding: 5px;
 }
@@ -20,6 +20,13 @@ th{
 }
 .teamName{
 	text-align: left;
+	font-size:0.85em;
+	margin-left: 5px;
+}
+.teamNameBracket{
+	text-align: center;
+	font-size:0.70em;
+	margin-left: 5px;
 }
 .groupLetter{
 }
@@ -27,7 +34,7 @@ th{
 	height:60px;
 	width:60px;
 	float:right;
-	margin-top:-58px;
+	margin-top:-55px;
 }
 
 img{
@@ -48,23 +55,25 @@ td.canPick:hover{
 .enterScore{
 	margin-left:5px;
 	width:110px;
-	margin-top:30px;
+	margin-top:20px;
 	height:100%;
 }
 .tieText{
 	margin:25px;
 	text-align: center;
+
 }
 .tieTd{
 	width:100px;
 	text-align: center;
 	vertical-align: middle;
-	padding-top: 35px;
+	padding-top: 25px;
+	font-size: 1.1em;
 }
 input[type="radio"], input[type="checkbox"] {
     line-height: normal;
     margin: 0;
-    margin-top:40px;
+    margin-top:30px;
 }
 table{
 	table-layout: fixed;
@@ -80,7 +89,7 @@ input.ng-valid{
 }
 
 .accordion{
-	border-radius: 5px;
+	border-radius: 50px;
 }
 .notTiedError{
 	font-size: .75em;
@@ -90,7 +99,7 @@ input.ng-valid{
 	font-size: 0.8em;
 }
 .arena{
-	font-size: 0.7em;
+	font-size: 0.75em;
 }
 .popover  .popover-inner {background-color: #df691a; border-left-color: #df691a; color:#ebebeb; font-size:0.8em;}
 .popover-arrow{
@@ -98,3 +107,39 @@ input.ng-valid{
 	background-color:#df691a;
 	color:#df691a;
 }
+.lastRow{
+	bottom:-50px;
+}
+.submitBracket{
+	position:absolute;
+	top:700px;
+	left:500px;
+}
+
+.bracketFlag{
+	width:50px;
+	height:50px;
+}
+
+table {
+/*  border-collapse: collapse;*/
+  border: none;
+}
+td {
+  width: 150em;
+  height:5em;
+  margin: 0;
+
+}
+tr{
+}
+td p {
+  border: solid 2px #4e5d6c;
+  margin-bottom: 20px;
+  padding: 1px 1px 1px 1px;
+}
+.canPickTourney:hover{
+	background-color: #4e5d6c !important;
+}
+
+
