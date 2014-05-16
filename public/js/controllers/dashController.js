@@ -3,8 +3,53 @@ angular.module('dashCtrl', []).controller('dashController', function($scope, das
 	$scope.enterWinErrorMsg = "Invalid Score";
 	var allData = {};
 	$scope.allData = allData;
-	// var groupWinners = [];
-	// $scope.groupWinners = groupWinners;
+	
+
+//INITIALIZE ALL VARIABLES
+	//Constructor for bracket object
+	function Bracket(group1st,group2nd){
+		this.pickedAllGroup = false;
+		this.group1stImg = null;
+		this.group1st = group1st;
+		this.group2ndImg = null;
+		this.group2nd = group2nd;
+	}
+	var groupA_bracket = new Bracket("A1","A2");
+	$scope.groupA_bracket = groupA_bracket;
+	var groupB_bracket = new Bracket("B1","B2");
+	$scope.groupB_bracket = groupB_bracket;
+	var groupC_bracket = new Bracket("C1","C2");
+	$scope.groupC_bracket = groupC_bracket;
+	var groupD_bracket = new Bracket("D1","D2");
+	$scope.groupD_bracket = groupD_bracket;
+	var groupE_bracket = new Bracket("E1","E2");
+	$scope.groupE_bracket = groupE_bracket;
+	var groupF_bracket = new Bracket("F1","F2");
+	$scope.groupF_bracket = groupF_bracket;
+	var groupG_bracket = new Bracket("G1","G2");
+	$scope.groupG_bracket = groupG_bracket;
+	var groupH_bracket = new Bracket("H1","H2");
+	$scope.groupH_bracket = groupH_bracket;
+
+	var tournamentWinner = {};
+	$scope.tournamentWinner = tournamentWinner;
+	tournamentWinner.game48 = "A1 - B2";
+	tournamentWinner.game49 = "C1 - D2";
+	tournamentWinner.game50 = "B1 - A2";
+	tournamentWinner.game51 = "D1 - C2";
+	tournamentWinner.game52 = "E1 - F2";
+	tournamentWinner.game53 = "G1 - H2";
+	tournamentWinner.game54 = "F1 - E2";
+	tournamentWinner.game55 = "H1 - G2";
+	tournamentWinner.game56 = "W A1B2 - W C1D2";
+	tournamentWinner.game57 = "W E1F2 - W G1H2";
+	tournamentWinner.game58 = "W B1A2 - W D1C2";
+	tournamentWinner.game59 = "W F1E2 - W H1G2";
+	tournamentWinner.game60 = "Semi-finals";
+	tournamentWinner.game61 = "Semi-finals";
+	tournamentWinner.game62 = "Third Place";
+	tournamentWinner.game63 = "Final";
+
 
 	$scope.allGames = [
 		{id: 0, team1: "Brazil", team1_key: "BRA", team2: "Croatia", team2_key: "CRO", score: "", tie: false, winnerPick: "", winnerPickImg: "", winnerPickKey: "", loserPickKey: "", enterWinError: false, scoreNotTied: false, gamePicked: false, displayInputScore: false},
@@ -55,46 +100,18 @@ angular.module('dashCtrl', []).controller('dashController', function($scope, das
 		{id: 45, team1: "Portugal", team1_key: "POR", team2: "Ghana", team2_key: "GHA", score: "", tie: false, winnerPick: "", winnerPickImg: "", winnerPickKey: "", loserPickKey: "", enterWinError: false, scoreNotTied: false, gamePicked: false, displayInputScore: false},
 		{id: 46, team1: "South Korea", team1_key: "KOR", team2: "Belgium", team2_key: "BEL", score: "", tie: false, winnerPick: "", winnerPickImg: "", winnerPickKey: "", loserPickKey: "", enterWinError: false, scoreNotTied: false, gamePicked: false, displayInputScore: false},
 		{id: 47, team1: "Algeria", team1_key: "ALG", team2: "Russia", team2_key: "RUS", score: "", tie: false, winnerPick: "", winnerPickImg: "", winnerPickKey: "", loserPickKey: "", enterWinError: false, scoreNotTied: false, gamePicked: false, displayInputScore: false},
+		//Tournament Round 1
+		{id: 48, team1: groupA_bracket.group1st, team2: groupB_bracket.group2nd, score: "", tie: false, winnerPick: "A1 B2", winnerPickImg: "", winnerPickKey: "", loserPickKey: "", enterWinError: false, scoreNotTied: false, gamePicked: false, displayInputScore: false},
+		{id: 49, team1: groupC_bracket.group1st, team2: groupD_bracket.group2nd, score: "", tie: false, winnerPick: "", winnerPickImg: "", winnerPickKey: "", loserPickKey: "", enterWinError: false, scoreNotTied: false, gamePicked: false, displayInputScore: false},
+		{id: 50, team1: groupB_bracket.group1st, team2: groupA_bracket.group2nd, score: "", tie: false, winnerPick: "", winnerPickImg: "", winnerPickKey: "", loserPickKey: "", enterWinError: false, scoreNotTied: false, gamePicked: false, displayInputScore: false},
+		{id: 51, team1: groupD_bracket.group1st, team2: groupC_bracket.group2nd, score: "", tie: false, winnerPick: "", winnerPickImg: "", winnerPickKey: "", loserPickKey: "", enterWinError: false, scoreNotTied: false, gamePicked: false, displayInputScore: false},
+		{id: 52, team1: groupE_bracket.group1st, team2: groupF_bracket.group2nd, score: "", tie: false, winnerPick: "", winnerPickImg: "", winnerPickKey: "", loserPickKey: "", enterWinError: false, scoreNotTied: false, gamePicked: false, displayInputScore: false},
+		{id: 53, team1: groupG_bracket.group1st, team2: groupH_bracket.group2nd, score: "", tie: false, winnerPick: "", winnerPickImg: "", winnerPickKey: "", loserPickKey: "", enterWinError: false, scoreNotTied: false, gamePicked: false, displayInputScore: false},
+		{id: 54, team1: groupF_bracket.group1st, team2: groupE_bracket.group2nd, score: "", tie: false, winnerPick: "", winnerPickImg: "", winnerPickKey: "", loserPickKey: "", enterWinError: false, scoreNotTied: false, gamePicked: false, displayInputScore: false},
+		{id: 55, team1: groupH_bracket.group1st, team2: groupG_bracket.group2nd, score: "", tie: false, winnerPick: "", winnerPickImg: "", winnerPickKey: "", loserPickKey: "", enterWinError: false, scoreNotTied: false, gamePicked: false, displayInputScore: false}
+		//Tournament Round 2
+		
 	];
-	//INITIALIZE ALL VARIABLES
-	//Constructor for bracket object
-	function Bracket(group1st,group2nd){
-		this.pickedAllGroup = false;
-		this.group1stImg = null;
-		this.group1st = group1st;
-		this.group2ndImg = null;
-		this.group2nd = group2nd;
-	}
-	var groupA_bracket = new Bracket("A1","A2");
-	$scope.groupA_bracket = groupA_bracket;
-	var groupB_bracket = new Bracket("B1","B2");
-	$scope.groupB_bracket = groupB_bracket;
-	var groupC_bracket = new Bracket("C1","C2");
-	$scope.groupC_bracket = groupC_bracket;
-	var groupD_bracket = new Bracket("D1","D2");
-	$scope.groupD_bracket = groupD_bracket;
-	var groupE_bracket = new Bracket("E1","E2");
-	$scope.groupE_bracket = groupE_bracket;
-	var groupF_bracket = new Bracket("F1","F2");
-	$scope.groupF_bracket = groupF_bracket;
-	var groupG_bracket = new Bracket("G1","G2");
-	$scope.groupG_bracket = groupG_bracket;
-	var groupH_bracket = new Bracket("H1","H2");
-
-	var groupB_bracket = new Bracket();
-	$scope.groupB_bracket = groupB_bracket;
-	var groupC_bracket = new Bracket();
-	$scope.groupC_bracket = groupC_bracket;
-	var groupD_bracket = new Bracket();
-	$scope.groupD_bracket = groupD_bracket;
-	var groupE_bracket = new Bracket();
-	$scope.groupE_bracket = groupE_bracket;
-	var groupF_bracket = new Bracket();
-	$scope.groupF_bracket = groupF_bracket;
-	var groupG_bracket = new Bracket();
-	$scope.groupG_bracket = groupG_bracket;
-	var groupH_bracket = new Bracket();
-	$scope.groupH_bracket = groupH_bracket;
 
 
 	
@@ -243,10 +260,10 @@ angular.module('dashCtrl', []).controller('dashController', function($scope, das
 //END LOGIC OF COLLECTING POINTS AND GOALS FOR GROUP STAGES -----------------------------
 
 			//CALCULATE 1ST AND 2ND PLACE FOR EACH GROUP
-			$scope[groupBracket].group1st = null;
-			$scope[groupBracket].group1stImg = null;
-			$scope[groupBracket].group2nd = null;
-			$scope[groupBracket].group2ndImg = null;
+			// $scope[groupBracket].group1st = null;
+			// $scope[groupBracket].group1stImg = null;
+			// $scope[groupBracket].group2nd = null;
+			// $scope[groupBracket].group2ndImg = null;
 
 			$scope.groupOutcome = [
 											[$scope.allGames[id1].team1, $scope[groupBracket][team1_pts], $scope[groupBracket][team1_goals]],
@@ -874,8 +891,12 @@ $scope.validateScore = function(id,bracket){
 
 	//HANDLE ALL TOURNAMENT ROUND OF 16 BELOW -------------------------------------------
 
+	$scope.advanceWinners = function(event,id){
+		console.log(event);
+		$scope.allGames[id].winnerPick = event.target.attributes.data.value;
+		$scope.allGames[id].winnerPickImg = "images/flags/" + event.target.attributes.data.value + ".png";
 
-	
+	};
 
 
 

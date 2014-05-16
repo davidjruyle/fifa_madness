@@ -22,14 +22,11 @@ th{
 	text-align: left;
 	font-size:0.85em;
 	margin-left: 5px;
-<<<<<<< HEAD
 }
 .teamNameBracket{
 	text-align: center;
-	font-size:0.70em;
-	margin-left: 5px;
-=======
->>>>>>> 61f8210a15ad8501e8af7176110d6137c9b59a63
+	font-size:0.9em;
+	padding:5px;
 }
 .groupLetter{
 }
@@ -50,6 +47,7 @@ img{
 .winnerPick{
 	background-color: #c8c8c8 !important;
 	color: #4e5d6c !important;
+	white-space: pre-wrap;
 }
 
 td.canPick:hover{
@@ -70,11 +68,8 @@ td.canPick:hover{
 	width:100px;
 	text-align: center;
 	vertical-align: middle;
-<<<<<<< HEAD
 	padding-top: 25px;
-=======
 	padding-top: 35px;
->>>>>>> 61f8210a15ad8501e8af7176110d6137c9b59a63
 	font-size: 1.1em;
 }
 input[type="radio"], input[type="checkbox"] {
@@ -115,18 +110,19 @@ input.ng-valid{
 	color:#df691a;
 }
 .lastRow{
-<<<<<<< HEAD
 	bottom:-50px;
 }
 .submitBracket{
-	position:absolute;
-	top:700px;
-	left:500px;
+	text-align: center;
+	padding:25px;
 }
 
 .bracketFlag{
-	width:50px;
-	height:50px;
+/*	height:40px;
+	width:40px;*/
+	margin-left: -5px;
+	text-align: left;
+	padding-right: 5px;
 }
 
 table {
@@ -138,20 +134,19 @@ td {
   height:5em;
   margin: 0;
 
+  border: solid 2px #4e5d6c;
+
 }
 tr{
 }
 td p {
   border: solid 2px #4e5d6c;
   margin-bottom: 20px;
-  padding: 1px 1px 1px 1px;
+  padding: 5px 15px 5px 15px;
+
+    text-align: center;
 }
 .canPickTourney:hover{
 	background-color: #4e5d6c !important;
 }
 
-
-=======
-	bottom:10px;
-}
->>>>>>> 61f8210a15ad8501e8af7176110d6137c9b59a63
