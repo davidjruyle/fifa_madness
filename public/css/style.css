@@ -22,16 +22,17 @@ th{
 	text-align: left;
 	font-size:0.85em;
 	margin-left: 5px;
-<<<<<<< HEAD
 }
 .teamNameBracket{
 	text-align: center;
-	font-size:0.70em;
-	margin-left: 5px;
-=======
->>>>>>> 61f8210a15ad8501e8af7176110d6137c9b59a63
+	font-size:0.9em;
+	margin-left: 10px;
 }
 .groupLetter{
+}
+.groupAccordion{
+	min-width: 1700px;
+	border-radius: 45px;
 }
 .tinyTeamFlag{
 	height:60px;
@@ -50,6 +51,7 @@ img{
 .winnerPick{
 	background-color: #c8c8c8 !important;
 	color: #4e5d6c !important;
+	white-space: pre-wrap;
 }
 
 td.canPick:hover{
@@ -70,11 +72,8 @@ td.canPick:hover{
 	width:100px;
 	text-align: center;
 	vertical-align: middle;
-<<<<<<< HEAD
 	padding-top: 25px;
-=======
 	padding-top: 35px;
->>>>>>> 61f8210a15ad8501e8af7176110d6137c9b59a63
 	font-size: 1.1em;
 }
 input[type="radio"], input[type="checkbox"] {
@@ -84,6 +83,7 @@ input[type="radio"], input[type="checkbox"] {
 }
 table{
 	table-layout: fixed;
+	border-radius: 10px;
 }
 input.ng-invalid { 
     border: 2px red solid;
@@ -93,10 +93,6 @@ input.ng-valid{
 }
 .error{
 	text-align: center;
-}
-
-.accordion{
-	border-radius: 50px;
 }
 .notTiedError{
 	font-size: .75em;
@@ -115,43 +111,284 @@ input.ng-valid{
 	color:#df691a;
 }
 .lastRow{
-<<<<<<< HEAD
 	bottom:-50px;
 }
 .submitBracket{
+	text-align: center;
+	font-size: 1.25em;
+	padding:10px;
+	margin-bottom: 25px;
 	position:absolute;
-	top:700px;
-	left:500px;
+	bottom:10%;
+	left:45.5%;
+	border-radius: 30px;
 }
 
 .bracketFlag{
-	width:50px;
 	height:50px;
+	width:50px;
+	left:0;
+	text-align: left;
+	padding: 0px;
+	padding-bottom: 3px;
+
 }
 
 table {
 /*  border-collapse: collapse;*/
   border: none;
+  min-width: 600px;
 }
 td {
   width: 150em;
   height:5em;
   margin: 0;
 
+  border: solid 2px #4e5d6c;
+
 }
-tr{
-}
+
 td p {
   border: solid 2px #4e5d6c;
   margin-bottom: 20px;
-  padding: 1px 1px 1px 1px;
+  padding: 5px 15px 5px 15px;
+
+    text-align: center;
 }
-.canPickTourney:hover{
+/*.canPickTourney:hover{
+	background-color: #4e5d6c !important;
+}*/
+
+.roundof16{
+	position:relative;
+	width:1400px;
+/*	right:15%;*/
+	left:-15%;
+	height:1000px;
+	min-width: 1200px;
+	margin-left: 15px;
+}
+.bracketBox{
+	width:175px;
+	height:50px;
+	background-color: #2b3e50;
+	border: 2px solid #4e5d6c;
+	border-radius: 45px;
+}
+.bracketBox:hover{
 	background-color: #4e5d6c !important;
 }
-
-
-=======
-	bottom:10px;
+.tourneyLine{
+	position:absolute;
+	z-index: -1;
+	height:195px;
+	width:60px;
+	border-radius: 95px;
 }
->>>>>>> 61f8210a15ad8501e8af7176110d6137c9b59a63
+
+/*First Round*/
+#a1{
+	position: absolute;
+	top:125px;
+}
+#b2{
+	position:absolute;
+	top:175px;
+
+}
+#c1{
+	position:absolute;
+	top:300px;
+}
+#d2{
+	position:absolute;
+	top:350px;
+}
+#e1{
+	position: absolute;
+	top:475px;
+}
+#f2{
+	position:absolute;
+	top:525px;
+
+}
+#g1{
+	position:absolute;
+	top:650px;
+}
+#h2{
+	position:absolute;
+	top:700px;
+}
+
+
+
+#b1{
+	position: absolute;
+	top:125px;
+	left:90%;
+}
+#a2{
+	position:absolute;
+	top:175px;
+	left:90%;
+}
+#d1{
+	position:absolute;
+	top:300px;
+	left:90%;
+}
+#c2{
+	position:absolute;
+	top:350px;
+	left:90%;
+}
+#f1{
+	position: absolute;
+	top:475px;
+	left:90%;
+}
+#e2{
+	position:absolute;
+	top:525px;
+	left:90%;
+
+}
+#h1{
+	position:absolute;
+	top:650px;
+	left:90%;
+}
+#g2{
+	position:absolute;
+	top:700px;
+	left:90%;
+}
+
+/*Second Round*/
+#winner48{
+	position: absolute;
+	top:150px;
+	left:12%;
+}
+#winner49{
+	position: absolute;
+	top: 325px;
+	left:12%;
+}
+#winner52{
+	position: absolute;
+	top:500px;
+	left:12%;
+}
+#winner53{
+	position: absolute;
+	top: 675px;
+	left:12%;
+}
+#winner50{
+	position: absolute;
+	top:150px;
+	left:78%;
+}
+#winner51{
+	position: absolute;
+	top: 325px;
+	left:78%;
+}
+#winner54{
+	position: absolute;
+	top:500px;
+	left:78%;
+}
+#winner55{
+	position: absolute;
+	top: 675px;
+	left:78%;
+}
+
+/*Third Round*/
+#winner56{
+	position: absolute;
+	top: 235px;
+	left:25%;
+}
+#winner57{
+	position: absolute;
+	top: 590px;
+	left:25%;
+}
+#winner58{
+	position: absolute;
+	top: 235px;
+	left:64.75%;
+}
+#winner59{
+	position: absolute;
+	top: 590px;
+	left:64.75%;
+}
+#winner60{
+	position: absolute;
+	top: 410px;
+	left:35%;
+}
+#winner61{
+	position: absolute;
+	top: 410px;
+	left:55%;
+}
+/*FINALS*/
+
+#winner63{
+	position: absolute;
+	top: 200px;
+	left:45%;
+	border: 2px solid #df691a;
+	width:175px;
+	height:50px;
+	background-color: #2b3e50;
+	border-radius: 45px;
+}
+#winner63:hover{
+	background-color: #df691a;
+}
+
+#line61{
+	top:165px;
+	left:21%;
+	border-right: 2px solid  #4e5d6c;
+
+}
+#line62{
+	top:515px;
+	left:21%;
+	border-right: 2px solid  #4e5d6c;
+}
+#line63{
+	top:165px;
+	left:77%;
+	border-left: 2px solid  #4e5d6c;
+
+}
+#line64{
+	top:515px;
+	left:77%;
+	border-left: 2px solid  #4e5d6c;
+
+}
+#line65{
+	height:375px;
+	top:250px;
+	left:34%;
+	border-right: 2px solid  #4e5d6c;
+}
+#line66{
+	height:375px;
+	top:250px;
+	left:64%;
+	border-left: 2px solid  #4e5d6c;
+
+}
+

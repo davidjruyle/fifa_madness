@@ -12,7 +12,6 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
 			templateUrl: 'views/dashboard.html',
 			controller: 'dashController'
 		})
-
 		.when('/leaderboard', {
 			templateUrl: 'views/leaderboard.html',
 			controller: 'leaderboardController'	
