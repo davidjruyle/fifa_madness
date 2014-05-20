@@ -31,25 +31,6 @@ angular.module('dashCtrl', []).controller('dashController', function($scope, das
 	var groupH_bracket = new Bracket("H1","H2");
 	$scope.groupH_bracket = groupH_bracket;
 
-	var tournamentWinner = {};
-	$scope.tournamentWinner = tournamentWinner;
-	tournamentWinner.game48 = "A1 - B2";
-	tournamentWinner.game49 = "C1 - D2";
-	tournamentWinner.game50 = "B1 - A2";
-	tournamentWinner.game51 = "D1 - C2";
-	tournamentWinner.game52 = "E1 - F2";
-	tournamentWinner.game53 = "G1 - H2";
-	tournamentWinner.game54 = "F1 - E2";
-	tournamentWinner.game55 = "H1 - G2";
-	tournamentWinner.game56 = "W A1B2 - W C1D2";
-	tournamentWinner.game57 = "W E1F2 - W G1H2";
-	tournamentWinner.game58 = "W B1A2 - W D1C2";
-	tournamentWinner.game59 = "W F1E2 - W H1G2";
-	tournamentWinner.game60 = "Semi-finals";
-	tournamentWinner.game61 = "Semi-finals";
-	tournamentWinner.game62 = "Third Place";
-	tournamentWinner.game63 = "Final";
-
 
 	$scope.allGames = [
 		{id: 0, team1: "Brazil", team1_key: "BRA", team2: "Croatia", team2_key: "CRO", score: "", tie: false, winnerPick: "", winnerPickImg: "", winnerPickKey: "", loserPickKey: "", enterWinError: false, scoreNotTied: false, gamePicked: false, displayInputScore: false},
@@ -102,19 +83,35 @@ angular.module('dashCtrl', []).controller('dashController', function($scope, das
 		{id: 47, team1: "Algeria", team1_key: "ALG", team2: "Russia", team2_key: "RUS", score: "", tie: false, winnerPick: "", winnerPickImg: "", winnerPickKey: "", loserPickKey: "", enterWinError: false, scoreNotTied: false, gamePicked: false, displayInputScore: false},
 		//Tournament Round 1
 		{id: 48, team1: groupA_bracket.group1st, team2: groupB_bracket.group2nd, score: "", tie: false, winnerPick: "A1 B2", winnerPickImg: "", winnerPickKey: "", loserPickKey: "", enterWinError: false, scoreNotTied: false, gamePicked: false, displayInputScore: false},
-		{id: 49, team1: groupC_bracket.group1st, team2: groupD_bracket.group2nd, score: "", tie: false, winnerPick: "", winnerPickImg: "", winnerPickKey: "", loserPickKey: "", enterWinError: false, scoreNotTied: false, gamePicked: false, displayInputScore: false},
-		{id: 50, team1: groupB_bracket.group1st, team2: groupA_bracket.group2nd, score: "", tie: false, winnerPick: "", winnerPickImg: "", winnerPickKey: "", loserPickKey: "", enterWinError: false, scoreNotTied: false, gamePicked: false, displayInputScore: false},
-		{id: 51, team1: groupD_bracket.group1st, team2: groupC_bracket.group2nd, score: "", tie: false, winnerPick: "", winnerPickImg: "", winnerPickKey: "", loserPickKey: "", enterWinError: false, scoreNotTied: false, gamePicked: false, displayInputScore: false},
-		{id: 52, team1: groupE_bracket.group1st, team2: groupF_bracket.group2nd, score: "", tie: false, winnerPick: "", winnerPickImg: "", winnerPickKey: "", loserPickKey: "", enterWinError: false, scoreNotTied: false, gamePicked: false, displayInputScore: false},
-		{id: 53, team1: groupG_bracket.group1st, team2: groupH_bracket.group2nd, score: "", tie: false, winnerPick: "", winnerPickImg: "", winnerPickKey: "", loserPickKey: "", enterWinError: false, scoreNotTied: false, gamePicked: false, displayInputScore: false},
-		{id: 54, team1: groupF_bracket.group1st, team2: groupE_bracket.group2nd, score: "", tie: false, winnerPick: "", winnerPickImg: "", winnerPickKey: "", loserPickKey: "", enterWinError: false, scoreNotTied: false, gamePicked: false, displayInputScore: false},
-		{id: 55, team1: groupH_bracket.group1st, team2: groupG_bracket.group2nd, score: "", tie: false, winnerPick: "", winnerPickImg: "", winnerPickKey: "", loserPickKey: "", enterWinError: false, scoreNotTied: false, gamePicked: false, displayInputScore: false}
-		//Tournament Round 2
+		{id: 49, team1: groupC_bracket.group1st, team2: groupD_bracket.group2nd, score: "", tie: false, winnerPick: "C1 D2", winnerPickImg: "", winnerPickKey: "", loserPickKey: "", enterWinError: false, scoreNotTied: false, gamePicked: false, displayInputScore: false},
+		{id: 50, team1: groupB_bracket.group1st, team2: groupA_bracket.group2nd, score: "", tie: false, winnerPick: "E1 F2", winnerPickImg: "", winnerPickKey: "", loserPickKey: "", enterWinError: false, scoreNotTied: false, gamePicked: false, displayInputScore: false},
+		{id: 51, team1: groupD_bracket.group1st, team2: groupC_bracket.group2nd, score: "", tie: false, winnerPick: "G1 H2", winnerPickImg: "", winnerPickKey: "", loserPickKey: "", enterWinError: false, scoreNotTied: false, gamePicked: false, displayInputScore: false},
+		{id: 52, team1: groupE_bracket.group1st, team2: groupF_bracket.group2nd, score: "", tie: false, winnerPick: "B1 A2", winnerPickImg: "", winnerPickKey: "", loserPickKey: "", enterWinError: false, scoreNotTied: false, gamePicked: false, displayInputScore: false},
+		{id: 53, team1: groupG_bracket.group1st, team2: groupH_bracket.group2nd, score: "", tie: false, winnerPick: "D1 C2", winnerPickImg: "", winnerPickKey: "", loserPickKey: "", enterWinError: false, scoreNotTied: false, gamePicked: false, displayInputScore: false},
+		{id: 54, team1: groupF_bracket.group1st, team2: groupE_bracket.group2nd, score: "", tie: false, winnerPick: "F1 E2", winnerPickImg: "", winnerPickKey: "", loserPickKey: "", enterWinError: false, scoreNotTied: false, gamePicked: false, displayInputScore: false},
+		{id: 55, team1: groupH_bracket.group1st, team2: groupG_bracket.group2nd, score: "", tie: false, winnerPick: "H1 G2", winnerPickImg: "", winnerPickKey: "", loserPickKey: "", enterWinError: false, scoreNotTied: false, gamePicked: false, displayInputScore: false},
+		
 		
 	];
-
-
+	// Tournament Round 2
+$scope.allGames.push(
+		{id: 56, team1: $scope.allGames[48].winnerPick, team2: $scope.allGames[49].winnerPick, score: "", tie: false, winnerPick: "", winnerPickImg: "", winnerPickKey: "", loserPickKey: "", enterWinError: false, scoreNotTied: false, gamePicked: false, displayInputScore: false},
+		{id: 57, team1: $scope.allGames[52].winnerPick, team2: $scope.allGames[53].winnerPick, score: "", tie: false, winnerPick: "", winnerPickImg: "", winnerPickKey: "", loserPickKey: "", enterWinError: false, scoreNotTied: false, gamePicked: false, displayInputScore: false},
+		{id: 58, team1: $scope.allGames[50].winnerPick, team2: $scope.allGames[51].winnerPick, score: "", tie: false, winnerPick: "", winnerPickImg: "", winnerPickKey: "", loserPickKey: "", enterWinError: false, scoreNotTied: false, gamePicked: false, displayInputScore: false},
+		{id: 59, team1: $scope.allGames[54].winnerPick, team2: $scope.allGames[55].winnerPick, score: "", tie: false, winnerPick: "", winnerPickImg: "", winnerPickKey: "", loserPickKey: "", enterWinError: false, scoreNotTied: false, gamePicked: false, displayInputScore: false});
+// Tournament Round 3
+$scope.allGames.push(
+		{id: 60, team1: $scope.allGames[56].winnerPick, team2: $scope.allGames[57].winnerPick, score: "", tie: false, winnerPick: "", winnerPickImg: "", winnerPickKey: "", loserPickKey: "", enterWinError: false, scoreNotTied: false, gamePicked: false, displayInputScore: false},
+		{id: 61, team1: $scope.allGames[58].winnerPick, team2: $scope.allGames[59].winnerPick, score: "", tie: false, winnerPick: "", winnerPickImg: "", winnerPickKey: "", loserPickKey: "", enterWinError: false, scoreNotTied: false, gamePicked: false, displayInputScore: false});
+// Tournament FINALS
+$scope.allGames.push(
+		{id: 62, team1: $scope.allGames[60].loserPick, team2: $scope.allGames[61].loserPick, score: "", tie: false, winnerPick: "", winnerPickImg: "", winnerPickKey: "", loserPickKey: "", enterWinError: false, scoreNotTied: false, gamePicked: false, displayInputScore: false},
+		{id: 63, team1: $scope.allGames[60].winnerPick, team2: $scope.allGames[61].winnerPick, score: "", tie: false, winnerPick: "", winnerPickImg: "", winnerPickKey: "", loserPickKey: "", enterWinError: false, scoreNotTied: false, gamePicked: false, displayInputScore: false}
+	);
 	
+
+
+
 
 	calculateGroupWinners = function(id1,id2,id3,id4,id5,id6,team1_pts,team1_goals,team2_pts,team2_goals, team3_pts,team3_goals, team4_pts, team4_goals,groupBracket){
 			// console.log(id1 + "," + id2 + "," + id3 + "," + id4 + "," + id5 + "," + id6 + "," + team1_pts + "," + team1_goals + "," + team2_pts + "," + team2_goals + "," + team3_pts + "," + team3_goals + "," + team4_pts + "," + team4_goals + ","+ groupBracket);
@@ -892,9 +889,10 @@ $scope.validateScore = function(id,bracket){
 	//HANDLE ALL TOURNAMENT ROUND OF 16 BELOW -------------------------------------------
 
 	$scope.advanceWinners = function(event,id){
-		console.log(event);
+		// if($scope.pickedAllGroups){
 		$scope.allGames[id].winnerPick = event.target.attributes.data.value;
 		$scope.allGames[id].winnerPickImg = "images/flags/" + event.target.attributes.data.value + ".png";
+
 
 	};
 
