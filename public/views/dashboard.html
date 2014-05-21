@@ -9,11 +9,14 @@
 </nav>
 
 
-	<center><h2>BUILD YOUR BRACKET</h2></center>
+	
 	<div ng-controller="dashController">
-		<div class="container-fluid text-center">
+		<div class="container-non-responsive text-center">
+			<div class="row">
+				<div class="col-xs-12">
+			<h2>BUILD YOUR BRACKET</h2>
 <!-- GROUP STAGE -->	
-	<accordion style="border-radius: 5px;" class="groupAccordion" close-others="oneAtATime">
+	<accordion style="min-width: 1200px;" class="groupAccordion" close-others="oneAtATime">
 	    <accordion-group is-open="!isopen">
 	     <accordion-heading>
 	        <div class="groupHeading">
@@ -22,7 +25,7 @@
 	        </div>
 	     </accordion-heading>
 <!--groupA ...................................................... -->
-	  	<accordion style="border-radius: 5px;" close-others="oneAtATime">
+	  	<accordion style="min-width: 1200px;" close-others="oneAtATime">
 	    <accordion-group is-open="isopen">
 	    
 	        <accordion-heading>
@@ -1273,8 +1276,11 @@
 </accordion-group>
 <!-- END OF GROUP STAGE -->
 </div>
+</div>
 
 
+<div class="row">
+	<div class="col-xs-12">
 <div class="roundof16">
 
 <center><h1>World Cup Tournament 2014</h1></center>
@@ -1337,8 +1343,11 @@
 <!-- Finalist Right -->
 <div class="bracketBox" id="winner61" ng-click="advanceWinners($event,63)" data="{{allGames[61].winnerPick | uppercase}}"><img ng-show="allGames[61].winnerPickImg" class="bracketFlag" src="{{allGames[61].winnerPickImg}}" data="{{allGames[61].winnerPick | uppercase}}"><span class="teamNameBracket" data="{{allGames[61].winnerPick | uppercase}}">{{allGames[61].winnerPick | uppercase}}</span></div>
 
-<button type="submit" class="btn btn-success submitBracket" onclick="this.disabled" ng-disabled="myForm.$invalid">Submit Bracket</button>
+<button type="submit" class="btn btn-success submitBracket" ng-click="submitBracket()">Submit Bracket</button>
 
+</div>
+</div>
+</div>
 </div>
 
 </div>

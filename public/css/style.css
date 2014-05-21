@@ -3,7 +3,13 @@ body { padding-top:30px;
 	font-family:'Open Sans', 'sans-serif';
 	letter-spacing: 2px;
 }
-
+.container-non-responsive{
+	margin-left: auto;
+	margin-right: auto;
+	width:1400px;
+	text-align: center;
+	padding-right: 150px;
+}
 .navbar-right{
 	padding-right:55px;
 }
@@ -31,7 +37,7 @@ th{
 .groupLetter{
 }
 .groupAccordion{
-	min-width: 1700px;
+	width: 1700px;
 	border-radius: 45px;
 }
 .tinyTeamFlag{
@@ -137,7 +143,8 @@ input.ng-valid{
 table {
 /*  border-collapse: collapse;*/
   border: none;
-  min-width: 600px;
+/*  min-width: 600px;*/
+width: 1400px;
 }
 td {
   width: 150em;
@@ -162,11 +169,11 @@ td p {
 .roundof16{
 	position:relative;
 	width:1400px;
-/*	right:15%;*/
-	left:-15%;
+/*	right:12%;*/
+	left:-7%;
 	height:1000px;
-	min-width: 1200px;
-	margin-left: 15px;
+/*	min-width: 1200px;*/
+	text-align: left;
 }
 .bracketBox{
 	width:175px;
@@ -332,12 +339,12 @@ td p {
 #winner60{
 	position: absolute;
 	top: 410px;
-	left:35%;
+	left:38%;
 }
 #winner61{
 	position: absolute;
 	top: 410px;
-	left:55%;
+	left:51.75%;
 }
 /*FINALS*/
 
