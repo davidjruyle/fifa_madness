@@ -1,4 +1,4 @@
-angular.module('dashCtrl', []).controller('dashController', function($scope, dashboard) {
+angular.module('dashCtrl', []).controller('dashController', function($scope, dashboard, $http) {
 	$scope.scoreNotTiedErrorMsg = "Score Not Tied!";
 	$scope.enterWinErrorMsg = "Invalid Score";
 	var allData = {};
@@ -84,10 +84,10 @@ angular.module('dashCtrl', []).controller('dashController', function($scope, das
 		//Tournament Round 1
 		{id: 48, team1: groupA_bracket.group1st, team2: groupB_bracket.group2nd, score: "", tie: false, winnerPick: "A1 B2", winnerPickImg: "", winnerPickKey: "", loserPickKey: "", enterWinError: false, scoreNotTied: false, gamePicked: false, displayInputScore: false},
 		{id: 49, team1: groupC_bracket.group1st, team2: groupD_bracket.group2nd, score: "", tie: false, winnerPick: "C1 D2", winnerPickImg: "", winnerPickKey: "", loserPickKey: "", enterWinError: false, scoreNotTied: false, gamePicked: false, displayInputScore: false},
-		{id: 50, team1: groupB_bracket.group1st, team2: groupA_bracket.group2nd, score: "", tie: false, winnerPick: "E1 F2", winnerPickImg: "", winnerPickKey: "", loserPickKey: "", enterWinError: false, scoreNotTied: false, gamePicked: false, displayInputScore: false},
-		{id: 51, team1: groupD_bracket.group1st, team2: groupC_bracket.group2nd, score: "", tie: false, winnerPick: "G1 H2", winnerPickImg: "", winnerPickKey: "", loserPickKey: "", enterWinError: false, scoreNotTied: false, gamePicked: false, displayInputScore: false},
-		{id: 52, team1: groupE_bracket.group1st, team2: groupF_bracket.group2nd, score: "", tie: false, winnerPick: "B1 A2", winnerPickImg: "", winnerPickKey: "", loserPickKey: "", enterWinError: false, scoreNotTied: false, gamePicked: false, displayInputScore: false},
-		{id: 53, team1: groupG_bracket.group1st, team2: groupH_bracket.group2nd, score: "", tie: false, winnerPick: "D1 C2", winnerPickImg: "", winnerPickKey: "", loserPickKey: "", enterWinError: false, scoreNotTied: false, gamePicked: false, displayInputScore: false},
+		{id: 50, team1: groupB_bracket.group1st, team2: groupA_bracket.group2nd, score: "", tie: false, winnerPick: "B1 A2", winnerPickImg: "", winnerPickKey: "", loserPickKey: "", enterWinError: false, scoreNotTied: false, gamePicked: false, displayInputScore: false},
+		{id: 51, team1: groupD_bracket.group1st, team2: groupC_bracket.group2nd, score: "", tie: false, winnerPick: "D1 C2", winnerPickImg: "", winnerPickKey: "", loserPickKey: "", enterWinError: false, scoreNotTied: false, gamePicked: false, displayInputScore: false},
+		{id: 52, team1: groupE_bracket.group1st, team2: groupF_bracket.group2nd, score: "", tie: false, winnerPick: "E1 F2", winnerPickImg: "", winnerPickKey: "", loserPickKey: "", enterWinError: false, scoreNotTied: false, gamePicked: false, displayInputScore: false},
+		{id: 53, team1: groupG_bracket.group1st, team2: groupH_bracket.group2nd, score: "", tie: false, winnerPick: "G1 H2", winnerPickImg: "", winnerPickKey: "", loserPickKey: "", enterWinError: false, scoreNotTied: false, gamePicked: false, displayInputScore: false},
 		{id: 54, team1: groupF_bracket.group1st, team2: groupE_bracket.group2nd, score: "", tie: false, winnerPick: "F1 E2", winnerPickImg: "", winnerPickKey: "", loserPickKey: "", enterWinError: false, scoreNotTied: false, gamePicked: false, displayInputScore: false},
 		{id: 55, team1: groupH_bracket.group1st, team2: groupG_bracket.group2nd, score: "", tie: false, winnerPick: "H1 G2", winnerPickImg: "", winnerPickKey: "", loserPickKey: "", enterWinError: false, scoreNotTied: false, gamePicked: false, displayInputScore: false},
 		
@@ -309,127 +309,40 @@ $scope.allGames.push(
 					}
 					//if points are equal, and goal differential is equal, find what game teams played against each other and determine that winner
 					else if($scope.groupOutcome[1][2] == $scope.groupOutcome[2][2]){
-					// var whatGame = $scope.groupOutcome[1][0] + "," + $scope.groupOutcome[2][0];
-					// var whatGameReverse = $scope.groupOutcome[2][0] + "," + $scope.groupOutcome[1][0];
-					// console.log("HEY WHAT THE F");
-					// 	for (var k=1; k<7; k++){
-					// 		console.log('game' + k);
-					// 		var gameNum = "game" + k;
-					// 		if (whatGame == gameNum  || whatGameReverse == gameNum){
-					// 			console.log("YOYOYOYOYOY");
-					// 			if($scope.allGames[id + k].winnerPick == $scope.allGames[id + k].team1){
-					// 			$scope[groupBracket].group1st = $scope.allGames['id' + k].team1;
-					// 			$scope[groupBracket].group1stImg = "images/flags/" + $scope.allGames['id' + k].team1 + ".png";
-					// 			$scope[groupBracket].group2nd = $scope.allGames['id' + k].team2;
-					// 			$scope[groupBracket].group2ndImg = "images/flags/" + $scope.allGames['id' + k].team2 + ".png";
-					// 			console.log("XXXXXXXXXXXXX");
-					// 			console.log("1st: " + $scope[groupBracket].group1st + ". Second: " + $scope[groupBracket].group2nd);
-					// 			}
-					// 			else if($scope.allGames['id' + k].winnerPick == $scope.allGames['id' + k].team2){
-								
-					// 			$scope[groupBracket].group1st = $scope.allGames['id' + k].team2;
-					// 			$scope[groupBracket].group1stImg = "images/flags/" + $scope.allGames['id' + k].team2 + ".png";
-					// 			$scope[groupBracket].group2nd = $scope.allGames['id' + k].team1;
-					// 			$scope[groupBracket].group2ndImg = "images/flags/" + $scope.allGames['id' + k].team1 + ".png";
-					// 			console.log("ZZZZZZZZZZZZZ");
-					// 			console.log("1st: " + $scope[groupBracket].group1st + ". Second: " + $scope[groupBracket].group2nd);
-					// 			}
-					// 			else{
-					// 			console.log("cannot calculate");
-								
-					// 			}
-							
-					// 	}
-					// }
-					// }
+					var whatGame = $scope.groupOutcome[1][0] + "," + $scope.groupOutcome[2][0];
+					var whatGameReverse = $scope.groupOutcome[2][0] + "," + $scope.groupOutcome[1][0];
+
+
 					// check each game to see if strings are the same as game#, which is a string
-					if (whatGame == game1 || whatGameReverse == game1){
-						if($scope.allGames[id1].winnerPick == $scope.allGames[id1].team1){
-							$scope[groupBracket].group2nd = $scope.allGames[id1].team1;
-							$scope[groupBracket].group2ndImg = "images/flags/" + $scope.allGames[id1].team1 + ".png";
-						}
-						else if($scope.allGames[id1].winnerPick == $scope.allGames[id1].team2){
-							$scope[groupBracket].group2nd = $scope.allGames[id1].team2;
-							$scope[groupBracket].group2ndImg = "images/flags/" + $scope.allGames[id1].team2 + ".png";
-						}
-						else{
+					gamePlayedAgainst = function(num,id){
+						
+						for (var k=0; k<7; k++){
+							if (whatGame == num || whatGameReverse == num){
+								if($scope.allGames[id].winnerPick == $scope.allGames[id].team1){
+								$scope[groupBracket].group1st = $scope.allGames[id].team1;
+								$scope[groupBracket].group1stImg = "images/flags/" + $scope.allGames[id].team1 + ".png";
+								$scope[groupBracket].group2nd = $scope.allGames[id].team2;
+								$scope[groupBracket].group2ndImg = "images/flags/" + $scope.allGames[id].team2 + ".png";
+								console.log("success");
+							}
+							else if($scope.allGames[id].winnerPick == $scope.allGames[id].team2){
+								$scope[groupBracket].group1st = $scope.allGames[id].team2;
+								$scope[groupBracket].group1stImg = "images/flags/" + $scope.allGames[id].team2 + ".png";
+								$scope[groupBracket].group2nd = $scope.allGames[id].team1;
+								$scope[groupBracket].group2ndImg = "images/flags/" + $scope.allGames[id].team1 + ".png";
+								console.log("success");
+							}else{
 							console.log("cannot calculate");
+							}
+							}
 						}
 					}
-					else if (whatGame == game2 || whatGameReverse == game2){
-						if($scope.allGames[id2].winnerPick == $scope.allGames[id2].team1){
-							$scope[groupBracket].group2nd = $scope.allGames[id2].team1;
-							$scope[groupBracket].group2ndImg = "images/flags/" + $scope.allGames[id2].team1 + ".png";
-						}
-						else if($scope.allGames[id2].winnerPick == $scope.allGames[id2].team2){
-							$scope[groupBracket].group2nd = $scope.allGames[id2].team2;
-							$scope[groupBracket].group2ndImg = "images/flags/" + $scope.allGames[id2].team2 + ".png";
-							console.log("Group 2nd is" + $scope[groupBracket].group2nd);
-						}
-						else{
-							console.log("cannot calculate");
-						}
-					}
-					else if (whatGame == game3 || whatGameReverse == game3){
-						if($scope.allGames[id3].winnerPick == $scope.allGames[id3].team1){
-							$scope[groupBracket].group2nd = $scope.allGames[id3].team1;
-							$scope[groupBracket].group2ndImg = "images/flags/" + $scope.allGames[id3].team1 + ".png";
-							console.log("Group 2nd is" + $scope[groupBracket].group2nd);
-						}
-						else if($scope.allGames[id3].winnerPick == $scope.allGames[id3].team2){
-							$scope[groupBracket].group2nd = $scope.allGames[id3].team2;
-							$scope[groupBracket].group2ndImg = "images/flags/" + $scope.allGames[id3].team2 + ".png";
-							console.log("Group 2nd is" + $scope[groupBracket].group2nd);
-						}
-						else{
-							console.log("cannot calculate");
-						}
-					}
-					else if (whatGame == game4 || whatGameReverse == game4){
-						if($scope.allGames[id4].winnerPick == $scope.allGames[id4].team1){
-							$scope[groupBracket].group2nd = $scope.allGames[id4].team1;
-							$scope[groupBracket].group2ndImg = "images/flags/" + $scope.allGames[id4].team1 + ".png";
-							console.log("Group 2nd is" + $scope[groupBracket].group2nd);
-						}
-						else if($scope.allGames[id4].winnerPick == $scope.allGames[id4].team2){
-							$scope[groupBracket].group2nd = $scope.allGames[id4].team2;
-							$scope[groupBracket].group2ndImg = "images/flags/" + $scope.allGames[id4].team2 + ".png";
-							console.log("Group 2nd is" + $scope[groupBracket].group2nd);
-						}
-						else{
-							console.log("cannot calculate");
-						}
-					}
-					else if (whatGame == game5 || whatGameReverse == game5){
-						if($scope.allGames[id5].winnerPick == $scope.allGames[id5].team1){
-							$scope[groupBracket].group2nd = $scope.allGames[id5].team1;
-							$scope[groupBracket].group2ndImg = "images/flags/" + $scope.allGames[id5].team1 + ".png";
-							console.log("Group 2nd is" + $scope[groupBracket].group2nd);
-						}
-						else if($scope.allGames[id5].winnerPick == $scope.allGames[id5].team2){
-							$scope[groupBracket].group2nd = $scope.allGames[id5].team2;
-							$scope[groupBracket].group2ndImg = "images/flags/" + $scope.allGames[id5].team2 + ".png";
-							console.log("Group 2nd is" + $scope[groupBracket].group2nd);
-						}
-						else{
-							console.log("cannot calculate");
-						}
-					}
-					else if (whatGame == game6 || whatGameReverse == game6){
-						if($scope.allGames[id6].winnerPick == $scope.allGames[id6].team1){
-							$scope[groupBracket].group2nd = $scope.allGames[id6].team1;
-							$scope[groupBracket].group2ndImg = "images/flags/" + $scope.allGames[id6].team1 + ".png";
-							console.log("Group 2nd is" + $scope[groupBracket].group2nd);
-						}
-						else if($scope.allGames[id6].winnerPick == $scope.allGames[id6].team2){
-							$scope[groupBracket].group2nd = $scope.allGames[id6].team2;
-							$scope[groupBracket].group2ndImg = "images/flags/" + $scope.allGames[id6].team2 + ".png";
-							console.log("Group 2nd is" + $scope[groupBracket].group2nd);
-						}
-						else{
-							console.log("cannot calculate");
-						}
-					}
+					gamePlayedAgainst(game1,id1);
+					gamePlayedAgainst(game2,id2);
+					gamePlayedAgainst(game3,id3);
+					gamePlayedAgainst(game4,id4);
+					gamePlayedAgainst(game5,id5);
+					gamePlayedAgainst(game6,id5);
 				}
 				else{
 						$scope[groupBracket].group2nd = $scope.groupOutcome[2][0];
@@ -469,144 +382,35 @@ $scope.allGames.push(
 					var whatGame = $scope.groupOutcome[0][0] + "," + $scope.groupOutcome[1][0];
 					var whatGameReverse = $scope.groupOutcome[1][0] + "," + $scope.groupOutcome[0][0];
 					
-				
-					// 	for (var k=1; k<7; k++){
-							
-					// 		var gameNum = "game" + k;
-					// 		var idNum = "id" + k;
-					// 		console.log(idNum);
-					// 		if (whatGame == game5  || whatGameReverse == game5){
-					// 			console.log("YOYOYOYOYOY");
-					// 			if($scope.allGames[idNum].winnerPick == $scope.allGames[idNum].team1){
-					// 			$scope[groupBracket].group1st = $scope.allGames[idNum].team1;
-					// 			$scope[groupBracket].group1stImg = "images/flags/" + $scope.allGames[idNum].team1 + ".png";
-					// 			$scope[groupBracket].group2nd = $scope.allGames[idNum].team2;
-					// 			$scope[groupBracket].group2ndImg = "images/flags/" + $scope.allGames[idNum].team2 + ".png";
-					// 			console.log("XXXXXXXXXXXXX");
-					// 			console.log("1st: " + $scope[groupBracket].group1st + ". Second: " + $scope[groupBracket].group2nd);
-					// 			}
-					// 			else if($scope.allGames[idNum].winnerPick == $scope.allGames[idNum].team2){
-								
-					// 			$scope[groupBracket].group1st = $scope.allGames[idNum].team2;
-					// 			$scope[groupBracket].group1stImg = "images/flags/" + $scope.allGames[idNum].team2 + ".png";
-					// 			$scope[groupBracket].group2nd = $scope.allGames[idNum].team1;
-					// 			$scope[groupBracket].group2ndImg = "images/flags/" + $scope.allGames[idNum].team1 + ".png";
-					// 			console.log("ZZZZZZZZZZZZZ");
-					// 			console.log("1st: " + $scope[groupBracket].group1st + ". Second: " + $scope[groupBracket].group2nd);
-					// 			}
-					// 			else{
-					// 			console.log("cannot calculate");
-								
-					// 			}
-							
-					// 	}
-					// }
-					// }
-					// check each game to see if strings are the same as game#, which is a string
-					if (whatGame == game1 || whatGameReverse == game1){
-						if($scope.allGames[id1].winnerPick == $scope.allGames[id1].team1){
-							$scope[groupBracket].group1st = $scope.allGames[id1].team1;
-							$scope[groupBracket].group1stImg = "images/flags/" + $scope.allGames[id1].team1 + ".png";
-							$scope[groupBracket].group2nd = $scope.allGames[id1].team2;
-							$scope[groupBracket].group2ndImg = "images/flags/" + $scope.allGames[id1].team2 + ".png";
-						}
-						else if($scope.allGames[id1].winnerPick == $scope.allGames[id1].team2){
-							$scope[groupBracket].group1st = $scope.allGames[id1].team2;
-							$scope[groupBracket].group1stImg = "images/flags/" + $scope.allGames[id1].team2 + ".png";
-							$scope[groupBracket].group2nd = $scope.allGames[id1].team1;
-							$scope[groupBracket].group2ndImg = "images/flags/" + $scope.allGames[id1].team1 + ".png";
-						}
-						else{
+					gamePlayedAgainst = function(num,id){
+						
+						for (var k=0; k<7; k++){
+							if (whatGame == num || whatGameReverse == num){
+								if($scope.allGames[id].winnerPick == $scope.allGames[id].team1){
+								$scope[groupBracket].group1st = $scope.allGames[id].team1;
+								$scope[groupBracket].group1stImg = "images/flags/" + $scope.allGames[id].team1 + ".png";
+								$scope[groupBracket].group2nd = $scope.allGames[id].team2;
+								$scope[groupBracket].group2ndImg = "images/flags/" + $scope.allGames[id].team2 + ".png";
+								console.log("success");
+							}
+							else if($scope.allGames[id].winnerPick == $scope.allGames[id].team2){
+								$scope[groupBracket].group1st = $scope.allGames[id].team2;
+								$scope[groupBracket].group1stImg = "images/flags/" + $scope.allGames[id].team2 + ".png";
+								$scope[groupBracket].group2nd = $scope.allGames[id].team1;
+								$scope[groupBracket].group2ndImg = "images/flags/" + $scope.allGames[id].team1 + ".png";
+								console.log("success");
+							}else{
 							console.log("cannot calculate");
+							}
+							}
 						}
 					}
-					else if (whatGame == game2 || whatGameReverse == game2){
-						if($scope.allGames[id2].winnerPick == $scope.allGames[id2].team1){
-							$scope[groupBracket].group1st = $scope.allGames[id2].team1;
-							$scope[groupBracket].group1stImg = "images/flags/" + $scope.allGames[id2].team1 + ".png";
-							$scope[groupBracket].group2nd = $scope.allGames[id2].team2;
-							$scope[groupBracket].group2ndImg = "images/flags/" + $scope.allGames[id2].team2 + ".png";
-						}
-						else if($scope.allGames[id2].winnerPick == $scope.allGames[id2].team2){
-							$scope[groupBracket].group1st = $scope.allGames[id2].team2;
-							$scope[groupBracket].group1stImg = "images/flags/" + $scope.allGames[id2].team2 + ".png";
-							$scope[groupBracket].group2nd = $scope.allGames[id2].team1;
-							$scope[groupBracket].group2ndImg = "images/flags/" + $scope.allGames[id2].team1 + ".png";
-						}
-						else{
-							console.log("cannot calculate");
-						}
-					}
-					else if (whatGame == game3 || whatGameReverse == game3){
-						if($scope.allGames[id3].winnerPick == $scope.allGames[id3].team1){
-							$scope[groupBracket].group1st = $scope.allGames[id3].team1;
-							$scope[groupBracket].group1stImg = "images/flags/" + $scope.allGames[id3].team1 + ".png";
-							$scope[groupBracket].group2nd = $scope.allGames[id3].team2;
-							$scope[groupBracket].group2ndImg = "images/flags/" + $scope.allGames[id3].team2 + ".png";
-						}
-						else if($scope.allGames[id3].winnerPick == $scope.allGames[id3].team2){
-							$scope[groupBracket].group1st = $scope.allGames[id3].team2;
-							$scope[groupBracket].group1stImg = "images/flags/" + $scope.allGames[id3].team2 + ".png";
-							$scope[groupBracket].group2nd = $scope.allGames[id3].team1;
-							$scope[groupBracket].group2ndImg = "images/flags/" + $scope.allGames[id3].team1 + ".png";
-						}
-						else{
-							console.log("cannot calculate");
-						}
-					}
-					else if (whatGame == game4 || whatGameReverse == game4){
-						if($scope.allGames[id4].winnerPick == $scope.allGames[id4].team1){
-							$scope[groupBracket].group1st = $scope.allGames[id4].team1;
-							$scope[groupBracket].group1stImg = "images/flags/" + $scope.allGames[id4].team1 + ".png";
-							$scope[groupBracket].group2nd = $scope.allGames[id4].team2;
-							$scope[groupBracket].group2ndImg = "images/flags/" + $scope.allGames[id4].team2 + ".png";
-						}
-						else if($scope.allGames[id4].winnerPick == $scope.allGames[id4].team2){
-							$scope[groupBracket].group1st = $scope.allGames[id4].team2;
-							$scope[groupBracket].group1stImg = "images/flags/" + $scope.allGames[id4].team2 + ".png";
-							$scope[groupBracket].group2nd = $scope.allGames[id4].team1;
-							$scope[groupBracket].group2ndImg = "images/flags/" + $scope.allGames[id4].team1 + ".png";
-						}
-						else{
-							console.log("cannot calculate");
-						}
-					}
-					else if (whatGame == game5 || whatGameReverse == game5){
-						if($scope.allGames[id5].winnerPick == $scope.allGames[id5].team1){
-							$scope[groupBracket].group1st = $scope.allGames[id5].team1;
-							$scope[groupBracket].group1stImg = "images/flags/" + $scope.allGames[id5].team1 + ".png";
-							$scope[groupBracket].group2nd = $scope.allGames[id5].team2;
-							$scope[groupBracket].group2ndImg = "images/flags/" + $scope.allGames[id5].team2 + ".png";
-							console.log("1st: " + $scope[groupBracket].group1st + ". Second: " + $scope[groupBracket].group2nd);
-						}
-						else if($scope.allGames[id5].winnerPick == $scope.allGames[id5].team2){
-							$scope[groupBracket].group1st = $scope.allGames[id5].team2;
-							$scope[groupBracket].group1stImg = "images/flags/" + $scope.allGames[id5].team2 + ".png";
-							$scope[groupBracket].group2nd = $scope.allGames[id5].team1;
-							$scope[groupBracket].group2ndImg = "images/flags/" + $scope.allGames[id5].team1 + ".png";
-							console.log("1st: " + $scope[groupBracket].group1st + ". Second: " + $scope[groupBracket].group2nd);
-						}
-						else{
-							console.log("cannot calculate");
-						}
-					}
-					else if (whatGame == game6 || whatGameReverse == game6){
-						if($scope.allGames[id6].winnerPick == $scope.allGames[id6].team1){
-							$scope[groupBracket].group1st = $scope.allGames[id6].team1;
-							$scope[groupBracket].group1stImg = "images/flags/" + $scope.allGames[id6].team1 + ".png";
-							$scope[groupBracket].group2nd = $scope.allGames[id6].team2;
-							$scope[groupBracket].group2ndImg = "images/flags/" + $scope.allGames[id6].team2 + ".png";
-						}
-						else if($scope.allGames[id6].winnerPick == $scope.allGames[id6].team2){
-							$scope[groupBracket].group1st = $scope.allGames[id6].team2;
-							$scope[groupBracket].group1stImg = "images/flags/" + $scope.allGames[id6].team2 + ".png";
-							$scope[groupBracket].group2nd = $scope.allGames[id6].team1;
-							$scope[groupBracket].group2ndImg = "images/flags/" + $scope.allGames[id6].team1 + ".png";
-						}
-						else{
-							console.log("cannot calculate");
-						}
-					}
+					gamePlayedAgainst(game1,id1);
+					gamePlayedAgainst(game2,id2);
+					gamePlayedAgainst(game3,id3);
+					gamePlayedAgainst(game4,id4);
+					gamePlayedAgainst(game5,id5);
+					gamePlayedAgainst(game6,id5);
 				}
 				else{
 					$scope[groupBracket].group1st = $scope.groupOutcome[1][0];
@@ -896,6 +700,19 @@ $scope.validateScore = function(id,bracket){
 
 	};
 
+	$scope.submitBracket = function(item, event){
+		console.log("submitting form");
+		var jsonData = JSON.stringify($scope.allGames);
+		console.log(jsonData);
+		var responsePromise = $http.post("/linktoserver/data.jsp", jsonData, {});
+		responsePromise.success(function(dataFromServer,status,headers,config){
+			console.log(dataFromServer);
+		});
+		responsePromise.error(function(data,status,headers,config){
+			console.log("Error Submitting Bracket!");
+		});
+
+	}
 
 
 });
