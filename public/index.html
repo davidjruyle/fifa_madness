@@ -13,6 +13,7 @@
 	<!-- JS -->
 	<script src="libs/angular/angular.min.js"></script>
 	<script src="libs/angular-route/angular-route.min.js"></script>
+    
 
 	<!-- ANGULAR CUSTOM -->
 
@@ -20,6 +21,8 @@
 	<script src="js/controllers/authCtrl.js"></script>
 	<script src="js/services/authService.js"></script>
 	<script src="js/controllers/dashController.js"></script>
+	<script src="js/controllers/controllers.js"></script>
+	<script src="js/controllers/controllers.js"></script>
 	<script src="js/services/dashFactory.js"></script>
 	<script src="js/controllers/leaderboardCtrl.js"></script>
 	<script src="js/services/leaderboardService.js"></script>
@@ -30,7 +33,7 @@
 	<script src="js/app.js"></script>
 </head>
 <body ng-controller="authController">
-
+{{message}}
 	<!-- ANGULAR DYNAMIC CONTENT -->
 	<div class="container">
 	<div ng-view></div>

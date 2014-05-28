@@ -4,7 +4,15 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
 
 		// home page
 		.when('/', {
-			templateUrl: 'views/auth.html',
+			templateUrl: 'views/signin.html',
+			controller: 'authController'
+		})
+		.when('/signin', {
+			templateUrl: 'views/signin.html',
+			controller: 'authController'
+		})
+		.when('/signup', {
+			templateUrl: 'views/signup.html',
 			controller: 'authController'
 		})
 
@@ -12,10 +20,17 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
 			templateUrl: 'views/dashboard.html',
 			controller: 'dashController'
 		})
+		.when('/test', {
+			templateUrl: 'views/test.html',
+			controller: IndexCtrl
+		})
 
 		.when('/leaderboard', {
 			templateUrl: 'views/leaderboard.html',
-			controller: 'leaderboardController'	
+			controller: 'leaderboardController'	// we might want to make this a partial
+		})
+		.otherwise({
+			redirectTo: '/'
 		});
 
 	$locationProvider.html5Mode(true);

@@ -1,40 +1,62 @@
-// modules =================================================
-var express = require('express');
-var app     = express();
-var mongoose= require('mongoose');
+// server.js
+
+// set up ======================================================================
+// get all the tools we need
+var express  = require('express');
+var app      = express();
+var port     = process.env.PORT || 4000;
+var mongoose = require('mongoose');
 var passport = require('passport');
-var flash = require('connect-flash');
-var port = process.env.PORT || 8080;
+var flash    = require('connect-flash');
+var http = require('http');
+var path = require('path');
 var configDB = require('./config/database.js');
+var routes = require('./app/routes');
+//var api = require('./app/routes/api');
 
+// configuration ===============================================================
+mongoose.connect(configDB.url); // connect to our database
 
-// configuration ===========================================
-mongoose.connect(configDB.url);
-
-// config files
-var db = require('./config/db');
-
-require('./config/passport')(passport);
-
-var port = process.env.PORT || 4000; // set our port
-// mongoose.connect(db.url); // connect to our mongoDB database (commented out after you enter in your own credentials)
+require('./config/passport')(passport); // pass passport for configuration
 
 app.configure(function() {
-	app.use(express.logger('dev'));
-	app.use(express.cookieParser());
-	app.use(express.bodyParser()); 	
-	app.use(express.static(__dirname + '/public')); 	// set the static files location /public/img will be /img for users
-	app.use(express.session({secret:'ilovescotchscotchyscotchscotch'}));					
-	app.use(passport.initialize());
-	app.use(passport.session());
-	app.use(flash());					// pull information from html in POST
-	app.use(express.methodOverride()); 					// simulate DELETE and PUT
+
+	// set up our express application
+	app.use(express.logger('dev')); // log every request to the console
+	app.use(express.cookieParser()); // read cookies (needed for auth)
+	app.use(express.bodyParser()); // get information from html forms
+	app.set('views', __dirname + '/public/views');
+	app.set('view engine', 'ejs'); // set up ejs for templating
+	app.use(express.static(path.join(__dirname, 'public')));
+	// required for passport
+	app.use(express.session({ secret: 'ilovescotchscotchyscotchscotch' })); // session secret
+	app.use(passport.initialize()); //
+	app.use(passport.session()); // persistent login sessions
+	app.use(flash()); // use connect-flash for flash messages stored in session
+
 });
 
-// routes ==================================================
-require('./app/routes')(app,passport); // pass our application into our routes
+// routes ======================================================================
+require('./app/routes.js')(app, passport); // load our routes and pass in our app and fully configured passport
+require('./app/routes/api')(app);
+//app.get('/', routes.index);
+//app.get('/partials/:name', routes.partials);
 
-// start app ===============================================
-app.listen(port);	
-console.log('Magic happens on port ' + port); 			// shoutout to the user
-exports = module.exports = app; 						// expose app
+// JSON API
+
+// app.get('/api/bracket/:id', api.findById);
+
+// app.get('/api/brackets', api.findAll);
+// app.post('/api/bracket', api.addBracket);
+// app.put('/api/bracket/:id', api.updateBracket);
+//app.delete('/api/post/:id', api.deleteBracket);
+
+// redirect all others to the index (HTML5 history)
+//app.get('*', routes.index);
+
+
+
+
+// launch ======================================================================
+app.listen(port);
+console.log('The magic happens on port ' + port);

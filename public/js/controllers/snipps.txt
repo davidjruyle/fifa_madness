@@ -1,0 +1,27 @@
+	// $scope.createBracket = function($http,$scope) {
+	// 	$http.post('/api/brackets',$scope.formData)
+	// 	.success(function(data){
+	// 		$scope.formData = {};
+	// 		$scope.users = data;
+
+	// 	})
+	// 	.error(function(data){
+	// 		console.log('Error: ' +data);
+	// 	});
+
+	// };
+
+	// $scope.signin = function() {
+	// 	$http.post('/signin'), {
+	// 		email: $scope.user.email,
+	// 		password: $scope.user.password,
+	// 	})
+	// 	.success(function(user){
+	// 		$rootScope.message = 'Authentication successful!';
+	// 		$location.url('/dashboard');
+	// 	})
+	// 	.error(function(){
+	// 		$rootScope.message = 'Authentication failed.';
+	// 		$location.url('/signin';)
+	// 	});
+	// };
