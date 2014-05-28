@@ -700,6 +700,9 @@ $scope.allGames[id].winnerPickImg = "images/flags/" + event.target.attributes.da
 
 };
 
+
+
+
 $scope.submitBracket = function(item, event){
 console.log("submitting form");
 var jsonData = '{"userEmail" : "dave.ruyle@gmail.com","brackets" :' + JSON.stringify($scope.allGames) + '}';
