@@ -29,11 +29,11 @@ module.exports = function(app) {
 				res.send(err);
 
 			// get and return all the brackets after you create another
-			Bracket.find(function(err, brackets) {
-				if (err)
-					res.send(err)
-				res.json(brackets);
-			});
+			// Bracket.find(function(err, brackets) {
+			// 	if (err)
+			// 		res.send(err)
+			// 	res.json(brackets);
+			// });
 		});
 
 	});

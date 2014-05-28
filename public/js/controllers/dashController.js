@@ -702,14 +702,15 @@ $scope.allGames[id].winnerPickImg = "images/flags/" + event.target.attributes.da
 
 $scope.submitBracket = function(item, event){
 console.log("submitting form");
-var jsonData = "Brackets:" + JSON.stringify($scope.allGames);
+var jsonData = '{"userEmail" : "dave.ruyle@gmail.com","brackets" :' + JSON.stringify($scope.allGames) + '}';
+var testJSON = {"Hello": {"id": "file", "value": "WTF"}};
 console.log(jsonData);
-var responsePromise = $http.post("/linktoserver/data.jsp", jsonData, {});
+var responsePromise = $http.post("/api/brackets", jsonData, {});
 responsePromise.success(function(dataFromServer,status,headers,config){
 console.log(dataFromServer);
 });
 responsePromise.error(function(data,status,headers,config){
-console.log("Error Submitting Bracket!");
+console.log(data);
 });
 
 }
