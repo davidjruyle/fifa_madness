@@ -702,7 +702,7 @@ $scope.validateScore = function(id,bracket){
 
 	$scope.submitBracket = function(item, event){
 		console.log("submitting form");
-		var jsonData = JSON.stringify($scope.allGames);
+		var jsonData = "Brackets:" + JSON.stringify($scope.allGames);
 		console.log(jsonData);
 		var responsePromise = $http.post("/linktoserver/data.jsp", jsonData, {});
 		responsePromise.success(function(dataFromServer,status,headers,config){
