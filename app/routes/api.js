@@ -19,15 +19,21 @@ module.exports = function(app) {
 
 	// create Bracket and send back all brackets after creation
 	app.post('/api/brackets', function(req, res) {
-
+		console.info("userEmail: " + JSON.stringify(req.body));        //TEST
+		console.info("totalScore: " + JSON.stringify(req.body.text));   //TEST
+		console.info("Done: " + JSON.stringify(req.body.done));   //TEST  
+		console.info("Headers: " + JSON.stringify(req.headers));  //TEST
 		// create a Bracket, information comes from AJAX request from Angular
 		Bracket.create({
-			text : req.body.text,
-			done : false
-		}, function(err, Bracket) {
+			userEmail : 'darwood@fake.com',
+			totaScore: 7,
+			brackets: req.body
+			
+		}, function(err) {
 			if (err)
 				res.send(err);
 
+			
 			// get and return all the brackets after you create another
 			// Bracket.find(function(err, brackets) {
 			// 	if (err)

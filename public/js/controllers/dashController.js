@@ -703,20 +703,44 @@ $scope.allGames[id].winnerPickImg = "images/flags/" + event.target.attributes.da
 
 
 
-$scope.submitBracket = function(item, event){
-console.log("submitting form");
-var jsonData = '{"userEmail" : "dave.ruyle@gmail.com","brackets" :' + JSON.stringify($scope.allGames) + '}';
-var testJSON = {"Hello": {"id": "file", "value": "WTF"}};
-console.log(jsonData);
-var responsePromise = $http.post("/api/brackets", jsonData, {});
-responsePromise.success(function(dataFromServer,status,headers,config){
-console.log(dataFromServer);
-});
-responsePromise.error(function(data,status,headers,config){
-console.log(data);
-});
+// $scope.submitBracket = function(item, event){
+// 	console.log("submitting form");
+// 	var jsonData = '{"userEmail" : "darwood@mail.com","brackets" :' + JSON.stringify($scope.allGames) + '}';
+// 	var testJSON = {"Hello": {"id": "file", "value": "WTF"}};
+// 	console.log(jsonData);
+// 	var responsePromise = $http.post("/api/brackets", jsonData, {});
+// 	responsePromise.success(function(dataFromServer,status,headers,config){
+// 	console.log(dataFromServer);
+// });
+// responsePromise.error(function(data,status,headers,config){
+// 	console.log(data);
+// 	});
 
+// }
+
+
+$scope.createBracket = function() {
+var jsonData = JSON.stringify($scope.allGames);
+
+console.log("In Controller-> jsonData = " + JSON.stringify(jsonData)); //**TEST**
+//Is jsonData shown as expected?    
+
+
+var headers = {'Content-Type':'application/json'};
+
+$http.post('/api/brackets', jsonData, { headers: headers })
+
+    .success(function(data, status, headers, config) {
+    $scope.brackets = data;
+    console.log("Status: " + status);
+    console.log("Data: " + data);
+    console.log("Config: " + JSON.stringify(config));
+    //$location.path('/');                        
+  })
+
+  .error(function(data) {
+    console.log('Error: ' + data);
+    });
 }
-
 
 });
