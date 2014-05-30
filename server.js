@@ -16,7 +16,7 @@ var routes = require('./app/routes');
 
 // configuration ===============================================================
 mongoose.connect(configDB.url); // connect to our database
-
+mongoose.set('debug', true);
 require('./config/passport')(passport); // pass passport for configuration
 
 app.configure(function() {

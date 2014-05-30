@@ -1,4 +1,5 @@
 var Bracket = require('../models/bracket');
+var Winners = require('../models/winners');
 
 module.exports = function(app) {
 
@@ -17,15 +18,26 @@ module.exports = function(app) {
 		});
 	});
 
+
+	app.get('/api/brackets/:id', function(req, res){
+		Bracket.find({_id: req.params.id}, function(err,brackets){
+			res.json(brackets);
+		});
+	});
+
+
+
+
 	// create Bracket and send back all brackets after creation
 	app.post('/api/brackets', function(req, res) {
 		console.info("userEmail: " + JSON.stringify(req.body));        //TEST
 		console.info("totalScore: " + JSON.stringify(req.body.text));   //TEST
 		console.info("Done: " + JSON.stringify(req.body.done));   //TEST  
 		console.info("Headers: " + JSON.stringify(req.headers));  //TEST
+		
 		// create a Bracket, information comes from AJAX request from Angular
 		Bracket.create({
-			userEmail : 'darwood@fake.com',
+			userID : req.user._id,
 			totaScore: 7,
 			brackets: req.body
 			
@@ -44,8 +56,9 @@ module.exports = function(app) {
 
 	});
 
+
 	// delete a Bracket
-	app.delete('/api/brackets/:Bracket_id', function(req, res) {
+	app.delete('/api/brackets/:id', function(req, res) {
 		Bracket.remove({
 			_id : req.params.Bracket_id
 		}, function(err, Bracket) {

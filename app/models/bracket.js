@@ -1,5 +1,4 @@
 
-
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
@@ -10,7 +9,7 @@ var Schema = mongoose.Schema;
 var bracketSchema = new Schema({
 
     
-    userEmail: {
+    userID: {
         type:String,
         required:false
     },
