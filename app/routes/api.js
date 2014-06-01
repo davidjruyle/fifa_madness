@@ -1,6 +1,10 @@
 var Bracket = require('../models/bracket');
 var Winners = require('../models/winners');
 
+exports.index = function(req, res) {
+    	res.sendfile(__dirname + "/public/index.html"); // updated to reflect dir structure
+	};
+
 module.exports = function(app) {
 
 	// api ---------------------------------------------------------------------
@@ -74,8 +78,14 @@ module.exports = function(app) {
 		});
 	});
 
+
+	exports.index = function(req, res) {
+    	res.sendfile(__dirname + "/public/index.html"); // updated to reflect dir structure
+	};
+
+
 	// application -------------------------------------------------------------
-	app.get('*', function(req, res) {
-		res.sendfile('./public/index.html'); // load the single view file (angular will handle the page changes on the front-end)
-	});
+	// app.get('*', function(req, res) {
+	// 	res.sendfile('./public/index.html'); // load the single view file (angular will handle the page changes on the front-end)
+	// });
 };

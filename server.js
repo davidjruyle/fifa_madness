@@ -12,6 +12,7 @@ var http = require('http');
 var path = require('path');
 var configDB = require('./config/database.js');
 var routes = require('./app/routes');
+var api = require('./app/routes/api');
 
 
 // configuration ===============================================================
@@ -54,7 +55,7 @@ require('./app/routes/api')(app);
 //app.delete('/api/post/:id', api.deleteBracket);
 
 // redirect all others to the index (HTML5 history)
-//app.get('*', routes.index);
+// app.get('*', api.index);
 
 
 

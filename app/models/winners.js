@@ -4,7 +4,10 @@ var Schema = mongoose.Schema;
 
 
 var winnersSchema = new Schema({
-
+userID: {
+   type:String,
+   required:false
+    },
 winners : [
 	{A1: String,
 	A2: String, 
