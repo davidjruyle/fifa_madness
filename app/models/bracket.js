@@ -13,7 +13,6 @@ var bracketSchema = new Schema({
         type:String,
         required:false
     },
-    totalScore: Number,
     brackets: [
     {id:Number,team1:String,team1_key:String,team2:String,team2_key:String,score:String,tie:Boolean,
         winnerPick:String,winnerPickImg:String,winnerPickImg:String,winnerPickKey:String,loserPickKey:String,

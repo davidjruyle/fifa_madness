@@ -1,3 +1,4 @@
+var User = require('../models/user');
 var Bracket = require('../models/bracket');
 var Winners = require('../models/winners');
 
@@ -8,6 +9,25 @@ exports.index = function(req, res) {
 module.exports = function(app) {
 
 	// api ---------------------------------------------------------------------
+	
+	
+	//get all users
+	app.get('/api/users', function(req, res) {
+
+		// use mongoose to get all brackets in the database
+		User.find(function(err, users) {
+
+			// if there is an error retrieving, send the error. nothing after res.send(err) will execute
+			if (err)
+				res.send(err)
+
+			res.json(users); // return all brackets in JSON format
+		});
+	});
+
+
+
+
 	// get all brackets
 	app.get('/api/brackets', function(req, res) {
 
