@@ -1,4 +1,4 @@
-angular.module('leaderboardCtrl', []).controller('leaderboardController', function($scope, $htttp, $location) {
+angular.module('leaderboardCtrl', []).controller('leaderboardController', function($scope, leaderboard, $htttp, $location) {
 
 	$scope.tagline = 'This is the leaderboard';
 
@@ -7,7 +7,7 @@ angular.module('leaderboardCtrl', []).controller('leaderboardController', functi
 		.success(function(data) {
 			$scope.users = data;
 			cosole.log($scope.users);
-			console.log(data);
+			//console.log(data);
 		})
 		.error(function(data) {
 			console.log('Error: ' + data);

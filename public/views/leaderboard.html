@@ -18,14 +18,14 @@
 
 
 
-		<!-- TODO LIST -->
-		<div id="users" class="row">
+		<!-- user leaderboard -->
+		<div id="users" class="row" ng-controller="leaderBoardController">
 			<div class="col-sm-4 col-sm-offset-4">
 
-				<!-- LOOP OVER THE TODOS IN $scope.todos -->
+				<!-- LOOP OVER The users -->
 				<div ng-repeat="user in users">
 					<label>
-						{{user}}
+						{{user.local.email}}
 					</label>
 				</div>
 

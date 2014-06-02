@@ -53,7 +53,7 @@ module.exports = function(app) {
 
 
 
-	// create Bracket and send back all brackets after creation
+	// create Bracket
 	app.post('/api/brackets', function(req, res) {
 		console.info("userEmail: " + JSON.stringify(req.body));        //TEST
 		console.info("totalScore: " + JSON.stringify(req.body.text));   //TEST
@@ -69,14 +69,6 @@ module.exports = function(app) {
 		}, function(err) {
 			if (err)
 				res.send(err);
-
-			
-			// get and return all the brackets after you create another
-			// Bracket.find(function(err, brackets) {
-			// 	if (err)
-			// 		res.send(err)
-			// 	res.json(brackets);
-			// });
 		});
 
 	});
@@ -120,6 +112,23 @@ module.exports = function(app) {
 			res.json(winners);
 		});
 	});
+
+
+	//new function for getting winners based on the brackets
+	// app.get('api/winnersTEST:userID', function (req,res){
+	// 	Bracket.find({userID: req.params.id}, function(err, brackets){
+	// 		var myBracket = [];
+
+	// 		for(var i = 0; i < Bracket.brackets.length; i++)
+	// 			{
+ //    				myBracket.push(Bracket.brackets[i]);
+ 
+	// 			}
+
+	// 			res.json(myBracket);
+
+	// 	});
+	// });
 
 
 	exports.index = function(req, res) {
