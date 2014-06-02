@@ -1,5 +1,7 @@
 angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
 
+	 // Enable pushState in routes.
+    $locationProvider.html5Mode(true).hashPrefix('!');
 	$routeProvider
 
 		// home page
@@ -36,6 +38,6 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
 			redirectTo: '/'
 		});
 
-	$locationProvider.html5Mode(true);
+	//$locationProvider.html5Mode(true);
 
 }]);

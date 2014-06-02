@@ -55,7 +55,8 @@ require('./app/routes/api')(app);
 //app.delete('/api/post/:id', api.deleteBracket);
 
 // redirect all others to the index (HTML5 history)
-// app.get('*', api.index);
+ // app.get('/', routes.index);
+ // app.get('*', routes.index);
 
 
 
