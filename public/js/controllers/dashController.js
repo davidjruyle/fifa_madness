@@ -661,7 +661,7 @@ $scope.allGames[id].winnerPick = $scope.allGames[id].team1;
 $scope.allGames[id].winnerPickKey = $scope.allGames[id].team1_key;
 $scope.allGames[id].loserPickKey = $scope.allGames[id].team2_key;
 $scope.allGames[id].winnerPickImg = "images/flags/" + $scope.allGames[id].team1 + ".png";
-
+ 
 }	//IF SECOND TEAM WINS
 else{
 $scope.allGames[id].score = "";
@@ -721,7 +721,10 @@ $scope.allGames[id].winnerPickImg = "images/flags/" + event.target.attributes.da
 
 $scope.createBracket = function() {
 var jsonData = JSON.stringify($scope.allGames);
-
+var jsonWinners = [{"A1":groupA_bracket.group1st,"A2":groupA_bracket.group2nd,"B1":groupB_bracket.group1st,"B2":groupB_bracket.group2nd,
+					"C1":groupC_bracket.group1st,"C2":groupC_bracket.group1st,"D1":groupD_bracket.group2nd,"D2":groupD_bracket.group2nd,
+					"E1":groupE_bracket.group1st,"E2":groupE_bracket.group2nd,"F1":groupF_bracket.group1st,"F2":groupF_bracket.group2nd,
+					"G1":groupG_bracket.group1st,"G2":groupG_bracket.group2nd,"H1":groupH_bracket.group1st,"H2":groupH_bracket.group2nd}]
 console.log("In Controller-> jsonData = " + JSON.stringify(jsonData)); //**TEST**
 //Is jsonData shown as expected?    
 
