@@ -114,6 +114,21 @@ module.exports = function(app) {
 	});
 
 
+	// create user winner bracket
+	app.post('/api/winners', function(req, res) {
+		// create a Bracket, information comes from AJAX request from Angular
+		Winners.create({
+			userID : req.user._id,
+			winners: req.body
+			
+		}, function(err) {
+			if (err)
+				res.send(err);
+		});
+
+	});
+
+
 	//new function for getting winners based on the brackets
 	// app.get('api/winnersTEST:userID', function (req,res){
 	// 	Bracket.find({userID: req.params.id}, function(err, brackets){

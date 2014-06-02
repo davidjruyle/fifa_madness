@@ -1,4 +1,4 @@
-angular.module('leaderboardCtrl', []).controller('leaderboardController', function($scope, leaderboard, $htttp, $location) {
+angular.module('leaderboardCtrl', []).controller('leaderboardController', function($scope, leaderboard, $http, $location) {
 
 	$scope.tagline = 'This is the leaderboard';
 
