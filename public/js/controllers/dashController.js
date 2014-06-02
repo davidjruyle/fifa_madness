@@ -735,7 +735,7 @@ $http.post('/api/brackets', jsonData, { headers: headers })
     console.log("Status: " + status);
     console.log("Data: " + data);
     console.log("Config: " + JSON.stringify(config));
-    $location.path('views/leaderboard.html');
+    $location.url('views/leaderboard.html');
     //$location.path('/');                        
   })
 

@@ -66,7 +66,7 @@ module.exports = function(passport) {
                 // set the user's local credentials
                 newUser.local.email = email;
                 newUser.local.password = newUser.generateHash(password);
-                newUser.local.totalScore = 0;
+                newUser.local.totalScore = 7;
                 //newUser.local._id  // use the generateHash function in our user model
 
                 console.log(newUser);

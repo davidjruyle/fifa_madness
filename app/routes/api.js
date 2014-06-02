@@ -20,7 +20,7 @@ module.exports = function(app) {
 			// if there is an error retrieving, send the error. nothing after res.send(err) will execute
 			if (err)
 				res.send(err)
-
+			console.log(users);
 			res.json(users); // return all brackets in JSON format
 		});
 	});
@@ -43,8 +43,9 @@ module.exports = function(app) {
 	});
 
 
-	app.get('/api/brackets/:id', function(req, res){
-		Bracket.find({_id: req.params.id}, function(err,brackets){
+	//get bracket by userID
+	app.get('/api/brackets/:userID', function(req, res){
+		Bracket.find({userID: req.params.id}, function(err,brackets){
 			res.json(brackets);
 		});
 	});
@@ -95,6 +96,28 @@ module.exports = function(app) {
 					res.send(err)
 				res.json(brackets);
 			});
+		});
+	});
+
+	// get all winners
+	app.get('/api/winners', function(req, res) {
+
+		// use mongoose to get all brackets in the database
+		Winners.find(function(err, winners) {
+
+			// if there is an error retrieving, send the error. nothing after res.send(err) will execute
+			if (err)
+				res.send(err)
+
+			res.json(winners); // return all brackets in JSON format
+		});
+	});
+
+
+	//get bracket by userID
+	app.get('/api/winners/:userID', function(req, res){
+		Winners.find({userID: req.params.id}, function(err,winners){
+			res.json(winners);
 		});
 	});
 

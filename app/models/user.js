@@ -9,6 +9,8 @@ var userSchema = mongoose.Schema({
     local            : {
         email        : String,
         password     : String,
+        totalScore   : Number
+
     },
     facebook         : {
         id           : String,
@@ -27,8 +29,7 @@ var userSchema = mongoose.Schema({
         token        : String,
         email        : String,
         name         : String
-    },
-    totalScore:Number
+    }
 
 });
 
