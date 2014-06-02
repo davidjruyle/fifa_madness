@@ -24,7 +24,10 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
 			templateUrl: 'views/test.html',
 			controller: IndexCtrl
 		})
-
+		.when('/profile', {
+			templateUrl: 'views/profile.ejs',
+			controller: IndexCtrl
+		})
 		.when('/leaderboard', {
 			templateUrl: 'views/leaderboard.html',
 			controller: 'leaderboardController'	// we might want to make this a partial

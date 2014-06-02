@@ -1,5 +1,4 @@
 
-
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
@@ -10,11 +9,10 @@ var Schema = mongoose.Schema;
 var bracketSchema = new Schema({
 
     
-    userEmail: {
+    userID: {
         type:String,
         required:false
     },
-    totalScore: Number,
     brackets: [
     {id:Number,team1:String,team1_key:String,team2:String,team2_key:String,score:String,tie:Boolean,
         winnerPick:String,winnerPickImg:String,winnerPickImg:String,winnerPickKey:String,loserPickKey:String,
