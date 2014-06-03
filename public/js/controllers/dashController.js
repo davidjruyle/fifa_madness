@@ -721,10 +721,11 @@ $scope.allGames[id].winnerPickImg = "images/flags/" + event.target.attributes.da
 
 $scope.createBracket = function() {
 var jsonData = JSON.stringify($scope.allGames);
-var jsonWinners = [{"A1":groupA_bracket.group1st,"A2":groupA_bracket.group2nd,"B1":groupB_bracket.group1st,"B2":groupB_bracket.group2nd,
+var winners = [{"A1":groupA_bracket.group1st,"A2":groupA_bracket.group2nd,"B1":groupB_bracket.group1st,"B2":groupB_bracket.group2nd,
 					"C1":groupC_bracket.group1st,"C2":groupC_bracket.group1st,"D1":groupD_bracket.group2nd,"D2":groupD_bracket.group2nd,
 					"E1":groupE_bracket.group1st,"E2":groupE_bracket.group2nd,"F1":groupF_bracket.group1st,"F2":groupF_bracket.group2nd,
-					"G1":groupG_bracket.group1st,"G2":groupG_bracket.group2nd,"H1":groupH_bracket.group1st,"H2":groupH_bracket.group2nd}]
+					"G1":groupG_bracket.group1st,"G2":groupG_bracket.group2nd,"H1":groupH_bracket.group1st,"H2":groupH_bracket.group2nd}];
+var jsonWinnersData = JSON.stringify(winners);
 console.log("In Controller-> jsonData = " + JSON.stringify(jsonData)); //**TEST**
 //Is jsonData shown as expected?    
 
@@ -735,6 +736,21 @@ $http.post('/api/brackets', jsonData, { headers: headers })
 
     .success(function(data, status, headers, config) {
     $scope.brackets = data;
+    console.log("Status: " + status);
+    console.log("Data: " + data);
+    console.log("Config: " + JSON.stringify(config));
+    $location.url('views/leaderboard.html');
+    //$location.path('/');                        
+  })
+
+  .error(function(data) {
+    console.log('Error: ' + data);
+    });
+
+$http.post('/api/winners', jsonWinnersData, { headers: headers })
+
+    .success(function(data, status, headers, config) {
+    $scope.winners = data;
     console.log("Status: " + status);
     console.log("Data: " + data);
     console.log("Config: " + JSON.stringify(config));
