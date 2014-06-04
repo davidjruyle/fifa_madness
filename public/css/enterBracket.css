@@ -1,0 +1,82 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans);
+body { padding-top:30px; 
+	font-family:'Open Sans', 'sans-serif';
+	letter-spacing: 2px;
+}
+.nav, .pagination, .carousel, .panel-title a { cursor: pointer;}
+
+table{
+	background-color: #485563;
+}
+td.canPick:hover{
+	background-color: #3d4954 !important;
+}
+td{
+	text-align: left;
+}
+
+table tr:first-child, table tr:nth-child(15), table tr:nth-child(16){
+	background-color: #4e5d6c;
+}
+
+.groupName{
+	font-size: 2.2em;
+	margin:auto;
+}
+.heading{
+	text-align: center;
+}
+.dateTime{
+	font-size: 1.2em;
+}
+.arena{
+	font-size: 0.9em;
+	color: #bababa;
+	text-align: center;
+}
+.teamName{
+	text-align: left;
+	font-size:1.7em;
+}
+.bracketFlag{
+	height:60px;
+	width:60px;
+	margin-right: 1px;
+}
+.tieTd{
+/*	width:100px;*/
+	text-align: center;
+	padding-top: 20px;
+	font-size: 1.2em;
+}
+img{
+	padding-right:5px;
+	margin-right: -15px;
+}
+.winnerPick{
+	background-color: #c8c8c8;
+	color: #4e5d6c !important;
+}
+td.winnerPick:hover{
+	background-color: #c8c8c8 !important;
+	color: #4e5d6c !important;
+}
+.active{
+	background-color: #4e5d6c !important;
+}
+
+/*@media (max-width: 650px){
+	.bracketFlag{
+		height: 40px;
+		width: 40px;
+	}
+	.teamName{
+		font-size: 1.0em;
+		padding-left: 15px;
+	}
+	.tieTd{
+		font-size:1.05em;
+		text-align: center;
+		width:50px;
+	}
+}*/
