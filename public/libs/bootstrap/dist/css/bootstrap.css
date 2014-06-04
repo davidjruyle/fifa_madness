@@ -1417,14 +1417,14 @@ th {
 .table > thead > tr > td,
 .table > tbody > tr > td,
 .table > tfoot > tr > td {
-  padding: 6px;
-  line-height: 1.42857143;
+  padding: 5px;
+  line-height: 1.0;
   vertical-align: top;
   border-top: 1px solid #4e5d6c;
 }
 .table > thead > tr > th {
   vertical-align: bottom;
-  border-bottom: 2px solid #4e5d6c;
+  border-bottom: 2px solid #a7a7a7;
 }
 .table > caption + thead > tr:first-child > th,
 .table > colgroup + thead > tr:first-child > th,

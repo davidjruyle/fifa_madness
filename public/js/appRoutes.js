@@ -34,6 +34,10 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
 			templateUrl: 'views/leaderboard.html',
 			controller: 'leaderboardController'	// we might want to make this a partial
 		})
+		.when('/enterBracket',{
+			templateUrl: 'views/enterBracket.html',
+			controller: 'enterBracketController'
+		})
 		.otherwise({
 			redirectTo: '/'
 		});
