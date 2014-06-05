@@ -488,10 +488,6 @@ $scope.advanceWinners = function(event,id,team){
 		$scope.allGames[id].winnerPick = $(event.target).closest("td").data("team");//add class to highlite winner
 		$(event.target).closest("td").addClass("winnerPick");
 		$scope.allGames[id].winnerPickImg = "images/flags/" + $scope.allGames[id].winnerPick + ".png";
-		for(k=id; k < $scope.allGames; k++){
-			$scope.allGames[k].winnerPick == "";
-			$scope.allGames[k].winnerPickImg == "";
-		}
 
 };
 
