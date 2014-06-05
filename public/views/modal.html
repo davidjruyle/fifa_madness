@@ -1,0 +1,23 @@
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" ng-click="cancel()">&times;</button>
+      <h4 class="modal-title">Tiebreaker</h4>
+    </div>
+    <div class="modal-body">
+      <div>Based on your selection, two or more teams are tied for first. Please select a team to move on to the next round!</div>
+      <br />
+      <ul style="text-align:left;">
+        <span ng-repeat="item in items">
+          <button><a ng-click="selected.item=item">{{item}}</a></button>
+        </span>
+      </ul>
+      <br />
+      <div>Group 1st: {{selected.item}}</div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default" ng-click="cancel()">Close</button>
+      <button type="button" class="btn btn-primary" ng-click="ok()">Save</button>
+    </div>
+  </div><!-- /.modal-content -->
+</div><!-- /.modal-dialog -->
