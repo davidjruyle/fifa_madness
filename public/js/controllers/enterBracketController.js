@@ -364,7 +364,7 @@ calculateGroupWinners = function(id1,id2,id3,id4,id5,id6,team1_pts,team2_pts,tea
 					$scope[groupBracket].possibleWinners.push($scope.groupOutcome[i][0])
 				}
 			}
-		console.log("there is a tie for group2nd");
+		console.log("there is a tie for second place");
 		}
 	}
 	//Top 2 teams (at least) are tied, raise exception
@@ -379,7 +379,6 @@ calculateGroupWinners = function(id1,id2,id3,id4,id5,id6,team1_pts,team2_pts,tea
 				}
 			}
 			console.log("there is a tie for first place");
-			console.log($scope[groupBracket].exception1);
 		}
 	}
 }
@@ -491,6 +490,48 @@ $scope.advanceWinners = function(event,id,team){
 
 };
 
+$scope.createBracket = function() {
+var jsonData = JSON.stringify($scope.allGames);
+var winners = [{"A1":groupA_bracket.group1st,"A2":groupA_bracket.group2nd,"B1":groupB_bracket.group1st,"B2":groupB_bracket.group2nd,
+					"C1":groupC_bracket.group1st,"C2":groupC_bracket.group1st,"D1":groupD_bracket.group2nd,"D2":groupD_bracket.group2nd,
+					"E1":groupE_bracket.group1st,"E2":groupE_bracket.group2nd,"F1":groupF_bracket.group1st,"F2":groupF_bracket.group2nd,
+					"G1":groupG_bracket.group1st,"G2":groupG_bracket.group2nd,"H1":groupH_bracket.group1st,"H2":groupH_bracket.group2nd}];
+var jsonWinnersData = JSON.stringify(winners);
+console.log("In Controller-> jsonData = " + JSON.stringify(jsonData)); //**TEST**
+//Is jsonData shown as expected?    
 
+
+var headers = {'Content-Type':'application/json'};
+
+$http.post('/api/brackets', jsonData, { headers: headers })
+
+    .success(function(data, status, headers, config) {
+    $scope.brackets = data;
+    console.log("Status: " + status);
+    console.log("Data: " + data);
+    console.log("Config: " + JSON.stringify(config));
+    $location.url('views/leaderboard.html');
+    //$location.path('/');                        
+  })
+
+  .error(function(data) {
+    console.log('Error: ' + data);
+    });
+
+$http.post('/api/winners', jsonWinnersData, { headers: headers })
+
+    .success(function(data, status, headers, config) {
+    $scope.winners = data;
+    console.log("Status: " + status);
+    console.log("Data: " + data);
+    console.log("Config: " + JSON.stringify(config));
+    $location.url('views/leaderboard.html');
+    //$location.path('/');                        
+  })
+
+  .error(function(data) {
+    console.log('Error: ' + data);
+    });
+}
 
 });
