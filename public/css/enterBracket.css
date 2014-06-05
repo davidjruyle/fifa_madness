@@ -13,14 +13,19 @@ td.canPick:hover{
 }
 td{
 	text-align: left;
+
 }
 
 table tr:first-child, table tr:nth-child(15), table tr:nth-child(16){
 	background-color: #4e5d6c;
+	border:2px solid #4e5d6c;
+}
+table tr{
+	border:2px solid #4e5d6c;
 }
 
 .groupName{
-	font-size: 2.2em;
+	font-size: 2.5em;
 	margin:auto;
 }
 .heading{
@@ -64,19 +69,37 @@ td.winnerPick:hover{
 .active{
 	background-color: #4e5d6c !important;
 }
-
-/*@media (max-width: 650px){
-	.bracketFlag{
-		height: 40px;
-		width: 40px;
-	}
-	.teamName{
-		font-size: 1.0em;
-		padding-left: 15px;
-	}
-	.tieTd{
-		font-size:1.05em;
-		text-align: center;
-		width:50px;
-	}
+.modal{
+	display: block;
+}
+.col-centered{
+	text-align: center;
+	background-color: #3d4954;
+	color:#c8c8c8;
+	
+	margin: 0 auto;
+	margin-right:0 auto;
+	margin-left:25%;
+}
+.right{
+	text-align: right;
+}
+@media (min-width: 651px)(max-width: 768px){
+	td > span > .btn{
+	margin: 13%;
+	margin-left:15%;
+}
+}
+@media (max-width: 500px){
+/*	td > span > .btn{
+	margin: 12%;
+	margin-left: 1%;
+	padding:5px;
 }*/
+.teamName{
+	font-size: 0.8em;
+}
+.tieTd{
+	font-size: 1.0em;
+}
+}
